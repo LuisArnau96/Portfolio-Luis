@@ -37,18 +37,23 @@
     display: flex; align-items: center; justify-content: space-between;
     height: 56px;
   }
-  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.875rem; color: var(--text-muted); text-decoration: none;
-    transition: color .2s;
+  .nav-logo {
+    font-weight: 700; font-size: 1rem; color: var(--text);
+    text-decoration: none; cursor: pointer; background: none; border: none;
+    font-family: inherit;
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links button {
+    font-size: 0.875rem; color: var(--text-muted);
+    background: none; border: none; cursor: pointer; font-family: inherit;
+    transition: color .2s; padding: 0;
+  }
+  .nav-links button:hover { color: var(--text); }
   .lang-toggle { display: flex; gap: 4px; }
   .lang-btn {
     padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
     cursor: pointer; border: none; background: transparent; color: var(--text-muted);
-    transition: all .2s;
+    transition: all .2s; font-family: inherit;
   }
   .lang-btn.active { background: var(--blue); color: white; }
 
@@ -68,42 +73,38 @@
   .hero-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(3rem, 6vw, 5rem);
-    color: var(--blue);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    color: var(--blue); line-height: 1.1; margin-bottom: 1.5rem;
   }
-  .hero-sub { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 480px; margin-bottom: 2rem; }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    line-height: 1.7; max-width: 480px; margin-bottom: 2rem;
+  }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
     background: var(--blue); color: white; border: none;
     padding: 12px 24px; border-radius: var(--radius-sm);
     font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 8px; font-family: inherit;
     transition: opacity .2s, transform .2s;
   }
   .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
   .btn-secondary {
     background: var(--white); color: var(--text); border: 1px solid var(--border);
     padding: 12px 24px; border-radius: var(--radius-sm);
-    font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
-    transition: all .2s;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    display: flex; align-items: center; gap: 8px; transition: all .2s;
   }
   .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
   .hero-img {
     flex: 1; max-width: 480px;
     background: linear-gradient(135deg, #c9d6e8 0%, #a8b8d0 100%);
-    border-radius: var(--radius);
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 4rem;
+    border-radius: var(--radius); aspect-ratio: 4/3; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; font-size: 4rem;
   }
 
   /* ── SOBRE MÍ ── */
   #sobre {
-    max-width: 1100px; margin: 0 auto;
-    padding: 3rem 2rem;
+    max-width: 1100px; margin: 0 auto; padding: 3rem 2rem;
     display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem;
   }
   .card {
@@ -114,7 +115,6 @@
     font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem;
     display: flex; align-items: center; gap: 10px; color: var(--text);
   }
-  .card-title span { font-size: 1.1rem; }
   .exp-item { margin-bottom: 1.5rem; }
   .exp-item:last-child { margin-bottom: 0; }
   .exp-role { font-weight: 700; font-size: 0.95rem; }
@@ -122,75 +122,54 @@
   .exp-meta { font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 8px; display: flex; gap: 8px; align-items: center; }
   .badge {
     background: var(--bg); border-radius: 6px; padding: 2px 8px;
-    font-size: 0.75rem; font-weight: 500; color: var(--text-muted);
-    border: 1px solid var(--border);
+    font-size: 0.75rem; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border);
   }
   .exp-list { list-style: none; }
   .exp-list li {
-    font-size: 0.875rem; color: var(--text-muted); padding: 3px 0;
-    padding-left: 14px; position: relative;
+    font-size: 0.875rem; color: var(--text-muted); padding: 3px 0 3px 14px; position: relative;
   }
   .exp-list li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
-
   .bio-text { font-size: 0.9rem; line-height: 1.75; color: var(--text-muted); }
-
   .tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
     background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; padding: 5px 12px;
-    font-size: 0.8rem; font-weight: 500; color: var(--text);
+    border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 500; color: var(--text);
   }
-
   .right-cards { display: flex; flex-direction: column; gap: 1.5rem; }
 
   /* ── PROYECTOS ── */
-  #proyectos {
-    max-width: 1100px; margin: 0 auto;
-    padding: 3rem 2rem;
-  }
+  #proyectos { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
   .section-header { text-align: center; margin-bottom: 3rem; }
   .section-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
   .section-sub { color: var(--text-muted); font-size: 0.95rem; }
-
   .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
   .project-card {
-    background: var(--white); border-radius: var(--radius);
-    border: 1px solid var(--border);
-    display: grid; grid-template-columns: 1fr 1fr;
-    overflow: hidden; cursor: pointer;
+    background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; cursor: pointer;
     transition: box-shadow .25s, transform .25s;
   }
   .project-card:hover { box-shadow: 0 8px 32px rgba(59,91,219,.12); transform: translateY(-2px); }
   .project-cover {
-    aspect-ratio: 16/10;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem;
-    overflow: hidden;
+    aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; overflow: hidden;
   }
   .project-info { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
-  .project-name {
-    font-size: 1.4rem; font-weight: 800; color: var(--blue); margin-bottom: .75rem;
-  }
+  .project-name { font-size: 1.4rem; font-weight: 800; color: var(--blue); margin-bottom: .75rem; }
   .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
   .project-tag {
     background: var(--blue-light); color: var(--blue);
-    border-radius: 6px; padding: 3px 10px;
-    font-size: 0.75rem; font-weight: 600;
+    border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600;
   }
   .project-link {
     color: var(--blue); font-size: 0.875rem; font-weight: 600;
     display: flex; align-items: center; gap: 6px;
-    background: none; border: none; cursor: pointer; padding: 0;
-    font-family: inherit;
+    background: none; border: none; cursor: pointer; padding: 0; font-family: inherit;
   }
   .project-link:hover { text-decoration: underline; }
 
   /* ── DETALLE PROYECTO ── */
-  #detalle {
-    max-width: 780px; margin: 0 auto;
-    padding: 2rem 2rem 4rem;
-  }
+  #detalle { max-width: 780px; margin: 0 auto; padding: 2rem 2rem 4rem; }
   .back-btn {
     background: none; border: none; cursor: pointer;
     display: flex; align-items: center; gap: 6px;
@@ -201,30 +180,36 @@
   .detail-title { font-size: 2.5rem; font-weight: 800; margin-bottom: .5rem; }
   .detail-sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
   .detail-cover {
-    width: 100%; aspect-ratio: 16/9;
-    border-radius: var(--radius); margin-bottom: 2.5rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 5rem; overflow: hidden;
+    width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem;
+    display: flex; align-items: center; justify-content: center; font-size: 5rem; overflow: hidden;
   }
+  .detail-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Slide image inside case study */
+  .slide-img {
+    width: 100%; border-radius: var(--radius-sm); margin: 1.25rem 0;
+    border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  }
+  .slide-caption {
+    font-size: 0.78rem; color: var(--text-muted); text-align: center;
+    margin-top: -0.75rem; margin-bottom: 1.25rem; font-style: italic;
+  }
+
   .detail-section { margin-bottom: 2.5rem; }
   .detail-section h2 { color: var(--blue); font-size: 1.15rem; font-weight: 700; margin-bottom: .75rem; }
   .detail-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
-
   .obj-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .obj-list li {
     font-size: 0.9rem; color: var(--text-muted);
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: flex-start; gap: 10px;
   }
-  .obj-list li::before {
-    content: '✓'; width: 22px; height: 22px;
+  .obj-check {
+    width: 22px; height: 22px; min-width: 22px;
     background: var(--blue-light); color: var(--blue);
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    font-size: 0.7rem; font-weight: 700;
   }
-
-  .process-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  }
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .process-item {
     background: var(--bg); border: 1px solid var(--border);
     border-radius: var(--radius-sm); padding: 14px 16px;
@@ -232,59 +217,67 @@
     font-size: 0.875rem; color: var(--text);
   }
   .process-num {
-    width: 28px; height: 28px; border-radius: 50%;
+    width: 28px; height: 28px; border-radius: 50%; min-width: 28px;
     background: var(--blue-light); color: var(--blue);
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+    font-size: 0.8rem; font-weight: 700;
   }
-
   .result-card {
     background: var(--blue-light); border: 1px solid #c5d0f5;
     border-radius: var(--radius); padding: 1.5rem;
   }
   .result-card h2 { color: var(--blue); font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
   .result-card p { color: var(--text); font-size: 0.9rem; line-height: 1.7; }
-
-  .reflexion-text {
-    font-style: italic; color: var(--text-muted);
-    font-size: 0.95rem; line-height: 1.75;
-  }
-
+  .reflexion-text { font-style: italic; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
   .proto-btn {
     background: var(--blue); color: white; border: none;
     padding: 14px 28px; border-radius: var(--radius-sm);
     font-size: 0.9rem; font-weight: 600; cursor: pointer;
     display: flex; align-items: center; gap: 8px;
-    margin: 0 auto 2.5rem; font-family: inherit;
-    transition: opacity .2s;
+    margin: 0 auto 2.5rem; font-family: inherit; transition: opacity .2s;
   }
   .proto-btn:hover { opacity: .88; }
-
   .nav-project {
     display: flex; justify-content: flex-end;
     border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem;
   }
   .nav-project-btn {
     background: none; border: none; cursor: pointer; text-align: right;
-    font-family: inherit; padding: 0; color: var(--text);
-    transition: opacity .2s;
+    font-family: inherit; padding: 0; color: var(--text); transition: opacity .2s;
+    display: flex; align-items: center; gap: 8px;
   }
   .nav-project-btn:hover { opacity: .7; }
+  .nav-project-text { text-align: right; }
   .nav-project-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
   .nav-project-name { font-size: 1rem; font-weight: 700; }
 
-  /* ── CONTACTO ── */
-  #contacto {
-    max-width: 700px; margin: 0 auto;
-    padding: 5rem 2rem;
-    text-align: center;
+  /* Insight cards (3 col) */
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .insight-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.25rem;
   }
+  .insight-card h3 { color: var(--blue); font-size: 0.875rem; font-weight: 700; margin-bottom: .6rem; }
+  .insight-card ul { list-style: none; }
+  .insight-card ul li {
+    font-size: 0.8rem; color: var(--text-muted); padding: 3px 0 3px 12px; position: relative;
+  }
+  .insight-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
+
+  /* Stats row */
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 1rem 0; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.25rem; text-align: center;
+  }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── CONTACTO ── */
+  #contacto { max-width: 700px; margin: 0 auto; padding: 5rem 2rem; text-align: center; }
   .contact-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
   .contact-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
-  .contact-links {
-    display: flex; justify-content: center; gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
   .contact-link {
     color: var(--text-muted); font-size: 0.875rem;
     display: flex; align-items: center; gap: 6px;
@@ -293,8 +286,7 @@
   .contact-link:hover { color: var(--blue); }
   .contact-form {
     background: var(--white); border-radius: var(--radius);
-    border: 1px solid var(--border); padding: 2rem;
-    text-align: left;
+    border: 1px solid var(--border); padding: 2rem; text-align: left;
   }
   .form-group { margin-bottom: 1.25rem; }
   .form-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: .5rem; }
@@ -322,14 +314,14 @@
   }
   .footer-logo { font-weight: 700; font-size: 0.95rem; }
   .footer-icons { display: flex; gap: 1rem; }
-  .footer-icon { color: var(--text-muted); text-decoration: none; font-size: 1rem; transition: color .2s; }
+  .footer-icon { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; transition: color .2s; }
   .footer-icon:hover { color: var(--blue); }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .fade-up { animation: fadeUp .5s ease both; }
   .fade-up-1 { animation-delay: .05s; }
@@ -340,7 +332,7 @@
   @media (max-width: 768px) {
     #sobre { grid-template-columns: 1fr; }
     .project-card { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr; }
+    .process-grid, .insight-grid, .stats-row { grid-template-columns: 1fr; }
     #hero { flex-direction: column; gap: 2rem; text-align: center; }
     .hero-sub { max-width: 100%; }
     .hero-actions { justify-content: center; }
@@ -352,12 +344,12 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" onclick="showSection('hero-wrap')" href="#">Luis Arnau</a>
+  <button class="nav-logo" onclick="showSection('hero-wrap')">Luis Arnau</button>
   <ul class="nav-links">
-    <li><a href="#" onclick="showSection('hero-wrap')">Inicio</a></li>
-    <li><a href="#" onclick="showSection('sobre-wrap')">Sobre mí</a></li>
-    <li><a href="#" onclick="showSection('proyectos-wrap')">Proyectos</a></li>
-    <li><a href="#" onclick="showSection('contacto-wrap')">Contacto</a></li>
+    <li><button onclick="showSection('hero-wrap')">Inicio</button></li>
+    <li><button onclick="showSection('sobre-wrap')">Sobre mí</button></li>
+    <li><button onclick="showSection('proyectos-wrap')">Proyectos</button></li>
+    <li><button onclick="showSection('contacto-wrap')">Contacto</button></li>
   </ul>
   <div class="lang-toggle">
     <button class="lang-btn active">ES</button>
@@ -372,8 +364,8 @@
       <h1 class="hero-title fade-up fade-up-1">Product<br>Designer</h1>
       <p class="hero-sub fade-up fade-up-2">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
       <div class="hero-actions fade-up fade-up-3">
-        <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos ↓</button>
-        <button class="btn-secondary">⬇ Descargar CV</button>
+        <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos →</button>
+        <button class="btn-secondary">↓ Descargar CV</button>
       </div>
     </div>
     <div class="hero-img fade-up fade-up-2">🏔️</div>
@@ -383,10 +375,8 @@
 <!-- SOBRE MÍ -->
 <section id="sobre-wrap">
   <div id="sobre">
-    <!-- Experiencia -->
     <div class="card fade-up">
       <div class="card-title"><span>🏢</span> Experiencia profesional</div>
-
       <div class="exp-item">
         <div class="exp-role">Ingeniero de fabricación</div>
         <div class="exp-company">Inhiset</div>
@@ -399,7 +389,6 @@
           <li>Colaboración con ingeniería y operaciones</li>
         </ul>
       </div>
-
       <div class="exp-item">
         <div class="exp-role">Diseñador UX/UI</div>
         <div class="exp-company">CO·UX</div>
@@ -412,7 +401,6 @@
           <li>Prototipos en Figma</li>
         </ul>
       </div>
-
       <div class="exp-item">
         <div class="exp-role">Ingeniero de fabricación</div>
         <div class="exp-company">Tecnobit</div>
@@ -425,7 +413,6 @@
           <li>Colaboración con ingeniería</li>
         </ul>
       </div>
-
       <div class="exp-item">
         <div class="exp-role">Diseñador gráfico</div>
         <div class="exp-company">Esmalglass</div>
@@ -438,14 +425,11 @@
         </ul>
       </div>
     </div>
-
-    <!-- Derecha -->
     <div class="right-cards">
       <div class="card fade-up fade-up-1">
         <div class="card-title"><span>👤</span> Sobre mí</div>
-        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos. Combino investigación, validación, buenas prácticas de diseño y una comunicación clara para crear soluciones digitales efectivas y bien justificadas.</p>
+        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
       </div>
-
       <div class="card fade-up fade-up-2">
         <div class="card-title"><span>⚙️</span> Herramientas</div>
         <div class="tags">
@@ -458,7 +442,6 @@
           <span class="tag">Autocad</span><span class="tag">Fusion 360</span>
         </div>
       </div>
-
       <div class="card fade-up fade-up-3">
         <div class="card-title"><span>⭐</span> Habilidades</div>
         <div class="tags">
@@ -481,9 +464,8 @@
       <p class="section-sub">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
     </div>
     <div class="project-list">
-
       <div class="project-card fade-up" onclick="showDetail(0)">
-        <div class="project-cover" style="background: linear-gradient(135deg,#e63946,#c1121f)">📍</div>
+        <div class="project-cover" style="background:linear-gradient(135deg,#e63946,#c1121f)">📍</div>
         <div class="project-info">
           <div class="project-name">LoLocal</div>
           <p class="project-desc">Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.</p>
@@ -495,23 +477,24 @@
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
-
       <div class="project-card fade-up fade-up-1" onclick="showDetail(1)">
-        <div class="project-cover" style="background: linear-gradient(135deg,#2ec4b6,#e9c46a)">💸</div>
+        <div class="project-cover" style="background:#1d3276; display:flex; align-items:center; justify-content:center;">
+          <img src="images/remitly-cover.png" style="width:50%; opacity:.9;" alt="Remitly"/>
+        </div>
         <div class="project-info">
           <div class="project-name">Remitly</div>
-          <p class="project-desc">App fintech para enviar dinero entre países. Proyecto de aprendizaje enfocado en mejorar eficiencia y claridad.</p>
+          <p class="project-desc">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p>
           <div class="project-tags">
             <span class="project-tag">Fintech</span>
-            <span class="project-tag">Rediseño</span>
+            <span class="project-tag">UX Research</span>
+            <span class="project-tag">UX Writing</span>
             <span class="project-tag">Prototyping</span>
           </div>
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
-
       <div class="project-card fade-up fade-up-2" onclick="showDetail(2)">
-        <div class="project-cover" style="background: linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
+        <div class="project-cover" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
         <div class="project-info">
           <div class="project-name">PedidosYA</div>
           <p class="project-desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida.</p>
@@ -523,12 +506,11 @@
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- DETALLE PROYECTO -->
+<!-- DETALLE -->
 <section id="detalle-wrap">
   <div id="detalle">
     <button class="back-btn" onclick="showSection('proyectos-wrap')">← Volver</button>
@@ -548,11 +530,11 @@
     <div class="contact-form fade-up fade-up-3">
       <div class="form-group">
         <label class="form-label">Nombre</label>
-        <input class="form-input" type="text" placeholder="">
+        <input class="form-input" type="text"/>
       </div>
       <div class="form-group">
         <label class="form-label">Email</label>
-        <input class="form-input" type="email" placeholder="">
+        <input class="form-input" type="email"/>
       </div>
       <div class="form-group">
         <label class="form-label">Mensaje</label>
@@ -563,12 +545,11 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">Luis Arnau</span>
   <div class="footer-icons">
-    <a class="footer-icon" href="#">in</a>
-    <a class="footer-icon" href="#">✉</a>
+    <a class="footer-icon" href="#">LinkedIn</a>
+    <a class="footer-icon" href="#">✉ Email</a>
   </div>
   <span class="footer-copy">© 2026 Luis Arnau. Todos los derechos reservados.</span>
 </footer>
@@ -578,8 +559,8 @@ const projects = [
   {
     name: "LoLocal",
     sub: "App para comercio local con hábitos y recompensas",
-    color: "linear-gradient(135deg,#e63946,#c1121f)",
-    emoji: "📍",
+    coverStyle: "background:linear-gradient(135deg,#e63946,#c1121f)",
+    coverEmoji: "📍",
     contexto: "Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.",
     problema: "Los usuarios no entendían cómo encontrar comercios cercanos ni cómo funcionaba el sistema de recompensas.",
     objetivos: ["Incentivar compras locales","Recompensas claras y visibles","Descubrimiento fácil por cercanía","Flujo simple y motivador"],
@@ -587,34 +568,119 @@ const projects = [
     proceso: ["Research sobre hábitos de compra local","Mapas de empatía","Flujos de compra + puntos de recompensa","UI con barras de progreso y badges","Mapa con comercios relevantes","Gamificación ligera para incentivar recurrencia"],
     resultado: "Mayor claridad, motivación y comprensión del sistema. La experiencia permite identificar comercios, ver recompensas y mejorar hábitos de compra local.",
     reflexion: "Proyecto centrado en hábitos, recompensas y diseño motivacional aplicado al comercio local.",
+    extraHtml: "",
     next: 1
   },
   {
     name: "Remitly",
-    sub: "Rediseño de app fintech para envío de dinero internacional",
-    color: "linear-gradient(135deg,#2ec4b6,#e9c46a)",
-    emoji: "💸",
-    contexto: "Proyecto de aprendizaje centrado en mejorar la eficiencia y claridad de la app de Remitly para envío de dinero entre países.",
-    problema: "El flujo de envío de dinero presentaba fricción en la selección de moneda y falta de transparencia en los costes.",
-    objetivos: ["Reducir pasos en el flujo de envío","Mostrar costes y tasas con claridad","Mejorar la confianza del usuario","Simplificar la selección de destinatario"],
-    rol: "UX Research, Wireframing, UI Design, Prototyping.",
-    proceso: ["Análisis heurístico de la app actual","Entrevistas con usuarios potenciales","Wireframes de bajo fidelidad","Rediseño del flujo principal","Prototipo interactivo en Figma","Tests de usabilidad"],
-    resultado: "Reducción de la fricción percibida en el flujo de envío. Mayor claridad en costes y mejora de la confianza del usuario.",
-    reflexion: "Aprendizaje clave sobre el diseño en contextos de alta responsabilidad donde la claridad y la confianza son fundamentales.",
+    sub: "Rediseño del flujo de confirmación y seguimiento de transferencias",
+    coverStyle: "background:#1d3276",
+    coverImg: "images/remitly-cover.png",
+    contexto: "Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío de dinero entre los usuarios frecuentes de la app, especialmente en la falta de confirmación clara al finalizar una transferencia, lo que generaba desconfianza y envíos duplicados.",
+    problema: "La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
+    objetivos: [
+      "Reducir envíos duplicados por falta de feedback claro",
+      "Mostrar el estado del envío en tiempo real",
+      "Mejorar los mensajes del sistema (UX Writing)",
+      "Organizar el historial de transferencias por estados",
+      "Aumentar la confianza del usuario en el flujo de confirmación"
+    ],
+    rol: "UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
+    proceso: [
+      "Desktop Research y análisis de reseñas",
+      "Ley de Pareto aplicada a pain points",
+      "Definición de User Persona (Martín Benitez)",
+      "Journey Map del flujo de transferencia",
+      "Identificación del punto de intervención",
+      "Rediseño del flujo de confirmación y seguimiento",
+      "Aplicación de UX Writing al sistema de mensajes",
+      "Análisis heurístico y de accesibilidad",
+      "Pruebas de usabilidad con 8 participantes",
+      "Cuestionario NPS post-test"
+    ],
+    resultado: "Todos los participantes completaron las tareas en las pruebas de usabilidad. El flujo mejorado redujo la confusión en la confirmación del envío y mejoró la confianza del usuario. NPS de 62.5% en la consulta del historial.",
+    reflexion: "El proyecto demostró que pequeños cambios en los mensajes del sistema y la organización del historial tienen un impacto directo en la confianza del usuario. La transparencia en el estado del envío es clave en apps fintech.",
+    extraHtml: `
+      <div class="detail-section">
+        <h2>Contexto y research</h2>
+        <p>La audiencia principal de Remitly tiene entre 25 y 34 años y corresponde a migrantes latinos jóvenes por motivos laborales. El uso de la app sigue de cerca los patrones de inmigración latina en los 15 países con mayor volumen de envíos.</p>
+        <img src="images/remitly-pareto.png" class="slide-img" alt="Análisis Ley de Pareto"/>
+        <p class="slide-caption">Principales problemas de usuarios según reseñas + Ley de Pareto. El 20% de causas (incidencias en el envío y mal uso de la UI) provocan el 80% de las consecuencias.</p>
+      </div>
+      <div class="detail-section">
+        <h2>User Persona y Journey Map</h2>
+        <p>Se definió el perfil de Martín Benitez, conductor de Uber de 30 años viviendo en Barcelona que envía dinero a su madre en Perú. El problema crítico: no recibía confirmación clara del envío, lo que le generaba desconfianza y le llevaba a repetir la operación.</p>
+        <img src="images/remitly-journey.png" class="slide-img" alt="Journey Map Remitly"/>
+        <p class="slide-caption">Journey Map del flujo de transferencia con los puntos de fricción detectados.</p>
+      </div>
+      <div class="detail-section">
+        <h2>Solución: Transparencia en el seguimiento</h2>
+        <p>El punto de intervención es el flujo de confirmación y seguimiento de transferencias. Se propone un aviso preventivo, acceso directo al seguimiento desde la landing y un CTA que invite a revisar la última transacción al mismo destinatario.</p>
+        <img src="images/remitly-seguimiento.png" class="slide-img" alt="Transparencia en el seguimiento"/>
+        <p class="slide-caption">Rediseño del flujo de confirmación: de "Recopilando información..." a estado claro y número de referencia visible.</p>
+        <img src="images/remitly-mensajes.png" class="slide-img" alt="Mensajes más claros"/>
+        <p class="slide-caption">Aplicación de UX Writing: mensajes más claros, empáticos y accionables en los modales de confirmación.</p>
+        <img src="images/remitly-envios.png" class="slide-img" alt="Historial de envíos"/>
+        <p class="slide-caption">Historial reorganizado con filtros por estado (En progreso, Recibido, Cancelado) e información al instante.</p>
+      </div>
+      <div class="detail-section">
+        <h2>Pruebas de usabilidad</h2>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div>
+          <div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div>
+        </div>
+        <p style="margin-top:1rem">Todos los participantes lograron completar las tareas, lo que indica que el flujo general es comprensible. La mayoría no siguió el camino previsto y realizó clics innecesarios en las pantallas 2–5, sugiriendo oportunidades de mejora en la orientación de esas etapas.</p>
+      </div>
+      <div class="detail-section">
+        <h2>Insights y recomendaciones</h2>
+        <div class="insight-grid">
+          <div class="insight-card">
+            <h3>Recomendaciones</h3>
+            <ul>
+              <li>Hacer visible el scroll con pasos o indicadores</li>
+              <li>Unificar textos a lo largo del flujo</li>
+              <li>Mostrar el detalle desde la tarjeta, no desde el ícono de ojo</li>
+              <li>Incluir mensaje claro al confirmar el envío</li>
+              <li>Agregar accesos visibles a ayuda en caso de fallos</li>
+            </ul>
+          </div>
+          <div class="insight-card">
+            <h3>Hallazgos</h3>
+            <ul>
+              <li>"Recientes" e "Historial" se perciben como similares</li>
+              <li>El historial genera confianza cuando los envíos se demoran</li>
+              <li>La interfaz resultó familiar e intuitiva</li>
+              <li>Exceso de información y falta de coherencia en textos</li>
+            </ul>
+          </div>
+          <div class="insight-card">
+            <h3>Conclusión</h3>
+            <ul>
+              <li>La experiencia es más simple y directa que la versión anterior</li>
+              <li>Los usuarios entienden qué hacer en general</li>
+              <li>Pequeños ajustes mejorarían la intuición del flujo</li>
+              <li>No impiden cumplir con el objetivo principal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `,
     next: 2
   },
   {
     name: "PedidosYA",
     sub: "Rediseño conceptual de app de delivery de comida",
-    color: "linear-gradient(135deg,#3d405b,#e07a5f)",
-    emoji: "🍔",
+    coverStyle: "background:linear-gradient(135deg,#3d405b,#e07a5f)",
+    coverEmoji: "🍔",
     contexto: "Rediseño conceptual para mejorar la experiencia de usuario en la app de pedidos de comida PedidosYA.",
     problema: "La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
     objetivos: ["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo de pedido","Mejorar la legibilidad del menú"],
     rol: "UX Research, UI Design, UX Writing, Prototipado.",
     proceso: ["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes básico","Validación con usuarios"],
     resultado: "Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
-    reflexion: "Proyecto de rediseño que demuestra la importancia de la jerarquía visual y la reducción de fricciones en apps transaccionales.",
+    reflexion: "La jerarquía visual y la reducción de fricciones son clave en apps transaccionales.",
+    extraHtml: "",
     next: null
   }
 ];
@@ -623,28 +689,38 @@ function showSection(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
-  // re-trigger fade-up
-  document.querySelectorAll('#'+id+' .fade-up').forEach((el,i) => {
-    el.style.animation = 'none';
-    setTimeout(() => { el.style.animation = ''; }, 10);
-  });
 }
 
 function showDetail(idx) {
   const p = projects[idx];
+
+  const coverHtml = p.coverImg
+    ? `<div class="detail-cover" style="${p.coverStyle}"><img src="${p.coverImg}" alt="${p.name}"/></div>`
+    : `<div class="detail-cover" style="${p.coverStyle}">${p.coverEmoji}</div>`;
+
   const nextHtml = p.next !== null ? `
     <div class="nav-project">
       <button class="nav-project-btn" onclick="showDetail(${p.next})">
-        <span class="nav-project-label">Proyecto siguiente</span>
-        <span class="nav-project-name">${projects[p.next].name} →</span>
+        <div class="nav-project-text">
+          <span class="nav-project-label">Proyecto siguiente</span>
+          <span class="nav-project-name">${projects[p.next].name}</span>
+        </div>
+        <span>→</span>
       </button>
     </div>` : '';
+
+  const objHtml = p.objetivos.map(o =>
+    `<li><div class="obj-check">✓</div>${o}</li>`
+  ).join('');
+
+  const procHtml = p.proceso.map((s,i) =>
+    `<div class="process-item"><div class="process-num">${i+1}</div>${s}</div>`
+  ).join('');
 
   document.getElementById('detalle-content').innerHTML = `
     <h1 class="detail-title">${p.name}</h1>
     <p class="detail-sub">${p.sub}</p>
-    <div class="detail-cover" style="background:${p.color}">${p.emoji}</div>
-
+    ${coverHtml}
     <div class="detail-section">
       <h2>Contexto</h2>
       <p>${p.contexto}</p>
@@ -655,7 +731,7 @@ function showDetail(idx) {
     </div>
     <div class="detail-section">
       <h2>Objetivos</h2>
-      <ul class="obj-list">${p.objetivos.map(o=>`<li>${o}</li>`).join('')}</ul>
+      <ul class="obj-list">${objHtml}</ul>
     </div>
     <div class="detail-section">
       <h2>Mi rol</h2>
@@ -663,8 +739,9 @@ function showDetail(idx) {
     </div>
     <div class="detail-section">
       <h2>Proceso</h2>
-      <div class="process-grid">${p.proceso.map((s,i)=>`<div class="process-item"><div class="process-num">${i+1}</div>${s}</div>`).join('')}</div>
+      <div class="process-grid">${procHtml}</div>
     </div>
+    ${p.extraHtml}
     <div class="result-card" style="margin-bottom:2.5rem">
       <h2>Resultado</h2>
       <p>${p.resultado}</p>
