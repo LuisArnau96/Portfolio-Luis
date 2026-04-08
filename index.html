@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Luis Arnau | Product & UX/UI Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f0f2f5;
+    --white: #ffffff;
+    --blue: #3B5BDB;
+    --blue-light: #e8edff;
+    --text: #1a1d23;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,242,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem; color: var(--text-muted); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .lang-toggle { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; border: none; background: transparent; color: var(--text-muted);
+    transition: all .2s;
+  }
+  .lang-btn.active { background: var(--blue); color: white; }
+
+  /* ── SECTIONS ── */
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: calc(100vh - 56px);
+    display: flex; align-items: center;
+    padding: 4rem 2rem;
+    max-width: 1100px; margin: 0 auto;
+    gap: 4rem;
+  }
+  .hero-text { flex: 1; }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--blue);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .hero-sub { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 480px; margin-bottom: 2rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--blue); color: white; border: none;
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    transition: opacity .2s, transform .2s;
+  }
+  .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+  .btn-secondary {
+    background: var(--white); color: var(--text); border: 1px solid var(--border);
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+  .hero-img {
+    flex: 1; max-width: 480px;
+    background: linear-gradient(135deg, #c9d6e8 0%, #a8b8d0 100%);
+    border-radius: var(--radius);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+
+  /* ── SOBRE MÍ ── */
+  #sobre {
+    max-width: 1100px; margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem;
+  }
+  .card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 1.75rem; border: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 10px; color: var(--text);
+  }
+  .card-title span { font-size: 1.1rem; }
+  .exp-item { margin-bottom: 1.5rem; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-role { font-weight: 700; font-size: 0.95rem; }
+  .exp-company { color: var(--blue); font-size: 0.875rem; font-weight: 600; }
+  .exp-meta { font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 8px; display: flex; gap: 8px; align-items: center; }
+  .badge {
+    background: var(--bg); border-radius: 6px; padding: 2px 8px;
+    font-size: 0.75rem; font-weight: 500; color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .exp-list { list-style: none; }
+  .exp-list li {
+    font-size: 0.875rem; color: var(--text-muted); padding: 3px 0;
+    padding-left: 14px; position: relative;
+  }
+  .exp-list li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
+
+  .bio-text { font-size: 0.9rem; line-height: 1.75; color: var(--text-muted); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 5px 12px;
+    font-size: 0.8rem; font-weight: 500; color: var(--text);
+  }
+
+  .right-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  /* ── PROYECTOS ── */
+  #proyectos {
+    max-width: 1100px; margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
+  .section-sub { color: var(--text-muted); font-size: 0.95rem; }
+
+  .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden; cursor: pointer;
+    transition: box-shadow .25s, transform .25s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(59,91,219,.12); transform: translateY(-2px); }
+  .project-cover {
+    aspect-ratio: 16/10;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    overflow: hidden;
+  }
+  .project-info { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+  .project-name {
+    font-size: 1.4rem; font-weight: 800; color: var(--blue); margin-bottom: .75rem;
+  }
+  .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+  .project-tag {
+    background: var(--blue-light); color: var(--blue);
+    border-radius: 6px; padding: 3px 10px;
+    font-size: 0.75rem; font-weight: 600;
+  }
+  .project-link {
+    color: var(--blue); font-size: 0.875rem; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: none; cursor: pointer; padding: 0;
+    font-family: inherit;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* ── DETALLE PROYECTO ── */
+  #detalle {
+    max-width: 780px; margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+  .back-btn {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    color: var(--text-muted); font-size: 0.875rem; font-family: inherit;
+    margin-bottom: 1.5rem; padding: 0; transition: color .2s;
+  }
+  .back-btn:hover { color: var(--text); }
+  .detail-title { font-size: 2.5rem; font-weight: 800; margin-bottom: .5rem; }
+  .detail-sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
+  .detail-cover {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: var(--radius); margin-bottom: 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; overflow: hidden;
+  }
+  .detail-section { margin-bottom: 2.5rem; }
+  .detail-section h2 { color: var(--blue); font-size: 1.15rem; font-weight: 700; margin-bottom: .75rem; }
+  .detail-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+
+  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .obj-list li {
+    font-size: 0.9rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .obj-list li::before {
+    content: '✓'; width: 22px; height: 22px;
+    background: var(--blue-light); color: var(--blue);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+  }
+
+  .process-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .process-item {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.875rem; color: var(--text);
+  }
+  .process-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue-light); color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+  }
+
+  .result-card {
+    background: var(--blue-light); border: 1px solid #c5d0f5;
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .result-card h2 { color: var(--blue); font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
+  .result-card p { color: var(--text); font-size: 0.9rem; line-height: 1.7; }
+
+  .reflexion-text {
+    font-style: italic; color: var(--text-muted);
+    font-size: 0.95rem; line-height: 1.75;
+  }
+
+  .proto-btn {
+    background: var(--blue); color: white; border: none;
+    padding: 14px 28px; border-radius: var(--radius-sm);
+    font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 auto 2.5rem; font-family: inherit;
+    transition: opacity .2s;
+  }
+  .proto-btn:hover { opacity: .88; }
+
+  .nav-project {
+    display: flex; justify-content: flex-end;
+    border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem;
+  }
+  .nav-project-btn {
+    background: none; border: none; cursor: pointer; text-align: right;
+    font-family: inherit; padding: 0; color: var(--text);
+    transition: opacity .2s;
+  }
+  .nav-project-btn:hover { opacity: .7; }
+  .nav-project-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
+  .nav-project-name { font-size: 1rem; font-weight: 700; }
+
+  /* ── CONTACTO ── */
+  #contacto {
+    max-width: 700px; margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .contact-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
+  .contact-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .contact-link {
+    color: var(--text-muted); font-size: 0.875rem;
+    display: flex; align-items: center; gap: 6px;
+    text-decoration: none; transition: color .2s;
+  }
+  .contact-link:hover { color: var(--blue); }
+  .contact-form {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border); padding: 2rem;
+    text-align: left;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: .5rem; }
+  .form-input, .form-textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: 0.875rem; font-family: inherit; color: var(--text);
+    transition: border-color .2s; outline: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--blue); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    width: 100%; background: var(--blue); color: white; border: none;
+    padding: 14px; border-radius: var(--radius-sm);
+    font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit;
+    transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: .88; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border); padding: 1.5rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .footer-logo { font-weight: 700; font-size: 0.95rem; }
+  .footer-icons { display: flex; gap: 1rem; }
+  .footer-icon { color: var(--text-muted); text-decoration: none; font-size: 1rem; transition: color .2s; }
+  .footer-icon:hover { color: var(--blue); }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp .5s ease both; }
+  .fade-up-1 { animation-delay: .05s; }
+  .fade-up-2 { animation-delay: .15s; }
+  .fade-up-3 { animation-delay: .25s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    #sobre { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    #hero { flex-direction: column; gap: 2rem; text-align: center; }
+    .hero-sub { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-img { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="showSection('hero-wrap')" href="#">Luis Arnau</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showSection('hero-wrap')">Inicio</a></li>
+    <li><a href="#" onclick="showSection('sobre-wrap')">Sobre mí</a></li>
+    <li><a href="#" onclick="showSection('proyectos-wrap')">Proyectos</a></li>
+    <li><a href="#" onclick="showSection('contacto-wrap')">Contacto</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active">ES</button>
+    <button class="lang-btn">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero-wrap" class="active">
+  <div id="hero">
+    <div class="hero-text">
+      <h1 class="hero-title fade-up fade-up-1">Product<br>Designer</h1>
+      <p class="hero-sub fade-up fade-up-2">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
+      <div class="hero-actions fade-up fade-up-3">
+        <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos ↓</button>
+        <button class="btn-secondary">⬇ Descargar CV</button>
+      </div>
+    </div>
+    <div class="hero-img fade-up fade-up-2">🏔️</div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-wrap">
+  <div id="sobre">
+    <!-- Experiencia -->
+    <div class="card fade-up">
+      <div class="card-title"><span>🏢</span> Experiencia profesional</div>
+
+      <div class="exp-item">
+        <div class="exp-role">Ingeniero de fabricación</div>
+        <div class="exp-company">Inhiset</div>
+        <div class="exp-meta">May 2024 – Jul 2024 <span class="badge">Presencial</span></div>
+        <ul class="exp-list">
+          <li>Optimización de flujos mediante SAP</li>
+          <li>Documentación técnica</li>
+          <li>Diseño de componentes mecánicos</li>
+          <li>Soporte en análisis de problemas</li>
+          <li>Colaboración con ingeniería y operaciones</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-role">Diseñador UX/UI</div>
+        <div class="exp-company">CO·UX</div>
+        <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge">Remoto</span></div>
+        <ul class="exp-list">
+          <li>Design Thinking & Design Research</li>
+          <li>Investigación con usuarios</li>
+          <li>Wireframes y user flows</li>
+          <li>Accesibilidad (WCAG)</li>
+          <li>Prototipos en Figma</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-role">Ingeniero de fabricación</div>
+        <div class="exp-company">Tecnobit</div>
+        <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge">Híbrido</span></div>
+        <ul class="exp-list">
+          <li>Optimización de flujos mediante SAP</li>
+          <li>Documentación técnica</li>
+          <li>Diseño mecánico</li>
+          <li>Análisis de problemas</li>
+          <li>Colaboración con ingeniería</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-role">Diseñador gráfico</div>
+        <div class="exp-company">Esmalglass</div>
+        <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge">Presencial</span></div>
+        <ul class="exp-list">
+          <li>Adaptación de productos</li>
+          <li>Edición gráfica</li>
+          <li>Diseño de aplicaciones cerámicas</li>
+          <li>Gestión de color</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Derecha -->
+    <div class="right-cards">
+      <div class="card fade-up fade-up-1">
+        <div class="card-title"><span>👤</span> Sobre mí</div>
+        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos. Combino investigación, validación, buenas prácticas de diseño y una comunicación clara para crear soluciones digitales efectivas y bien justificadas.</p>
+      </div>
+
+      <div class="card fade-up fade-up-2">
+        <div class="card-title"><span>⚙️</span> Herramientas</div>
+        <div class="tags">
+          <span class="tag">Figma</span><span class="tag">Photoshop</span>
+          <span class="tag">Illustrator</span><span class="tag">Jira</span>
+          <span class="tag">Miro</span><span class="tag">Visual Studio Code</span>
+          <span class="tag">Notion</span><span class="tag">Trello</span>
+          <span class="tag">Confluence</span><span class="tag">SolidWorks</span>
+          <span class="tag">3DS Max</span><span class="tag">KeyShot</span>
+          <span class="tag">Autocad</span><span class="tag">Fusion 360</span>
+        </div>
+      </div>
+
+      <div class="card fade-up fade-up-3">
+        <div class="card-title"><span>⭐</span> Habilidades</div>
+        <div class="tags">
+          <span class="tag">User Interviews</span><span class="tag">User Research</span>
+          <span class="tag">Journey Maps</span><span class="tag">Usability Testing</span>
+          <span class="tag">UX Writing</span><span class="tag">Wireframing</span>
+          <span class="tag">Prototyping</span><span class="tag">Interaction Design</span>
+          <span class="tag">Information Architecture</span><span class="tag">Design System</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos-wrap">
+  <div id="proyectos">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Proyectos</h2>
+      <p class="section-sub">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
+    </div>
+    <div class="project-list">
+
+      <div class="project-card fade-up" onclick="showDetail(0)">
+        <div class="project-cover" style="background: linear-gradient(135deg,#e63946,#c1121f)">📍</div>
+        <div class="project-info">
+          <div class="project-name">LoLocal</div>
+          <p class="project-desc">Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.</p>
+          <div class="project-tags">
+            <span class="project-tag">UX Research</span>
+            <span class="project-tag">UI Design</span>
+            <span class="project-tag">Figma</span>
+          </div>
+          <button class="project-link">Ver proyecto →</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-up fade-up-1" onclick="showDetail(1)">
+        <div class="project-cover" style="background: linear-gradient(135deg,#2ec4b6,#e9c46a)">💸</div>
+        <div class="project-info">
+          <div class="project-name">Remitly</div>
+          <p class="project-desc">App fintech para enviar dinero entre países. Proyecto de aprendizaje enfocado en mejorar eficiencia y claridad.</p>
+          <div class="project-tags">
+            <span class="project-tag">Fintech</span>
+            <span class="project-tag">Rediseño</span>
+            <span class="project-tag">Prototyping</span>
+          </div>
+          <button class="project-link">Ver proyecto →</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-up fade-up-2" onclick="showDetail(2)">
+        <div class="project-cover" style="background: linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
+        <div class="project-info">
+          <div class="project-name">PedidosYA</div>
+          <p class="project-desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida.</p>
+          <div class="project-tags">
+            <span class="project-tag">Rediseño</span>
+            <span class="project-tag">Mobile</span>
+            <span class="project-tag">UX Writing</span>
+          </div>
+          <button class="project-link">Ver proyecto →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DETALLE PROYECTO -->
+<section id="detalle-wrap">
+  <div id="detalle">
+    <button class="back-btn" onclick="showSection('proyectos-wrap')">← Volver</button>
+    <div id="detalle-content"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto-wrap">
+  <div id="contacto">
+    <h2 class="contact-title fade-up">Contacto</h2>
+    <p class="contact-sub fade-up fade-up-1">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
+    <div class="contact-links fade-up fade-up-2">
+      <a href="mailto:luisarnau9@gmail.com" class="contact-link">✉ luisarnau9@gmail.com</a>
+      <a href="#" class="contact-link">in LinkedIn</a>
+    </div>
+    <div class="contact-form fade-up fade-up-3">
+      <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input class="form-input" type="text" placeholder="">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje</label>
+        <textarea class="form-textarea"></textarea>
+      </div>
+      <button class="form-submit">Enviar mensaje</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Luis Arnau</span>
+  <div class="footer-icons">
+    <a class="footer-icon" href="#">in</a>
+    <a class="footer-icon" href="#">✉</a>
+  </div>
+  <span class="footer-copy">© 2026 Luis Arnau. Todos los derechos reservados.</span>
+</footer>
+
+<script>
+const projects = [
+  {
+    name: "LoLocal",
+    sub: "App para comercio local con hábitos y recompensas",
+    color: "linear-gradient(135deg,#e63946,#c1121f)",
+    emoji: "📍",
+    contexto: "Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.",
+    problema: "Los usuarios no entendían cómo encontrar comercios cercanos ni cómo funcionaba el sistema de recompensas.",
+    objetivos: ["Incentivar compras locales","Recompensas claras y visibles","Descubrimiento fácil por cercanía","Flujo simple y motivador"],
+    rol: "UX Research, UX/UI, prototipado, diseño visual.",
+    proceso: ["Research sobre hábitos de compra local","Mapas de empatía","Flujos de compra + puntos de recompensa","UI con barras de progreso y badges","Mapa con comercios relevantes","Gamificación ligera para incentivar recurrencia"],
+    resultado: "Mayor claridad, motivación y comprensión del sistema. La experiencia permite identificar comercios, ver recompensas y mejorar hábitos de compra local.",
+    reflexion: "Proyecto centrado en hábitos, recompensas y diseño motivacional aplicado al comercio local.",
+    next: 1
+  },
+  {
+    name: "Remitly",
+    sub: "Rediseño de app fintech para envío de dinero internacional",
+    color: "linear-gradient(135deg,#2ec4b6,#e9c46a)",
+    emoji: "💸",
+    contexto: "Proyecto de aprendizaje centrado en mejorar la eficiencia y claridad de la app de Remitly para envío de dinero entre países.",
+    problema: "El flujo de envío de dinero presentaba fricción en la selección de moneda y falta de transparencia en los costes.",
+    objetivos: ["Reducir pasos en el flujo de envío","Mostrar costes y tasas con claridad","Mejorar la confianza del usuario","Simplificar la selección de destinatario"],
+    rol: "UX Research, Wireframing, UI Design, Prototyping.",
+    proceso: ["Análisis heurístico de la app actual","Entrevistas con usuarios potenciales","Wireframes de bajo fidelidad","Rediseño del flujo principal","Prototipo interactivo en Figma","Tests de usabilidad"],
+    resultado: "Reducción de la fricción percibida en el flujo de envío. Mayor claridad en costes y mejora de la confianza del usuario.",
+    reflexion: "Aprendizaje clave sobre el diseño en contextos de alta responsabilidad donde la claridad y la confianza son fundamentales.",
+    next: 2
+  },
+  {
+    name: "PedidosYA",
+    sub: "Rediseño conceptual de app de delivery de comida",
+    color: "linear-gradient(135deg,#3d405b,#e07a5f)",
+    emoji: "🍔",
+    contexto: "Rediseño conceptual para mejorar la experiencia de usuario en la app de pedidos de comida PedidosYA.",
+    problema: "La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
+    objetivos: ["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo de pedido","Mejorar la legibilidad del menú"],
+    rol: "UX Research, UI Design, UX Writing, Prototipado.",
+    proceso: ["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes básico","Validación con usuarios"],
+    resultado: "Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
+    reflexion: "Proyecto de rediseño que demuestra la importancia de la jerarquía visual y la reducción de fricciones en apps transaccionales.",
+    next: null
+  }
+];
+
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  // re-trigger fade-up
+  document.querySelectorAll('#'+id+' .fade-up').forEach((el,i) => {
+    el.style.animation = 'none';
+    setTimeout(() => { el.style.animation = ''; }, 10);
+  });
+}
+
+function showDetail(idx) {
+  const p = projects[idx];
+  const nextHtml = p.next !== null ? `
+    <div class="nav-project">
+      <button class="nav-project-btn" onclick="showDetail(${p.next})">
+        <span class="nav-project-label">Proyecto siguiente</span>
+        <span class="nav-project-name">${projects[p.next].name} →</span>
+      </button>
+    </div>` : '';
+
+  document.getElementById('detalle-content').innerHTML = `
+    <h1 class="detail-title">${p.name}</h1>
+    <p class="detail-sub">${p.sub}</p>
+    <div class="detail-cover" style="background:${p.color}">${p.emoji}</div>
+
+    <div class="detail-section">
+      <h2>Contexto</h2>
+      <p>${p.contexto}</p>
+    </div>
+    <div class="detail-section">
+      <h2>Problema</h2>
+      <p>${p.problema}</p>
+    </div>
+    <div class="detail-section">
+      <h2>Objetivos</h2>
+      <ul class="obj-list">${p.objetivos.map(o=>`<li>${o}</li>`).join('')}</ul>
+    </div>
+    <div class="detail-section">
+      <h2>Mi rol</h2>
+      <p>${p.rol}</p>
+    </div>
+    <div class="detail-section">
+      <h2>Proceso</h2>
+      <div class="process-grid">${p.proceso.map((s,i)=>`<div class="process-item"><div class="process-num">${i+1}</div>${s}</div>`).join('')}</div>
+    </div>
+    <div class="result-card" style="margin-bottom:2.5rem">
+      <h2>Resultado</h2>
+      <p>${p.resultado}</p>
+    </div>
+    <button class="proto-btn">↗ Ver prototipo interactivo</button>
+    <div class="detail-section">
+      <h2>Reflexión</h2>
+      <p class="reflexion-text">"${p.reflexion}"</p>
+    </div>
+    ${nextHtml}
+  `;
+  showSection('detalle-wrap');
+}
+</script>
+</body>
+</html>
