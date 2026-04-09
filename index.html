@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Luis Arnau | Product & UX/UI Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
   :root {
     --bg: #f0f2f5;
@@ -17,332 +17,201 @@
     --radius: 16px;
     --radius-sm: 10px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(240,242,245,0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(240,242,245,0.92); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
   }
-  .nav-logo {
-    font-weight: 700; font-size: 1rem; color: var(--text);
-    text-decoration: none; cursor: pointer; background: none; border: none;
-    font-family: inherit;
-  }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text); background: none; border: none; cursor: pointer; font-family: inherit; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links button {
-    font-size: 0.875rem; color: var(--text-muted);
-    background: none; border: none; cursor: pointer; font-family: inherit;
-    transition: color .2s; padding: 0;
-  }
+  .nav-links button { font-size: 0.875rem; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: inherit; transition: color .2s; padding: 0; }
   .nav-links button:hover { color: var(--text); }
   .lang-toggle { display: flex; gap: 4px; }
-  .lang-btn {
-    padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
-    cursor: pointer; border: none; background: transparent; color: var(--text-muted);
-    transition: all .2s; font-family: inherit;
-  }
+  .lang-btn { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-muted); transition: all .2s; font-family: inherit; }
   .lang-btn.active { background: var(--blue); color: white; }
 
-  /* ── SECTIONS ── */
   section { display: none; }
   section.active { display: block; }
+  #hero-wrap.active { display: flex; flex-direction: column; }
 
-  /* ── HERO ── */
+  /* HERO */
   #hero {
     min-height: calc(100vh - 56px);
-    display: flex; align-items: center;
-    padding: 4rem 2rem;
-    max-width: 1100px; margin: 0 auto;
-    gap: 4rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden;
   }
-  .hero-text { flex: 1; }
+  #hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,91,219,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 20px; padding: 6px 14px; font-size: 0.8rem; color: var(--text-muted);
+    margin-bottom: 1.5rem; animation: fadeUp .5s ease both;
+  }
+  .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; display: inline-block; }
   .hero-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: var(--blue); line-height: 1.1; margin-bottom: 1.5rem;
+    font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.05; margin-bottom: 1.5rem;
+    animation: fadeUp .6s ease .1s both;
   }
-  .hero-sub {
-    font-size: 1.05rem; color: var(--text-muted);
-    line-height: 1.7; max-width: 480px; margin-bottom: 2rem;
+  .hero-title .static { color: var(--text); }
+  .hero-title .grad {
+    background: linear-gradient(90deg, #3B5BDB, #6366f1, #8b5cf6, #3B5BDB);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: gradShift 4s ease infinite;
   }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--blue); color: white; border: none;
-    padding: 12px 24px; border-radius: var(--radius-sm);
-    font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 8px; font-family: inherit;
-    transition: opacity .2s, transform .2s;
-  }
-  .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
-  .btn-secondary {
-    background: var(--white); color: var(--text); border: 1px solid var(--border);
-    padding: 12px 24px; border-radius: var(--radius-sm);
-    font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit;
-    display: flex; align-items: center; gap: 8px; transition: all .2s;
-  }
-  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
-  .hero-img {
-    flex: 1; max-width: 480px;
-    background: linear-gradient(135deg, #c9d6e8 0%, #a8b8d0 100%);
-    border-radius: var(--radius); aspect-ratio: 4/3; overflow: hidden;
-    display: flex; align-items: center; justify-content: center; font-size: 4rem;
-  }
+  @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin: 0 auto 2.5rem; animation: fadeUp .6s ease .2s both; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp .6s ease .3s both; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 3rem; animation: fadeUp .6s ease .4s both; }
+  .hero-pill { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
 
-  /* ── SOBRE MÍ ── */
-  #sobre {
-    max-width: 1100px; margin: 0 auto; padding: 3rem 2rem;
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem;
-  }
-  .card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 1.75rem; border: 1px solid var(--border);
-  }
-  .card-title {
-    font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 10px; color: var(--text);
-  }
+  .btn-primary { background: var(--blue); color: white; border: none; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 8px; transition: opacity .2s, transform .2s; }
+  .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+  .btn-secondary { background: var(--white); color: var(--text); border: 1px solid var(--border); padding: 13px 26px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 8px; transition: all .2s; }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* SOBRE */
+  #sobre-wrap.active { display: block; }
+  #sobre { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  .sobre-top { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .photo-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+  .photo-circle { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg,var(--blue-light),#c7d2fe); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; overflow: hidden; border: 3px solid var(--border); }
+  .photo-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-name { font-weight: 700; font-size: 1.1rem; }
+  .photo-role { color: var(--blue); font-weight: 600; font-size: 0.875rem; }
+  .photo-loc { color: var(--text-muted); font-size: 0.8rem; }
+  .photo-links { display: flex; gap: 8px; font-size: 0.8rem; }
+  .photo-links a { color: var(--blue); text-decoration: none; }
+  .bio-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; }
+  .bio-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .bio-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-muted); }
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; }
+  .card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border); }
+  .card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
   .exp-item { margin-bottom: 1.5rem; }
   .exp-item:last-child { margin-bottom: 0; }
   .exp-role { font-weight: 700; font-size: 0.95rem; }
   .exp-company { color: var(--blue); font-size: 0.875rem; font-weight: 600; }
   .exp-meta { font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 8px; display: flex; gap: 8px; align-items: center; }
-  .badge {
-    background: var(--bg); border-radius: 6px; padding: 2px 8px;
-    font-size: 0.75rem; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border);
-  }
+  .badge { background: var(--bg); border-radius: 6px; padding: 2px 8px; font-size: 0.75rem; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border); }
   .exp-list { list-style: none; }
-  .exp-list li {
-    font-size: 0.875rem; color: var(--text-muted); padding: 3px 0 3px 14px; position: relative;
-  }
+  .exp-list li { font-size: 0.875rem; color: var(--text-muted); padding: 3px 0 3px 14px; position: relative; }
   .exp-list li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
-  .bio-text { font-size: 0.9rem; line-height: 1.75; color: var(--text-muted); }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 500; color: var(--text);
-  }
+  .tag { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 500; }
   .right-cards { display: flex; flex-direction: column; gap: 1.5rem; }
 
-  /* ── PROYECTOS ── */
+  /* PROYECTOS */
+  #proyectos-wrap.active { display: block; }
   #proyectos { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
   .section-header { text-align: center; margin-bottom: 3rem; }
   .section-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
   .section-sub { color: var(--text-muted); font-size: 0.95rem; }
   .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
-  .project-card {
-    background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
-    display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; cursor: pointer;
-    transition: box-shadow .25s, transform .25s;
-  }
+  .project-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; cursor: pointer; transition: box-shadow .25s, transform .25s; }
   .project-card:hover { box-shadow: 0 8px 32px rgba(59,91,219,.12); transform: translateY(-2px); }
-  .project-cover {
-    aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem; overflow: hidden;
-  }
+  .project-cover { aspect-ratio: 16/10; overflow: hidden; position: relative; }
+  .project-cover img { width: 100%; height: 100%; object-fit: cover; }
+  .project-cover-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
   .project-info { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
   .project-name { font-size: 1.4rem; font-weight: 800; color: var(--blue); margin-bottom: .75rem; }
   .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
-  .project-tag {
-    background: var(--blue-light); color: var(--blue);
-    border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600;
-  }
-  .project-link {
-    color: var(--blue); font-size: 0.875rem; font-weight: 600;
-    display: flex; align-items: center; gap: 6px;
-    background: none; border: none; cursor: pointer; padding: 0; font-family: inherit;
-  }
+  .project-tag { background: var(--blue-light); color: var(--blue); border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600; }
+  .project-link { color: var(--blue); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; }
   .project-link:hover { text-decoration: underline; }
 
-  /* ── DETALLE PROYECTO ── */
+  /* DETALLE */
+  #detalle-wrap.active { display: block; }
   #detalle { max-width: 780px; margin: 0 auto; padding: 2rem 2rem 4rem; }
-  .back-btn {
-    background: none; border: none; cursor: pointer;
-    display: flex; align-items: center; gap: 6px;
-    color: var(--text-muted); font-size: 0.875rem; font-family: inherit;
-    margin-bottom: 1.5rem; padding: 0; transition: color .2s;
-  }
+  .back-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.875rem; font-family: inherit; margin-bottom: 1.5rem; padding: 0; transition: color .2s; }
   .back-btn:hover { color: var(--text); }
   .detail-title { font-size: 2.5rem; font-weight: 800; margin-bottom: .5rem; }
   .detail-sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
-  .detail-cover {
-    width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem;
-    display: flex; align-items: center; justify-content: center; font-size: 5rem; overflow: hidden;
-  }
+  .detail-cover { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem; overflow: hidden; }
   .detail-cover img { width: 100%; height: 100%; object-fit: cover; }
-
-  /* Slide image inside case study */
-  .slide-img {
-    width: 100%; border-radius: var(--radius-sm); margin: 1.25rem 0;
-    border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,.08);
-  }
-  .slide-caption {
-    font-size: 0.78rem; color: var(--text-muted); text-align: center;
-    margin-top: -0.75rem; margin-bottom: 1.25rem; font-style: italic;
-  }
-
+  .detail-cover-emoji { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+  .slide-img { width: 100%; border-radius: var(--radius-sm); margin: 1.25rem 0; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+  .slide-caption { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: -0.75rem; margin-bottom: 1.25rem; font-style: italic; }
   .detail-section { margin-bottom: 2.5rem; }
   .detail-section h2 { color: var(--blue); font-size: 1.15rem; font-weight: 700; margin-bottom: .75rem; }
   .detail-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
   .obj-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .obj-list li {
-    font-size: 0.9rem; color: var(--text-muted);
-    display: flex; align-items: flex-start; gap: 10px;
-  }
-  .obj-check {
-    width: 22px; height: 22px; min-width: 22px;
-    background: var(--blue-light); color: var(--blue);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700;
-  }
+  .obj-list li { font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
+  .obj-check { width: 22px; height: 22px; min-width: 22px; background: var(--blue-light); color: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
   .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .process-item {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 14px 16px;
-    display: flex; align-items: center; gap: 12px;
-    font-size: 0.875rem; color: var(--text);
-  }
-  .process-num {
-    width: 28px; height: 28px; border-radius: 50%; min-width: 28px;
-    background: var(--blue-light); color: var(--blue);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; font-weight: 700;
-  }
-  .result-card {
-    background: var(--blue-light); border: 1px solid #c5d0f5;
-    border-radius: var(--radius); padding: 1.5rem;
-  }
+  .process-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.875rem; }
+  .process-num { width: 28px; height: 28px; border-radius: 50%; min-width: 28px; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  .result-card { background: var(--blue-light); border: 1px solid #c5d0f5; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2.5rem; }
   .result-card h2 { color: var(--blue); font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
   .result-card p { color: var(--text); font-size: 0.9rem; line-height: 1.7; }
   .reflexion-text { font-style: italic; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
-  .proto-btn {
-    background: var(--blue); color: white; border: none;
-    padding: 14px 28px; border-radius: var(--radius-sm);
-    font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
-    margin: 0 auto 2.5rem; font-family: inherit; transition: opacity .2s;
-  }
+  .proto-btn { background: var(--blue); color: white; border: none; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 auto 2.5rem; font-family: inherit; transition: opacity .2s; }
   .proto-btn:hover { opacity: .88; }
-  .nav-project {
-    display: flex; justify-content: flex-end;
-    border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem;
-  }
-  .nav-project-btn {
-    background: none; border: none; cursor: pointer; text-align: right;
-    font-family: inherit; padding: 0; color: var(--text); transition: opacity .2s;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .insight-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; }
+  .insight-card h3 { color: var(--blue); font-size: 0.875rem; font-weight: 700; margin-bottom: .6rem; }
+  .insight-card ul { list-style: none; }
+  .insight-card ul li { font-size: 0.8rem; color: var(--text-muted); padding: 3px 0 3px 12px; position: relative; }
+  .insight-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 1rem 0; }
+  .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+  .nav-project { display: flex; justify-content: flex-end; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem; }
+  .nav-project-btn { background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; color: var(--text); transition: opacity .2s; display: flex; align-items: center; gap: 8px; }
   .nav-project-btn:hover { opacity: .7; }
   .nav-project-text { text-align: right; }
   .nav-project-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
   .nav-project-name { font-size: 1rem; font-weight: 700; }
 
-  /* Insight cards (3 col) */
-  .insight-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .insight-card {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 1.25rem;
-  }
-  .insight-card h3 { color: var(--blue); font-size: 0.875rem; font-weight: 700; margin-bottom: .6rem; }
-  .insight-card ul { list-style: none; }
-  .insight-card ul li {
-    font-size: 0.8rem; color: var(--text-muted); padding: 3px 0 3px 12px; position: relative;
-  }
-  .insight-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
-
-  /* Stats row */
-  .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 1rem 0; }
-  .stat-card {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 1.25rem; text-align: center;
-  }
-  .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); }
-  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
-
-  /* ── CONTACTO ── */
+  /* CONTACTO */
+  #contacto-wrap.active { display: block; }
   #contacto { max-width: 700px; margin: 0 auto; padding: 5rem 2rem; text-align: center; }
   .contact-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
   .contact-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
   .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
-  .contact-link {
-    color: var(--text-muted); font-size: 0.875rem;
-    display: flex; align-items: center; gap: 6px;
-    text-decoration: none; transition: color .2s;
-  }
+  .contact-link { color: var(--text-muted); font-size: 0.875rem; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: color .2s; }
   .contact-link:hover { color: var(--blue); }
-  .contact-form {
-    background: var(--white); border-radius: var(--radius);
-    border: 1px solid var(--border); padding: 2rem; text-align: left;
-  }
+  .contact-form { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; text-align: left; }
   .form-group { margin-bottom: 1.25rem; }
   .form-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: .5rem; }
-  .form-input, .form-textarea {
-    width: 100%; background: var(--bg); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 12px 16px;
-    font-size: 0.875rem; font-family: inherit; color: var(--text);
-    transition: border-color .2s; outline: none;
-  }
+  .form-input, .form-textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 0.875rem; font-family: inherit; color: var(--text); transition: border-color .2s; outline: none; }
   .form-input:focus, .form-textarea:focus { border-color: var(--blue); }
   .form-textarea { resize: vertical; min-height: 120px; }
-  .form-submit {
-    width: 100%; background: var(--blue); color: white; border: none;
-    padding: 14px; border-radius: var(--radius-sm);
-    font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit;
-    transition: opacity .2s;
-  }
+  .form-submit { width: 100%; background: var(--blue); color: white; border: none; padding: 14px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity .2s; }
   .form-submit:hover { opacity: .88; }
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border); padding: 1.5rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-    max-width: 1100px; margin: 0 auto;
-  }
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
   .footer-logo { font-weight: 700; font-size: 0.95rem; }
   .footer-icons { display: flex; gap: 1rem; }
   .footer-icon { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; transition: color .2s; }
   .footer-icon:hover { color: var(--blue); }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { animation: fadeUp .5s ease both; }
   .fade-up-1 { animation-delay: .05s; }
   .fade-up-2 { animation-delay: .15s; }
   .fade-up-3 { animation-delay: .25s; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    #sobre { grid-template-columns: 1fr; }
-    .project-card { grid-template-columns: 1fr; }
-    .process-grid, .insight-grid, .stats-row { grid-template-columns: 1fr; }
-    #hero { flex-direction: column; gap: 2rem; text-align: center; }
-    .hero-sub { max-width: 100%; }
-    .hero-actions { justify-content: center; }
-    .hero-img { max-width: 100%; }
+    .sobre-top, .about-grid, .project-card, .process-grid, .insight-grid, .stats-row { grid-template-columns: 1fr; }
+    .hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <button class="nav-logo" onclick="showSection('hero-wrap')">Luis Arnau</button>
   <ul class="nav-links">
@@ -360,96 +229,94 @@
 <!-- HERO -->
 <section id="hero-wrap" class="active">
   <div id="hero">
-    <div class="hero-text">
-      <h1 class="hero-title fade-up fade-up-1">Product<br>Designer</h1>
-      <p class="hero-sub fade-up fade-up-2">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
-      <div class="hero-actions fade-up fade-up-3">
-        <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos →</button>
-        <button class="btn-secondary">↓ Descargar CV</button>
-      </div>
+    <div class="hero-tag"><span class="dot"></span> Disponible para nuevos proyectos</div>
+    <h1 class="hero-title">
+      <span class="static">Product </span><span class="grad">Designer</span>
+    </h1>
+    <p class="hero-sub">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos →</button>
+      <button class="btn-secondary">↓ Descargar CV</button>
     </div>
-    <div class="hero-img fade-up fade-up-2">🏔️</div>
+    <div class="hero-pills">
+      <span class="hero-pill">UX Research</span>
+      <span class="hero-pill">UI Design</span>
+      <span class="hero-pill">Figma</span>
+      <span class="hero-pill">Design Systems</span>
+      <span class="hero-pill">Prototyping</span>
+      <span class="hero-pill">Usability Testing</span>
+    </div>
   </div>
 </section>
 
 <!-- SOBRE MÍ -->
 <section id="sobre-wrap">
   <div id="sobre">
-    <div class="card fade-up">
-      <div class="card-title"><span>🏢</span> Experiencia profesional</div>
-      <div class="exp-item">
-        <div class="exp-role">Ingeniero de fabricación</div>
-        <div class="exp-company">Inhiset</div>
-        <div class="exp-meta">May 2024 – Jul 2024 <span class="badge">Presencial</span></div>
-        <ul class="exp-list">
-          <li>Optimización de flujos mediante SAP</li>
-          <li>Documentación técnica</li>
-          <li>Diseño de componentes mecánicos</li>
-          <li>Soporte en análisis de problemas</li>
-          <li>Colaboración con ingeniería y operaciones</li>
-        </ul>
-      </div>
-      <div class="exp-item">
-        <div class="exp-role">Diseñador UX/UI</div>
-        <div class="exp-company">CO·UX</div>
-        <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge">Remoto</span></div>
-        <ul class="exp-list">
-          <li>Design Thinking & Design Research</li>
-          <li>Investigación con usuarios</li>
-          <li>Wireframes y user flows</li>
-          <li>Accesibilidad (WCAG)</li>
-          <li>Prototipos en Figma</li>
-        </ul>
-      </div>
-      <div class="exp-item">
-        <div class="exp-role">Ingeniero de fabricación</div>
-        <div class="exp-company">Tecnobit</div>
-        <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge">Híbrido</span></div>
-        <ul class="exp-list">
-          <li>Optimización de flujos mediante SAP</li>
-          <li>Documentación técnica</li>
-          <li>Diseño mecánico</li>
-          <li>Análisis de problemas</li>
-          <li>Colaboración con ingeniería</li>
-        </ul>
-      </div>
-      <div class="exp-item">
-        <div class="exp-role">Diseñador gráfico</div>
-        <div class="exp-company">Esmalglass</div>
-        <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge">Presencial</span></div>
-        <ul class="exp-list">
-          <li>Adaptación de productos</li>
-          <li>Edición gráfica</li>
-          <li>Diseño de aplicaciones cerámicas</li>
-          <li>Gestión de color</li>
-        </ul>
-      </div>
-    </div>
-    <div class="right-cards">
-      <div class="card fade-up fade-up-1">
-        <div class="card-title"><span>👤</span> Sobre mí</div>
-        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
-      </div>
-      <div class="card fade-up fade-up-2">
-        <div class="card-title"><span>⚙️</span> Herramientas</div>
-        <div class="tags">
-          <span class="tag">Figma</span><span class="tag">Photoshop</span>
-          <span class="tag">Illustrator</span><span class="tag">Jira</span>
-          <span class="tag">Miro</span><span class="tag">Visual Studio Code</span>
-          <span class="tag">Notion</span><span class="tag">Trello</span>
-          <span class="tag">Confluence</span><span class="tag">SolidWorks</span>
-          <span class="tag">3DS Max</span><span class="tag">KeyShot</span>
-          <span class="tag">Autocad</span><span class="tag">Fusion 360</span>
+    <div class="sobre-top">
+      <div class="photo-card fade-up">
+        <div class="photo-circle">
+          <!-- Sube tu foto a images/foto-luis.jpg y descomenta: -->
+          <!-- <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
+          🧑‍💻
+        </div>
+        <div class="photo-name">Luis Arnau</div>
+        <div class="photo-role">Product & UX/UI Designer</div>
+        <div class="photo-loc">📍 España</div>
+        <div class="photo-links">
+          <a href="mailto:luisarnau9@gmail.com">✉ Email</a>
+          <span style="color:var(--border)">|</span>
+          <a href="#">in LinkedIn</a>
         </div>
       </div>
-      <div class="card fade-up fade-up-3">
-        <div class="card-title"><span>⭐</span> Habilidades</div>
-        <div class="tags">
-          <span class="tag">User Interviews</span><span class="tag">User Research</span>
-          <span class="tag">Journey Maps</span><span class="tag">Usability Testing</span>
-          <span class="tag">UX Writing</span><span class="tag">Wireframing</span>
-          <span class="tag">Prototyping</span><span class="tag">Interaction Design</span>
-          <span class="tag">Information Architecture</span><span class="tag">Design System</span>
+      <div class="bio-card fade-up fade-up-1">
+        <h2>👤 Sobre mí</h2>
+        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
+        <p class="bio-text" style="margin-top:1rem">Combino investigación, validación, buenas prácticas de diseño y una comunicación clara para crear soluciones digitales efectivas y bien justificadas. Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.25rem">
+          <span class="tag">🎨 Diseño</span>
+          <span class="tag">🏔️ Montaña</span>
+          <span class="tag">📷 Fotografía</span>
+          <span class="tag">⚙️ Ingeniería</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="card fade-up">
+        <div class="card-title"><span>🏢</span> Experiencia profesional</div>
+        <div class="exp-item">
+          <div class="exp-role">Ingeniero de fabricación</div>
+          <div class="exp-company">Inhiset</div>
+          <div class="exp-meta">May 2024 – Jul 2024 <span class="badge">Presencial</span></div>
+          <ul class="exp-list"><li>Optimización de flujos mediante SAP</li><li>Documentación técnica</li><li>Diseño de componentes mecánicos</li><li>Soporte en análisis de problemas</li></ul>
+        </div>
+        <div class="exp-item">
+          <div class="exp-role">Diseñador UX/UI</div>
+          <div class="exp-company">CO·UX</div>
+          <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge">Remoto</span></div>
+          <ul class="exp-list"><li>Design Thinking & Design Research</li><li>Investigación con usuarios</li><li>Wireframes y user flows</li><li>Accesibilidad (WCAG)</li><li>Prototipos en Figma</li></ul>
+        </div>
+        <div class="exp-item">
+          <div class="exp-role">Ingeniero de fabricación</div>
+          <div class="exp-company">Tecnobit</div>
+          <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge">Híbrido</span></div>
+          <ul class="exp-list"><li>Optimización de flujos mediante SAP</li><li>Diseño mecánico</li><li>Colaboración con ingeniería</li></ul>
+        </div>
+        <div class="exp-item">
+          <div class="exp-role">Diseñador gráfico</div>
+          <div class="exp-company">Esmalglass</div>
+          <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge">Presencial</span></div>
+          <ul class="exp-list"><li>Adaptación de productos y edición gráfica</li><li>Diseño de aplicaciones cerámicas</li><li>Gestión de color</li></ul>
+        </div>
+      </div>
+      <div class="right-cards">
+        <div class="card fade-up fade-up-1">
+          <div class="card-title"><span>⚙️</span> Herramientas</div>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Jira</span><span class="tag">Miro</span><span class="tag">VS Code</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Confluence</span><span class="tag">SolidWorks</span><span class="tag">3DS Max</span><span class="tag">Autocad</span></div>
+        </div>
+        <div class="card fade-up fade-up-2">
+          <div class="card-title"><span>⭐</span> Habilidades</div>
+          <div class="tags"><span class="tag">User Interviews</span><span class="tag">User Research</span><span class="tag">Journey Maps</span><span class="tag">Usability Testing</span><span class="tag">UX Writing</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Interaction Design</span><span class="tag">Information Architecture</span><span class="tag">Design System</span></div>
         </div>
       </div>
     </div>
@@ -465,44 +332,55 @@
     </div>
     <div class="project-list">
       <div class="project-card fade-up" onclick="showDetail(0)">
-        <div class="project-cover" style="background:linear-gradient(135deg,#e63946,#c1121f)">📍</div>
+        <div class="project-cover">
+          <div class="project-cover-inner" style="background:linear-gradient(135deg,#f97316,#fb923c)">
+            <img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" alt="LoLocal" onerror="this.style.display='none'"/>
+          </div>
+        </div>
         <div class="project-info">
           <div class="project-name">LoLocal</div>
-          <p class="project-desc">Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.</p>
-          <div class="project-tags">
-            <span class="project-tag">UX Research</span>
-            <span class="project-tag">UI Design</span>
-            <span class="project-tag">Figma</span>
-          </div>
+          <p class="project-desc">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p>
+          <div class="project-tags"><span class="project-tag">UX Research</span><span class="project-tag">UI Design</span><span class="project-tag">Design System</span><span class="project-tag">Figma</span></div>
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
+
       <div class="project-card fade-up fade-up-1" onclick="showDetail(1)">
-        <div class="project-cover" style="background:#1d3276; display:flex; align-items:center; justify-content:center;">
-          <img src="images/remitly-cover.png" style="width:50%; opacity:.9;" alt="Remitly"/>
+        <div class="project-cover">
+          <div class="project-cover-inner" style="background:#1d3276">
+            <img src="images/remitly-cover.png" style="width:50%;opacity:.9" alt="Remitly" onerror="this.parentElement.innerHTML='💸'"/>
+          </div>
         </div>
         <div class="project-info">
           <div class="project-name">Remitly</div>
-          <p class="project-desc">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p>
-          <div class="project-tags">
-            <span class="project-tag">Fintech</span>
-            <span class="project-tag">UX Research</span>
-            <span class="project-tag">UX Writing</span>
-            <span class="project-tag">Prototyping</span>
-          </div>
+          <p class="project-desc">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes de la app fintech.</p>
+          <div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">UX Research</span><span class="project-tag">UX Writing</span><span class="project-tag">Prototyping</span></div>
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
+
       <div class="project-card fade-up fade-up-2" onclick="showDetail(2)">
-        <div class="project-cover" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
+        <div class="project-cover">
+          <div class="project-cover-inner" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
+        </div>
         <div class="project-info">
           <div class="project-name">PedidosYA</div>
-          <p class="project-desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida.</p>
-          <div class="project-tags">
-            <span class="project-tag">Rediseño</span>
-            <span class="project-tag">Mobile</span>
-            <span class="project-tag">UX Writing</span>
+          <p class="project-desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p>
+          <div class="project-tags"><span class="project-tag">Rediseño</span><span class="project-tag">Mobile</span><span class="project-tag">UX Writing</span></div>
+          <button class="project-link">Ver proyecto →</button>
+        </div>
+      </div>
+
+      <div class="project-card fade-up fade-up-3" onclick="showDetail(3)">
+        <div class="project-cover">
+          <div class="project-cover-inner" style="background:linear-gradient(135deg,#064e3b,#10b981)">
+            <img src="images/cactus-1.png" style="width:100%;height:100%;object-fit:cover" alt="Estudio Cactus" onerror="this.style.display='none'"/>
           </div>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Estudio Cactus</div>
+          <p class="project-desc">Design challenge. Branding y diseño de producto para un estudio creativo con identidad visual propia.</p>
+          <div class="project-tags"><span class="project-tag">Challenge</span><span class="project-tag">Branding</span><span class="project-tag">UI Design</span></div>
           <button class="project-link">Ver proyecto →</button>
         </div>
       </div>
@@ -528,18 +406,9 @@
       <a href="#" class="contact-link">in LinkedIn</a>
     </div>
     <div class="contact-form fade-up fade-up-3">
-      <div class="form-group">
-        <label class="form-label">Nombre</label>
-        <input class="form-input" type="text"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input class="form-input" type="email"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Mensaje</label>
-        <textarea class="form-textarea"></textarea>
-      </div>
+      <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text"/></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"/></div>
+      <div class="form-group"><label class="form-label">Mensaje</label><textarea class="form-textarea"></textarea></div>
       <button class="form-submit">Enviar mensaje</button>
     </div>
   </div>
@@ -555,204 +424,84 @@
 </footer>
 
 <script>
-const projects = [
+const P = [
   {
-    name: "LoLocal",
-    sub: "App para comercio local con hábitos y recompensas",
-    coverStyle: "background:linear-gradient(135deg,#e63946,#c1121f)",
-    coverEmoji: "📍",
-    contexto: "Diseño de app desde cero para incentivar la compra en tiendas locales ante el cierre progresivo de pequeños comercios.",
-    problema: "Los usuarios no entendían cómo encontrar comercios cercanos ni cómo funcionaba el sistema de recompensas.",
-    objetivos: ["Incentivar compras locales","Recompensas claras y visibles","Descubrimiento fácil por cercanía","Flujo simple y motivador"],
-    rol: "UX Research, UX/UI, prototipado, diseño visual.",
-    proceso: ["Research sobre hábitos de compra local","Mapas de empatía","Flujos de compra + puntos de recompensa","UI con barras de progreso y badges","Mapa con comercios relevantes","Gamificación ligera para incentivar recurrencia"],
-    resultado: "Mayor claridad, motivación y comprensión del sistema. La experiencia permite identificar comercios, ver recompensas y mejorar hábitos de compra local.",
-    reflexion: "Proyecto centrado en hábitos, recompensas y diseño motivacional aplicado al comercio local.",
-    extraHtml: "",
-    next: 1
+    name:"LoLocal", sub:"App marketplace para conectar comercios locales con compradores del barrio",
+    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:linear-gradient(135deg,#f97316,#fb923c);display:flex;align-items:center;justify-content:center"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"/></div></div>',
+    contexto:"Más de 40.000 tiendas cerraron entre 2019 y 2023 en España, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos y pequeños negocios. LoLocal nace para visibilizar estos comercios de manera sencilla y directa, recuperando el boca a boca y metiéndolo en el bolsillo.",
+    problema:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca ni cómo contactar con los negocios de su barrio.",
+    obj:["Visibilizar comercios locales de manera sencilla y directa","Conectar compradores y vendedores de forma emocional","Facilitar el descubrimiento por geolocalización","Crear sistema de fidelización para incentivar recurrencia","Diseño accesible para comerciantes poco digitalizados"],
+    rol:"UX Research, User Personas, Benchmark, Architecture, Wireframing, UI Design, Design System, Branding.",
+    proc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados","Wireframes baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
+    res:"App diseñada desde cero con sistema de navegación dual (negocios/compradores), UI Kit completo con tipografía Work Sans, arquitectura de información con sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
+    refl:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
+    extra:`<div class="detail-section"><h2>Propuesta de valor</h2><p>Visibilizar los comercios locales de manera sencilla y directa, conectando negocios con compradores de manera emocional. Diferenciación clave: humanización de la compra, facilidad para comprar local y apoyo genuino al comercio como herramienta de transformación social.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>3 perfiles clave: Carmen Lamadrid (comerciante, propietaria gourmet), Amaïa López (consumidora que valora trato cercano y productos locales) y Pedro Muñoz (no consumidor que prioriza comodidad y no conoce el comercio local).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Sesgos cognitivos aplicados</h2><p>6 principios: Efecto posición serial, Visión periférica, Gestalt y jerarquía visual, FOMO (disponibilidad limitada), Efecto Hick-Hyman (filtros inteligentes) y Ley de Fitts (botón Chat grande y accesible).</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes y prototipo</h2><p>5 tareas principales con wireframes de baja y media fidelidad. Pantalla de inicio con barra de búsqueda dinámica, toggle producto/negocio, categorías scrollables y secciones de patrocinados y recomendados.</p><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta (Primary-Green, Accent dorado, Surface), iconografía por categoría, y componentes: cards, botones, filtros, chat, reseñas, perfil y fidelización.</p><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
+    next:1
   },
   {
-    name: "Remitly",
-    sub: "Rediseño del flujo de confirmación y seguimiento de transferencias",
-    coverStyle: "background:#1d3276",
-    coverImg: "images/remitly-cover.png",
-    contexto: "Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío de dinero entre los usuarios frecuentes de la app, especialmente en la falta de confirmación clara al finalizar una transferencia, lo que generaba desconfianza y envíos duplicados.",
-    problema: "La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
-    objetivos: [
-      "Reducir envíos duplicados por falta de feedback claro",
-      "Mostrar el estado del envío en tiempo real",
-      "Mejorar los mensajes del sistema (UX Writing)",
-      "Organizar el historial de transferencias por estados",
-      "Aumentar la confianza del usuario en el flujo de confirmación"
-    ],
-    rol: "UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
-    proceso: [
-      "Desktop Research y análisis de reseñas",
-      "Ley de Pareto aplicada a pain points",
-      "Definición de User Persona (Martín Benitez)",
-      "Journey Map del flujo de transferencia",
-      "Identificación del punto de intervención",
-      "Rediseño del flujo de confirmación y seguimiento",
-      "Aplicación de UX Writing al sistema de mensajes",
-      "Análisis heurístico y de accesibilidad",
-      "Pruebas de usabilidad con 8 participantes",
-      "Cuestionario NPS post-test"
-    ],
-    resultado: "Todos los participantes completaron las tareas en las pruebas de usabilidad. El flujo mejorado redujo la confusión en la confirmación del envío y mejoró la confianza del usuario. NPS de 62.5% en la consulta del historial.",
-    reflexion: "El proyecto demostró que pequeños cambios en los mensajes del sistema y la organización del historial tienen un impacto directo en la confianza del usuario. La transparencia en el estado del envío es clave en apps fintech.",
-    extraHtml: `
-      <div class="detail-section">
-        <h2>Contexto y research</h2>
-        <p>La audiencia principal de Remitly tiene entre 25 y 34 años y corresponde a migrantes latinos jóvenes por motivos laborales. El uso de la app sigue de cerca los patrones de inmigración latina en los 15 países con mayor volumen de envíos.</p>
-        <img src="images/remitly-pareto.png" class="slide-img" alt="Análisis Ley de Pareto"/>
-        <p class="slide-caption">Principales problemas de usuarios según reseñas + Ley de Pareto. El 20% de causas (incidencias en el envío y mal uso de la UI) provocan el 80% de las consecuencias.</p>
-      </div>
-      <div class="detail-section">
-        <h2>User Persona y Journey Map</h2>
-        <p>Se definió el perfil de Martín Benitez, conductor de Uber de 30 años viviendo en Barcelona que envía dinero a su madre en Perú. El problema crítico: no recibía confirmación clara del envío, lo que le generaba desconfianza y le llevaba a repetir la operación.</p>
-        <img src="images/remitly-journey.png" class="slide-img" alt="Journey Map Remitly"/>
-        <p class="slide-caption">Journey Map del flujo de transferencia con los puntos de fricción detectados.</p>
-      </div>
-      <div class="detail-section">
-        <h2>Solución: Transparencia en el seguimiento</h2>
-        <p>El punto de intervención es el flujo de confirmación y seguimiento de transferencias. Se propone un aviso preventivo, acceso directo al seguimiento desde la landing y un CTA que invite a revisar la última transacción al mismo destinatario.</p>
-        <img src="images/remitly-seguimiento.png" class="slide-img" alt="Transparencia en el seguimiento"/>
-        <p class="slide-caption">Rediseño del flujo de confirmación: de "Recopilando información..." a estado claro y número de referencia visible.</p>
-        <img src="images/remitly-mensajes.png" class="slide-img" alt="Mensajes más claros"/>
-        <p class="slide-caption">Aplicación de UX Writing: mensajes más claros, empáticos y accionables en los modales de confirmación.</p>
-        <img src="images/remitly-envios.png" class="slide-img" alt="Historial de envíos"/>
-        <p class="slide-caption">Historial reorganizado con filtros por estado (En progreso, Recibido, Cancelado) e información al instante.</p>
-      </div>
-      <div class="detail-section">
-        <h2>Pruebas de usabilidad</h2>
-        <div class="stats-row">
-          <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div>
-          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div>
-          <div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div>
-        </div>
-        <p style="margin-top:1rem">Todos los participantes lograron completar las tareas, lo que indica que el flujo general es comprensible. La mayoría no siguió el camino previsto y realizó clics innecesarios en las pantallas 2–5, sugiriendo oportunidades de mejora en la orientación de esas etapas.</p>
-      </div>
-      <div class="detail-section">
-        <h2>Insights y recomendaciones</h2>
-        <div class="insight-grid">
-          <div class="insight-card">
-            <h3>Recomendaciones</h3>
-            <ul>
-              <li>Hacer visible el scroll con pasos o indicadores</li>
-              <li>Unificar textos a lo largo del flujo</li>
-              <li>Mostrar el detalle desde la tarjeta, no desde el ícono de ojo</li>
-              <li>Incluir mensaje claro al confirmar el envío</li>
-              <li>Agregar accesos visibles a ayuda en caso de fallos</li>
-            </ul>
-          </div>
-          <div class="insight-card">
-            <h3>Hallazgos</h3>
-            <ul>
-              <li>"Recientes" e "Historial" se perciben como similares</li>
-              <li>El historial genera confianza cuando los envíos se demoran</li>
-              <li>La interfaz resultó familiar e intuitiva</li>
-              <li>Exceso de información y falta de coherencia en textos</li>
-            </ul>
-          </div>
-          <div class="insight-card">
-            <h3>Conclusión</h3>
-            <ul>
-              <li>La experiencia es más simple y directa que la versión anterior</li>
-              <li>Los usuarios entienden qué hacer en general</li>
-              <li>Pequeños ajustes mejorarían la intuición del flujo</li>
-              <li>No impiden cumplir con el objetivo principal</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    `,
-    next: 2
+    name:"Remitly", sub:"Rediseño del flujo de confirmación y seguimiento de transferencias",
+    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:#1d3276;display:flex;align-items:center;justify-content:center"><img src="images/remitly-cover.png" style="width:50%;opacity:.9" onerror="this.parentElement.innerHTML=\'💸\'"/></div></div>',
+    contexto:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío entre usuarios frecuentes, especialmente la falta de confirmación clara al finalizar una transferencia, generando desconfianza y envíos duplicados.",
+    problema:"La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
+    obj:["Reducir envíos duplicados por falta de feedback","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
+    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
+    proc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación punto de intervención","Rediseño flujo confirmación y seguimiento","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
+    res:"Todos los participantes completaron las tareas. El flujo mejorado redujo la confusión en la confirmación. NPS de 62.5% en consulta del historial.",
+    refl:"Pequeños cambios en los mensajes del sistema tienen un impacto directo en la confianza del usuario. La transparencia es clave en apps fintech.",
+    extra:`<div class="detail-section"><h2>Research y Ley de Pareto</h2><p>Audiencia principal: migrantes latinos 25-34 años. El 20% de causas (incidencias en el envío + UI) provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="slide-img" alt=""/><p class="slide-caption">Análisis de reseñas + Ley de Pareto: incidencias en el envío y mal uso de la UI son las causas raíz.</p></div><div class="detail-section"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona. Envía dinero a Perú urgente y no recibe confirmación clara — genera desconfianza y envíos repetidos.</p><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><p class="slide-caption">De "Recopilando información..." a estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><p class="slide-caption">Mensajes más claros, empáticos y accionables en modales de confirmación.</p><img src="images/remitly-envios.png" class="slide-img" alt=""/><p class="slide-caption">Historial reorganizado con filtros por estado: En progreso, Recibido, Cancelado.</p></div><div class="detail-section"><h2>Pruebas de usabilidad</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div></div></div><div class="detail-section"><h2>Insights</h2><div class="insight-grid"><div class="insight-card"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso visibles</li><li>Unificar textos del flujo</li><li>Mostrar detalle desde tarjeta</li><li>Mensaje claro al confirmar</li><li>Accesos visibles a ayuda</li></ul></div><div class="insight-card"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" se perciben similares</li><li>Historial genera confianza</li><li>Interfaz familiar e intuitiva</li><li>Exceso de información en textos</li></ul></div><div class="insight-card"><h3>Conclusión</h3><ul><li>Experiencia más simple que la anterior</li><li>Usuarios entienden qué hacer</li><li>Pequeños ajustes mejorarían el flujo</li></ul></div></div></div>`,
+    next:2
   },
   {
-    name: "PedidosYA",
-    sub: "Rediseño conceptual de app de delivery de comida",
-    coverStyle: "background:linear-gradient(135deg,#3d405b,#e07a5f)",
-    coverEmoji: "🍔",
-    contexto: "Rediseño conceptual para mejorar la experiencia de usuario en la app de pedidos de comida PedidosYA.",
-    problema: "La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
-    objetivos: ["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo de pedido","Mejorar la legibilidad del menú"],
-    rol: "UX Research, UI Design, UX Writing, Prototipado.",
-    proceso: ["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes básico","Validación con usuarios"],
-    resultado: "Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
-    reflexion: "La jerarquía visual y la reducción de fricciones son clave en apps transaccionales.",
-    extraHtml: "",
-    next: null
+    name:"PedidosYA", sub:"Rediseño conceptual de app de delivery de comida",
+    cover:'<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>',
+    contexto:"Rediseño conceptual para mejorar la experiencia de usuario en la app PedidosYA.",
+    problema:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
+    obj:["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo de pedido","Mejorar la legibilidad del menú"],
+    rol:"UX Research, UI Design, UX Writing, Prototipado.",
+    proc:["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes básico","Validación con usuarios"],
+    res:"Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
+    refl:"La jerarquía visual y la reducción de fricciones son clave en apps transaccionales.",
+    extra:"",
+    next:3
+  },
+  {
+    name:"Estudio Cactus", sub:"Design challenge — Branding y producto para estudio creativo",
+    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:linear-gradient(135deg,#064e3b,#10b981);display:flex;align-items:center;justify-content:center"><img src="images/cactus-1.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"/></div></div>',
+    contexto:"Design challenge de branding y diseño de producto para un estudio creativo con identidad visual propia.",
+    problema:"Crear una identidad y producto digital coherente para un estudio creativo partiendo desde cero.",
+    obj:["Definir identidad visual única","Diseñar sistema de componentes coherente","Crear prototipo funcional"],
+    rol:"Branding, UI Design, Prototyping.",
+    proc:["Definición de marca y valores","Paleta de color e identidad","Sistema tipográfico","Diseño de pantallas principales","Prototipo interactivo"],
+    res:"Identidad visual completa y prototipo funcional del producto digital.",
+    refl:"Un challenge que pone a prueba la coherencia visual y la toma de decisiones de diseño bajo restricciones.",
+    extra:`<div class="detail-section"><h2>Prototipo</h2><p>Añade tus imágenes a la carpeta <code>images/</code> como <code>cactus-1.png</code> y <code>cactus-2.png</code>.</p><img src="images/cactus-1.png" class="slide-img" onerror="this.style.display='none'" alt=""/><img src="images/cactus-2.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
+    next:null
   }
 ];
 
 function showSection(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function showDetail(idx) {
-  const p = projects[idx];
-
-  const coverHtml = p.coverImg
-    ? `<div class="detail-cover" style="${p.coverStyle}"><img src="${p.coverImg}" alt="${p.name}"/></div>`
-    : `<div class="detail-cover" style="${p.coverStyle}">${p.coverEmoji}</div>`;
-
-  const nextHtml = p.next !== null ? `
-    <div class="nav-project">
-      <button class="nav-project-btn" onclick="showDetail(${p.next})">
-        <div class="nav-project-text">
-          <span class="nav-project-label">Proyecto siguiente</span>
-          <span class="nav-project-name">${projects[p.next].name}</span>
-        </div>
-        <span>→</span>
-      </button>
-    </div>` : '';
-
-  const objHtml = p.objetivos.map(o =>
-    `<li><div class="obj-check">✓</div>${o}</li>`
-  ).join('');
-
-  const procHtml = p.proceso.map((s,i) =>
-    `<div class="process-item"><div class="process-num">${i+1}</div>${s}</div>`
-  ).join('');
-
+function showDetail(i) {
+  const p = P[i];
+  const next = p.next !== null ? `<div class="nav-project"><button class="nav-project-btn" onclick="showDetail(${p.next})"><div class="nav-project-text"><span class="nav-project-label">Proyecto siguiente</span><span class="nav-project-name">${P[p.next].name}</span></div><span>→</span></button></div>` : '';
   document.getElementById('detalle-content').innerHTML = `
     <h1 class="detail-title">${p.name}</h1>
     <p class="detail-sub">${p.sub}</p>
-    ${coverHtml}
-    <div class="detail-section">
-      <h2>Contexto</h2>
-      <p>${p.contexto}</p>
-    </div>
-    <div class="detail-section">
-      <h2>Problema</h2>
-      <p>${p.problema}</p>
-    </div>
-    <div class="detail-section">
-      <h2>Objetivos</h2>
-      <ul class="obj-list">${objHtml}</ul>
-    </div>
-    <div class="detail-section">
-      <h2>Mi rol</h2>
-      <p>${p.rol}</p>
-    </div>
-    <div class="detail-section">
-      <h2>Proceso</h2>
-      <div class="process-grid">${procHtml}</div>
-    </div>
-    ${p.extraHtml}
-    <div class="result-card" style="margin-bottom:2.5rem">
-      <h2>Resultado</h2>
-      <p>${p.resultado}</p>
-    </div>
+    ${p.cover}
+    <div class="detail-section"><h2>Contexto</h2><p>${p.contexto}</p></div>
+    <div class="detail-section"><h2>Problema</h2><p>${p.problema}</p></div>
+    <div class="detail-section"><h2>Objetivos</h2><ul class="obj-list">${p.obj.map(o=>`<li><div class="obj-check">✓</div>${o}</li>`).join('')}</ul></div>
+    <div class="detail-section"><h2>Mi rol</h2><p>${p.rol}</p></div>
+    <div class="detail-section"><h2>Proceso</h2><div class="process-grid">${p.proc.map((s,j)=>`<div class="process-item"><div class="process-num">${j+1}</div>${s}</div>`).join('')}</div></div>
+    ${p.extra}
+    <div class="result-card"><h2>Resultado</h2><p>${p.res}</p></div>
     <button class="proto-btn">↗ Ver prototipo interactivo</button>
-    <div class="detail-section">
-      <h2>Reflexión</h2>
-      <p class="reflexion-text">"${p.reflexion}"</p>
-    </div>
-    ${nextHtml}
-  `;
+    <div class="detail-section"><h2>Reflexión</h2><p class="reflexion-text">"${p.refl}"</p></div>
+    ${next}`;
   showSection('detalle-wrap');
 }
 </script>
