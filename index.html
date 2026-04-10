@@ -4,210 +4,209 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Luis Arnau | Product & UX/UI Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --bg: #f0f2f5;
-    --white: #ffffff;
-    --blue: #3B5BDB;
-    --blue-light: #e8edff;
-    --text: #1a1d23;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --radius: 16px;
-    --radius-sm: 10px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+:root{--bg:#f0f2f5;--white:#fff;--blue:#3B5BDB;--blue-light:#e8edff;--text:#1a1d23;--muted:#6b7280;--border:#e5e7eb;--r:16px;--rs:10px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(240,242,245,0.92); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
-  }
-  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text); background: none; border: none; cursor: pointer; font-family: inherit; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links button { font-size: 0.875rem; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: inherit; transition: color .2s; padding: 0; }
-  .nav-links button:hover { color: var(--text); }
-  .lang-toggle { display: flex; gap: 4px; }
-  .lang-btn { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-muted); transition: all .2s; font-family: inherit; }
-  .lang-btn.active { background: var(--blue); color: white; }
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(240,242,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
+.nav-logo{font-weight:700;font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;white-space:nowrap}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links button{font-size:.875rem;color:var(--muted);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .2s;padding:0;white-space:nowrap}
+.nav-links button:hover{color:var(--text)}
+.lang-toggle{display:flex;gap:4px;flex-shrink:0}
+.lang-btn{padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;font-family:inherit}
+.lang-btn.active{background:var(--blue);color:#fff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text)}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(240,242,245,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 1.5rem;z-index:199;flex-direction:column;gap:.75rem}
+.nav-mobile.open{display:flex}
+.nav-mobile button{font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:.5rem 0;border-bottom:1px solid var(--border)}
 
-  section { display: none; }
-  section.active { display: block; }
-  #hero-wrap.active { display: flex; flex-direction: column; }
+/* SECTIONS */
+section{display:none}
+section.active{display:block}
+#hero-wrap.active{display:flex;flex-direction:column}
 
-  /* HERO */
-  #hero {
-    min-height: calc(100vh - 56px);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden;
-  }
-  #hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,91,219,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: 20px; padding: 6px 14px; font-size: 0.8rem; color: var(--text-muted);
-    margin-bottom: 1.5rem; animation: fadeUp .5s ease both;
-  }
-  .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; display: inline-block; }
-  .hero-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.05; margin-bottom: 1.5rem;
-    animation: fadeUp .6s ease .1s both;
-  }
-  .hero-title .static { color: var(--text); }
-  .hero-title .grad {
-    background: linear-gradient(90deg, #3B5BDB, #6366f1, #8b5cf6, #3B5BDB);
-    background-size: 300% 100%;
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    animation: gradShift 4s ease infinite;
-  }
-  @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-  .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin: 0 auto 2.5rem; animation: fadeUp .6s ease .2s both; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp .6s ease .3s both; }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 3rem; animation: fadeUp .6s ease .4s both; }
-  .hero-pill { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+/* HERO */
+#hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,91,219,.07) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;animation:fadeUp .5s ease both}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,7rem);line-height:1.05;margin-bottom:1.5rem;animation:fadeUp .6s ease .1s both}
+.hero-title .static{color:var(--text)}
+.hero-title .grad{background:linear-gradient(90deg,#3B5BDB,#6366f1,#8b5cf6,#3B5BDB);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 4s ease infinite}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:540px;margin:0 auto 2.5rem;animation:fadeUp .6s ease .2s both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp .6s ease .3s both}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2.5rem;animation:fadeUp .6s ease .4s both}
+.hero-pill{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--muted);font-weight:500}
 
-  .btn-primary { background: var(--blue); color: white; border: none; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 8px; transition: opacity .2s, transform .2s; }
-  .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
-  .btn-secondary { background: var(--white); color: var(--text); border: 1px solid var(--border); padding: 13px 26px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 8px; transition: all .2s; }
-  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+/* BUTTONS */
+.btn-primary{background:var(--blue);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:8px;transition:opacity .2s,transform .2s;white-space:nowrap}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-secondary{background:var(--white);color:var(--text);border:1px solid var(--border);padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:8px;transition:all .2s;white-space:nowrap}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 
-  /* SOBRE */
-  #sobre-wrap.active { display: block; }
-  #sobre { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
-  .sobre-top { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .photo-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
-  .photo-circle { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg,var(--blue-light),#c7d2fe); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; overflow: hidden; border: 3px solid var(--border); }
-  .photo-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .photo-name { font-weight: 700; font-size: 1.1rem; }
-  .photo-role { color: var(--blue); font-weight: 600; font-size: 0.875rem; }
-  .photo-loc { color: var(--text-muted); font-size: 0.8rem; }
-  .photo-links { display: flex; gap: 8px; font-size: 0.8rem; }
-  .photo-links a { color: var(--blue); text-decoration: none; }
-  .bio-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; }
-  .bio-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-  .bio-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-muted); }
-  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; }
-  .card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border); }
-  .card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
-  .exp-item { margin-bottom: 1.5rem; }
-  .exp-item:last-child { margin-bottom: 0; }
-  .exp-role { font-weight: 700; font-size: 0.95rem; }
-  .exp-company { color: var(--blue); font-size: 0.875rem; font-weight: 600; }
-  .exp-meta { font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 8px; display: flex; gap: 8px; align-items: center; }
-  .badge { background: var(--bg); border-radius: 6px; padding: 2px 8px; font-size: 0.75rem; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border); }
-  .exp-list { list-style: none; }
-  .exp-list li { font-size: 0.875rem; color: var(--text-muted); padding: 3px 0 3px 14px; position: relative; }
-  .exp-list li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 500; }
-  .right-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+/* SOBRE */
+#sobre-wrap.active{display:block}
+#sobre{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+.sobre-top{display:grid;grid-template-columns:260px 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.photo-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+.photo-circle{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--blue-light),#c7d2fe);display:flex;align-items:center;justify-content:center;font-size:2.5rem;overflow:hidden;border:3px solid var(--border)}
+.photo-circle img{width:100%;height:100%;object-fit:cover}
+.photo-name{font-weight:700;font-size:1.05rem}
+.photo-role{color:var(--blue);font-weight:600;font-size:.875rem}
+.photo-loc{color:var(--muted);font-size:.8rem}
+.photo-links{display:flex;gap:8px;font-size:.8rem}
+.photo-links a{color:var(--blue);text-decoration:none}
+.bio-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:2rem}
+.bio-card h2{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.bio-text{font-size:.9rem;line-height:1.8;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
+.card{background:var(--white);border-radius:var(--r);padding:1.75rem;border:1px solid var(--border)}
+.card-title{font-size:1.05rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px}
+.exp-item{margin-bottom:1.5rem}
+.exp-item:last-child{margin-bottom:0}
+.exp-role{font-weight:700;font-size:.95rem}
+.exp-company{color:var(--blue);font-size:.875rem;font-weight:600}
+.exp-meta{font-size:.8rem;color:var(--muted);margin:4px 0 8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.badge{background:var(--bg);border-radius:6px;padding:2px 8px;font-size:.75rem;font-weight:500;color:var(--muted);border:1px solid var(--border)}
+.exp-list{list-style:none}
+.exp-list li{font-size:.875rem;color:var(--muted);padding:3px 0 3px 14px;position:relative}
+.exp-list li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.8rem;font-weight:500}
+.right-cards{display:flex;flex-direction:column;gap:1.5rem}
 
-  /* PROYECTOS */
-  #proyectos-wrap.active { display: block; }
-  #proyectos { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
-  .section-header { text-align: center; margin-bottom: 3rem; }
-  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
-  .section-sub { color: var(--text-muted); font-size: 0.95rem; }
-  .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
-  .project-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; cursor: pointer; transition: box-shadow .25s, transform .25s; }
-  .project-card:hover { box-shadow: 0 8px 32px rgba(59,91,219,.12); transform: translateY(-2px); }
-  .project-cover { aspect-ratio: 16/10; overflow: hidden; position: relative; }
-  .project-cover img { width: 100%; height: 100%; object-fit: cover; }
-  .project-cover-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
-  .project-info { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
-  .project-name { font-size: 1.4rem; font-weight: 800; color: var(--blue); margin-bottom: .75rem; }
-  .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
-  .project-tag { background: var(--blue-light); color: var(--blue); border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600; }
-  .project-link { color: var(--blue); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; }
-  .project-link:hover { text-decoration: underline; }
+/* PROYECTOS */
+#proyectos-wrap.active{display:block}
+#proyectos{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+.section-header{text-align:center;margin-bottom:2.5rem}
+.section-title{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-size:.95rem}
+.project-list{display:flex;flex-direction:column;gap:1.5rem}
+.project-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s}
+.project-card:hover{box-shadow:0 8px 32px rgba(59,91,219,.12);transform:translateY(-2px)}
+.project-cover{overflow:hidden;position:relative;min-height:200px}
+.project-cover-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem;min-height:200px}
+.project-cover-bg img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.project-info{padding:1.75rem;display:flex;flex-direction:column;justify-content:center}
+.project-name{font-size:1.35rem;font-weight:800;color:var(--blue);margin-bottom:.6rem}
+.project-desc{color:var(--muted);font-size:.875rem;line-height:1.65;margin-bottom:1.1rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.project-tag{background:var(--blue-light);color:var(--blue);border-radius:6px;padding:3px 10px;font-size:.75rem;font-weight:600}
+.project-link{color:var(--blue);font-size:.875rem;font-weight:600;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
+.project-link:hover{text-decoration:underline}
 
-  /* DETALLE */
-  #detalle-wrap.active { display: block; }
-  #detalle { max-width: 780px; margin: 0 auto; padding: 2rem 2rem 4rem; }
-  .back-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.875rem; font-family: inherit; margin-bottom: 1.5rem; padding: 0; transition: color .2s; }
-  .back-btn:hover { color: var(--text); }
-  .detail-title { font-size: 2.5rem; font-weight: 800; margin-bottom: .5rem; }
-  .detail-sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
-  .detail-cover { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem; overflow: hidden; }
-  .detail-cover img { width: 100%; height: 100%; object-fit: cover; }
-  .detail-cover-emoji { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
-  .slide-img { width: 100%; border-radius: var(--radius-sm); margin: 1.25rem 0; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,.07); }
-  .slide-caption { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: -0.75rem; margin-bottom: 1.25rem; font-style: italic; }
-  .detail-section { margin-bottom: 2.5rem; }
-  .detail-section h2 { color: var(--blue); font-size: 1.15rem; font-weight: 700; margin-bottom: .75rem; }
-  .detail-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
-  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .obj-list li { font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
-  .obj-check { width: 22px; height: 22px; min-width: 22px; background: var(--blue-light); color: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
-  .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .process-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.875rem; }
-  .process-num { width: 28px; height: 28px; border-radius: 50%; min-width: 28px; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
-  .result-card { background: var(--blue-light); border: 1px solid #c5d0f5; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2.5rem; }
-  .result-card h2 { color: var(--blue); font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
-  .result-card p { color: var(--text); font-size: 0.9rem; line-height: 1.7; }
-  .reflexion-text { font-style: italic; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
-  .proto-btn { background: var(--blue); color: white; border: none; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 auto 2.5rem; font-family: inherit; transition: opacity .2s; }
-  .proto-btn:hover { opacity: .88; }
-  .insight-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .insight-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; }
-  .insight-card h3 { color: var(--blue); font-size: 0.875rem; font-weight: 700; margin-bottom: .6rem; }
-  .insight-card ul { list-style: none; }
-  .insight-card ul li { font-size: 0.8rem; color: var(--text-muted); padding: 3px 0 3px 12px; position: relative; }
-  .insight-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--blue); }
-  .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 1rem 0; }
-  .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; text-align: center; }
-  .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); }
-  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
-  .nav-project { display: flex; justify-content: flex-end; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem; }
-  .nav-project-btn { background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; color: var(--text); transition: opacity .2s; display: flex; align-items: center; gap: 8px; }
-  .nav-project-btn:hover { opacity: .7; }
-  .nav-project-text { text-align: right; }
-  .nav-project-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
-  .nav-project-name { font-size: 1rem; font-weight: 700; }
+/* DETALLE */
+#detalle-wrap.active{display:block}
+#detalle{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.back-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.875rem;font-family:inherit;margin-bottom:1.5rem;padding:0;transition:color .2s}
+.back-btn:hover{color:var(--text)}
+.detail-title{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;margin-bottom:.5rem}
+.detail-sub{color:var(--muted);font-size:1rem;margin-bottom:2rem}
+.detail-cover{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;overflow:hidden;position:relative}
+.detail-cover img{width:100%;height:100%;object-fit:cover}
+.detail-cover-emoji{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.slide-img{width:100%;border-radius:var(--rs);margin:1.25rem 0;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.slide-caption{font-size:.78rem;color:var(--muted);text-align:center;margin-top:-.75rem;margin-bottom:1.25rem;font-style:italic}
+.detail-section{margin-bottom:2.5rem}
+.detail-section h2{color:var(--blue);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.detail-section p{color:var(--muted);font-size:.925rem;line-height:1.75}
+.obj-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.obj-list li{font-size:.9rem;color:var(--muted);display:flex;align-items:flex-start;gap:10px}
+.obj-check{width:22px;height:22px;min-width:22px;background:var(--blue-light);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.process-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:.85rem}
+.process-num{width:26px;height:26px;border-radius:50%;min-width:26px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.result-card{background:var(--blue-light);border:1px solid #c5d0f5;border-radius:var(--r);padding:1.5rem;margin-bottom:2.5rem}
+.result-card h2{color:var(--blue);font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+.result-card p{color:var(--text);font-size:.9rem;line-height:1.7}
+.reflexion-text{font-style:italic;color:var(--muted);font-size:.925rem;line-height:1.75}
+.proto-btn{background:var(--blue);color:#fff;border:none;padding:13px 26px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin:0 auto 2.5rem;font-family:inherit;transition:opacity .2s}
+.proto-btn:hover{opacity:.88}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.insight-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:1.1rem}
+.insight-card h3{color:var(--blue);font-size:.85rem;font-weight:700;margin-bottom:.5rem}
+.insight-card ul{list-style:none}
+.insight-card ul li{font-size:.8rem;color:var(--muted);padding:3px 0 3px 12px;position:relative}
+.insight-card ul li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1rem 0}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:1.1rem;text-align:center}
+.stat-num{font-size:1.75rem;font-weight:800;color:var(--blue)}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:4px}
+.nav-project{display:flex;justify-content:flex-end;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.nav-project-btn{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;color:var(--text);transition:opacity .2s;display:flex;align-items:center;gap:8px}
+.nav-project-btn:hover{opacity:.7}
+.nav-project-text{text-align:right}
+.nav-project-label{font-size:.75rem;color:var(--muted);display:block}
+.nav-project-name{font-size:1rem;font-weight:700}
 
-  /* CONTACTO */
-  #contacto-wrap.active { display: block; }
-  #contacto { max-width: 700px; margin: 0 auto; padding: 5rem 2rem; text-align: center; }
-  .contact-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }
-  .contact-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
-  .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
-  .contact-link { color: var(--text-muted); font-size: 0.875rem; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: color .2s; }
-  .contact-link:hover { color: var(--blue); }
-  .contact-form { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; text-align: left; }
-  .form-group { margin-bottom: 1.25rem; }
-  .form-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: .5rem; }
-  .form-input, .form-textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 0.875rem; font-family: inherit; color: var(--text); transition: border-color .2s; outline: none; }
-  .form-input:focus, .form-textarea:focus { border-color: var(--blue); }
-  .form-textarea { resize: vertical; min-height: 120px; }
-  .form-submit { width: 100%; background: var(--blue); color: white; border: none; padding: 14px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity .2s; }
-  .form-submit:hover { opacity: .88; }
+/* CONTACTO */
+#contacto-wrap.active{display:block}
+#contacto{max-width:680px;margin:0 auto;padding:4rem 1.5rem;text-align:center}
+.contact-title{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
+.contact-sub{color:var(--muted);margin-bottom:1.5rem}
+.contact-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.contact-link{color:var(--muted);font-size:.875rem;display:flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
+.contact-link:hover{color:var(--blue)}
+.contact-form{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:2rem;text-align:left}
+.form-group{margin-bottom:1.1rem}
+.form-label{display:block;font-size:.875rem;font-weight:600;margin-bottom:.5rem}
+.form-input,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;font-size:.875rem;font-family:inherit;color:var(--text);transition:border-color .2s;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:var(--blue)}
+.form-textarea{resize:vertical;min-height:110px}
+.form-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:var(--rs);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.form-submit:hover{opacity:.88}
 
-  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
-  .footer-logo { font-weight: 700; font-size: 0.95rem; }
-  .footer-icons { display: flex; gap: 1rem; }
-  .footer-icon { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; transition: color .2s; }
-  .footer-icon:hover { color: var(--blue); }
-  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:.5rem}
+.footer-logo{font-weight:700;font-size:.95rem}
+.footer-icons{display:flex;gap:1rem}
+.footer-icon{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s}
+.footer-icon:hover{color:var(--blue)}
+.footer-copy{font-size:.8rem;color:var(--muted)}
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-up { animation: fadeUp .5s ease both; }
-  .fade-up-1 { animation-delay: .05s; }
-  .fade-up-2 { animation-delay: .15s; }
-  .fade-up-3 { animation-delay: .25s; }
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .5s ease both}
+.fade-up-1{animation-delay:.05s}
+.fade-up-2{animation-delay:.15s}
+.fade-up-3{animation-delay:.25s}
 
-  @media (max-width: 768px) {
-    .sobre-top, .about-grid, .project-card, .process-grid, .insight-grid, .stats-row { grid-template-columns: 1fr; }
-    .hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .project-card{grid-template-columns:1fr}
+  .project-cover{min-height:180px}
+  .project-cover-bg{min-height:180px}
+  .sobre-top{grid-template-columns:1fr}
+  .photo-card{flex-direction:row;text-align:left;gap:1.25rem;align-items:flex-start}
+  .photo-circle{width:90px;height:90px;flex-shrink:0}
+  .photo-card > div{display:flex;flex-direction:column;gap:.3rem}
+}
+@media(max-width:600px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:block}
+  .hero-title{font-size:clamp(2.5rem,14vw,4rem)}
+  .hero-sub{font-size:.95rem}
+  .process-grid{grid-template-columns:1fr}
+  .insight-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr}
+  #detalle{padding:1.5rem 1rem 3rem}
+  #sobre{padding:1.5rem 1rem}
+  #proyectos{padding:1.5rem 1rem}
+  #contacto{padding:2.5rem 1rem}
+  .contact-form{padding:1.25rem}
+  .photo-card{flex-direction:column;text-align:center;align-items:center}
+  .hero-pill{font-size:.75rem;padding:5px 10px}
+  .project-info{padding:1.25rem}
+  footer{flex-direction:column;align-items:flex-start;gap:.75rem}
+}
 </style>
 </head>
 <body>
@@ -215,28 +214,40 @@
 <nav>
   <button class="nav-logo" onclick="showSection('hero-wrap')">Luis Arnau</button>
   <ul class="nav-links">
-    <li><button onclick="showSection('hero-wrap')">Inicio</button></li>
-    <li><button onclick="showSection('sobre-wrap')">Sobre mí</button></li>
-    <li><button onclick="showSection('proyectos-wrap')">Proyectos</button></li>
-    <li><button onclick="showSection('contacto-wrap')">Contacto</button></li>
+    <li><button onclick="showSection('hero-wrap')" data-key="nav_home">Inicio</button></li>
+    <li><button onclick="showSection('sobre-wrap')" data-key="nav_about">Sobre mí</button></li>
+    <li><button onclick="showSection('proyectos-wrap')" data-key="nav_projects">Proyectos</button></li>
+    <li><button onclick="showSection('contacto-wrap')" data-key="nav_contact">Contacto</button></li>
   </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn active">ES</button>
-    <button class="lang-btn">EN</button>
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/></svg>
+    </button>
   </div>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <button onclick="showSection('hero-wrap');toggleMenu()" data-key="nav_home">Inicio</button>
+  <button onclick="showSection('sobre-wrap');toggleMenu()" data-key="nav_about">Sobre mí</button>
+  <button onclick="showSection('proyectos-wrap');toggleMenu()" data-key="nav_projects">Proyectos</button>
+  <button onclick="showSection('contacto-wrap');toggleMenu()" data-key="nav_contact">Contacto</button>
+</div>
 
 <!-- HERO -->
 <section id="hero-wrap" class="active">
   <div id="hero">
-    <div class="hero-tag"><span class="dot"></span> Disponible para nuevos proyectos</div>
+    <div class="hero-tag"><span class="dot"></span> <span data-key="hero_available">Disponible para nuevos proyectos</span></div>
     <h1 class="hero-title">
-      <span class="static">Product </span><span class="grad">Designer</span>
+      <span class="static" data-key="hero_title_1">Product </span><span class="grad" data-key="hero_title_2">Designer</span>
     </h1>
-    <p class="hero-sub">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
+    <p class="hero-sub" data-key="hero_sub">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="showSection('proyectos-wrap')">Ver proyectos →</button>
-      <button class="btn-secondary">↓ Descargar CV</button>
+      <button class="btn-primary" onclick="showSection('proyectos-wrap')" data-key="hero_cta1">Ver proyectos →</button>
+      <button class="btn-secondary" data-key="hero_cta2">↓ Descargar CV</button>
     </div>
     <div class="hero-pills">
       <span class="hero-pill">UX Research</span>
@@ -249,73 +260,74 @@
   </div>
 </section>
 
-<!-- SOBRE MÍ -->
+<!-- SOBRE -->
 <section id="sobre-wrap">
   <div id="sobre">
     <div class="sobre-top">
       <div class="photo-card fade-up">
         <div class="photo-circle">
-          <!-- Sube tu foto a images/foto-luis.jpg y descomenta: -->
-          <!-- <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
+          <!-- Para añadir tu foto: sube foto-luis.jpg a images/ y cambia el emoji por: <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
           🧑‍💻
         </div>
-        <div class="photo-name">Luis Arnau</div>
-        <div class="photo-role">Product & UX/UI Designer</div>
-        <div class="photo-loc">📍 España</div>
-        <div class="photo-links">
-          <a href="mailto:luisarnau9@gmail.com">✉ Email</a>
-          <span style="color:var(--border)">|</span>
-          <a href="#">in LinkedIn</a>
+        <div>
+          <div class="photo-name">Luis Arnau</div>
+          <div class="photo-role">Product &amp; UX/UI Designer</div>
+          <div class="photo-loc">📍 España</div>
+          <div class="photo-links" style="margin-top:.5rem">
+            <a href="mailto:luisarnau9@gmail.com">✉ Email</a>
+            <span style="color:var(--border)">|</span>
+            <a href="#" target="_blank">in LinkedIn</a>
+          </div>
         </div>
       </div>
       <div class="bio-card fade-up fade-up-1">
-        <h2>👤 Sobre mí</h2>
-        <p class="bio-text">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
-        <p class="bio-text" style="margin-top:1rem">Combino investigación, validación, buenas prácticas de diseño y una comunicación clara para crear soluciones digitales efectivas y bien justificadas. Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.25rem">
-          <span class="tag">🎨 Diseño</span>
-          <span class="tag">🏔️ Montaña</span>
-          <span class="tag">📷 Fotografía</span>
-          <span class="tag">⚙️ Ingeniería</span>
+        <h2>👤 <span data-key="about_title">Sobre mí</span></h2>
+        <p class="bio-text" data-key="about_bio1">Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario.</p>
+        <p class="bio-text" style="margin-top:.9rem" data-key="about_bio2">Combino investigación, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.1rem">
+          <span class="tag">🎨 <span data-key="tag_design">Diseño</span></span>
+          <span class="tag">🏔️ <span data-key="tag_mountain">Montaña</span></span>
+          <span class="tag">📷 <span data-key="tag_photo">Fotografía</span></span>
+          <span class="tag">⚙️ <span data-key="tag_eng">Ingeniería</span></span>
         </div>
       </div>
     </div>
 
     <div class="about-grid">
       <div class="card fade-up">
-        <div class="card-title"><span>🏢</span> Experiencia profesional</div>
+        <div class="card-title"><span>🏢</span> <span data-key="exp_title">Experiencia profesional</span></div>
         <div class="exp-item">
-          <div class="exp-role">Ingeniero de fabricación</div>
+          <div class="exp-role" data-key="exp1_role">Ingeniero de fabricación</div>
           <div class="exp-company">Inhiset</div>
-          <div class="exp-meta">May 2024 – Jul 2024 <span class="badge">Presencial</span></div>
-          <ul class="exp-list"><li>Optimización de flujos mediante SAP</li><li>Documentación técnica</li><li>Diseño de componentes mecánicos</li><li>Soporte en análisis de problemas</li></ul>
+          <div class="exp-meta">May 2024 – Jul 2024 <span class="badge" data-key="badge_on">Presencial</span></div>
+          <ul class="exp-list"><li data-key="exp1_1">Optimización de flujos mediante SAP</li><li data-key="exp1_2">Documentación técnica</li><li data-key="exp1_3">Diseño de componentes mecánicos</li></ul>
         </div>
         <div class="exp-item">
-          <div class="exp-role">Diseñador UX/UI</div>
+          <div class="exp-role" data-key="exp2_role">Diseñador UX/UI</div>
           <div class="exp-company">CO·UX</div>
-          <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge">Remoto</span></div>
-          <ul class="exp-list"><li>Design Thinking & Design Research</li><li>Investigación con usuarios</li><li>Wireframes y user flows</li><li>Accesibilidad (WCAG)</li><li>Prototipos en Figma</li></ul>
+          <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge" data-key="badge_remote">Remoto</span></div>
+          <ul class="exp-list"><li>Design Thinking &amp; Research</li><li data-key="exp2_2">Investigación con usuarios</li><li>Wireframes y user flows</li><li>Accesibilidad (WCAG)</li><li data-key="exp2_5">Prototipos en Figma</li></ul>
         </div>
         <div class="exp-item">
-          <div class="exp-role">Ingeniero de fabricación</div>
+          <div class="exp-role" data-key="exp3_role">Ingeniero de fabricación</div>
           <div class="exp-company">Tecnobit</div>
-          <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge">Híbrido</span></div>
-          <ul class="exp-list"><li>Optimización de flujos mediante SAP</li><li>Diseño mecánico</li><li>Colaboración con ingeniería</li></ul>
+          <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge" data-key="badge_hybrid">Híbrido</span></div>
+          <ul class="exp-list"><li data-key="exp3_1">Optimización de flujos mediante SAP</li><li data-key="exp3_2">Diseño mecánico</li><li data-key="exp3_3">Colaboración con ingeniería</li></ul>
         </div>
         <div class="exp-item">
-          <div class="exp-role">Diseñador gráfico</div>
+          <div class="exp-role" data-key="exp4_role">Diseñador gráfico</div>
           <div class="exp-company">Esmalglass</div>
-          <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge">Presencial</span></div>
-          <ul class="exp-list"><li>Adaptación de productos y edición gráfica</li><li>Diseño de aplicaciones cerámicas</li><li>Gestión de color</li></ul>
+          <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge" data-key="badge_on">Presencial</span></div>
+          <ul class="exp-list"><li data-key="exp4_1">Adaptación de productos y edición gráfica</li><li data-key="exp4_2">Diseño de aplicaciones cerámicas</li><li data-key="exp4_3">Gestión de color</li></ul>
         </div>
       </div>
       <div class="right-cards">
         <div class="card fade-up fade-up-1">
-          <div class="card-title"><span>⚙️</span> Herramientas</div>
+          <div class="card-title"><span>⚙️</span> <span data-key="tools_title">Herramientas</span></div>
           <div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Jira</span><span class="tag">Miro</span><span class="tag">VS Code</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Confluence</span><span class="tag">SolidWorks</span><span class="tag">3DS Max</span><span class="tag">Autocad</span></div>
         </div>
         <div class="card fade-up fade-up-2">
-          <div class="card-title"><span>⭐</span> Habilidades</div>
+          <div class="card-title"><span>⭐</span> <span data-key="skills_title">Habilidades</span></div>
           <div class="tags"><span class="tag">User Interviews</span><span class="tag">User Research</span><span class="tag">Journey Maps</span><span class="tag">Usability Testing</span><span class="tag">UX Writing</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Interaction Design</span><span class="tag">Information Architecture</span><span class="tag">Design System</span></div>
         </div>
       </div>
@@ -327,63 +339,63 @@
 <section id="proyectos-wrap">
   <div id="proyectos">
     <div class="section-header fade-up">
-      <h2 class="section-title">Proyectos</h2>
-      <p class="section-sub">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
+      <h2 class="section-title" data-key="proj_title">Proyectos</h2>
+      <p class="section-sub" data-key="proj_sub">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
     </div>
     <div class="project-list">
+
       <div class="project-card fade-up" onclick="showDetail(0)">
         <div class="project-cover">
-          <div class="project-cover-inner" style="background:linear-gradient(135deg,#f97316,#fb923c)">
-            <img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" alt="LoLocal" onerror="this.style.display='none'"/>
+          <div class="project-cover-bg" style="background:linear-gradient(135deg,#f97316,#fb923c)">
+            <img src="images/lolocal-cover.png" alt="LoLocal" onerror="this.style.display='none'"/>
           </div>
         </div>
         <div class="project-info">
           <div class="project-name">LoLocal</div>
-          <p class="project-desc">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p>
+          <p class="project-desc" data-key="p0_desc">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p>
           <div class="project-tags"><span class="project-tag">UX Research</span><span class="project-tag">UI Design</span><span class="project-tag">Design System</span><span class="project-tag">Figma</span></div>
-          <button class="project-link">Ver proyecto →</button>
+          <button class="project-link" data-key="see_proj">Ver proyecto →</button>
         </div>
       </div>
 
       <div class="project-card fade-up fade-up-1" onclick="showDetail(1)">
         <div class="project-cover">
-          <div class="project-cover-inner" style="background:#1d3276">
-            <img src="images/remitly-cover.png" style="width:50%;opacity:.9" alt="Remitly" onerror="this.parentElement.innerHTML='💸'"/>
+          <div class="project-cover-bg" style="background:#1d3276;position:relative">
+            <img src="images/remitly-cover.png" alt="Remitly" style="width:45%;height:auto;position:relative;z-index:1;opacity:.95" onerror="this.parentElement.innerHTML='💸'"/>
           </div>
         </div>
         <div class="project-info">
           <div class="project-name">Remitly</div>
-          <p class="project-desc">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes de la app fintech.</p>
+          <p class="project-desc" data-key="p1_desc">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p>
           <div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">UX Research</span><span class="project-tag">UX Writing</span><span class="project-tag">Prototyping</span></div>
-          <button class="project-link">Ver proyecto →</button>
+          <button class="project-link" data-key="see_proj">Ver proyecto →</button>
         </div>
       </div>
 
       <div class="project-card fade-up fade-up-2" onclick="showDetail(2)">
         <div class="project-cover">
-          <div class="project-cover-inner" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>
+          <div class="project-cover-bg" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>
         </div>
         <div class="project-info">
           <div class="project-name">PedidosYA</div>
-          <p class="project-desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p>
-          <div class="project-tags"><span class="project-tag">Rediseño</span><span class="project-tag">Mobile</span><span class="project-tag">UX Writing</span></div>
-          <button class="project-link">Ver proyecto →</button>
+          <p class="project-desc" data-key="p2_desc">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p>
+          <div class="project-tags"><span class="project-tag" data-key="tag_redesign">Rediseño</span><span class="project-tag">Mobile</span><span class="project-tag">UX Writing</span></div>
+          <button class="project-link" data-key="see_proj">Ver proyecto →</button>
         </div>
       </div>
 
       <div class="project-card fade-up fade-up-3" onclick="showDetail(3)">
         <div class="project-cover">
-          <div class="project-cover-inner" style="background:linear-gradient(135deg,#064e3b,#10b981)">
-            <img src="images/cactus-1.png" style="width:100%;height:100%;object-fit:cover" alt="Estudio Cactus" onerror="this.style.display='none'"/>
-          </div>
+          <div class="project-cover-bg" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">🌵</div>
         </div>
         <div class="project-info">
           <div class="project-name">Estudio Cactus</div>
-          <p class="project-desc">Design challenge. Branding y diseño de producto para un estudio creativo con identidad visual propia.</p>
-          <div class="project-tags"><span class="project-tag">Challenge</span><span class="project-tag">Branding</span><span class="project-tag">UI Design</span></div>
-          <button class="project-link">Ver proyecto →</button>
+          <p class="project-desc" data-key="p3_desc">Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.</p>
+          <div class="project-tags"><span class="project-tag">Challenge</span><span class="project-tag">UX/UI</span><span class="project-tag" data-key="tag_proto">Prototipado</span></div>
+          <button class="project-link" data-key="see_proj">Ver proyecto →</button>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -391,7 +403,7 @@
 <!-- DETALLE -->
 <section id="detalle-wrap">
   <div id="detalle">
-    <button class="back-btn" onclick="showSection('proyectos-wrap')">← Volver</button>
+    <button class="back-btn" onclick="showSection('proyectos-wrap')">← <span data-key="back">Volver</span></button>
     <div id="detalle-content"></div>
   </div>
 </section>
@@ -399,17 +411,17 @@
 <!-- CONTACTO -->
 <section id="contacto-wrap">
   <div id="contacto">
-    <h2 class="contact-title fade-up">Contacto</h2>
-    <p class="contact-sub fade-up fade-up-1">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
-    <div class="contact-links fade-up fade-up-2">
+    <h2 class="contact-title" data-key="contact_title">Contacto</h2>
+    <p class="contact-sub" data-key="contact_sub">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
+    <div class="contact-links">
       <a href="mailto:luisarnau9@gmail.com" class="contact-link">✉ luisarnau9@gmail.com</a>
       <a href="#" class="contact-link">in LinkedIn</a>
     </div>
-    <div class="contact-form fade-up fade-up-3">
-      <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text"/></div>
-      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"/></div>
-      <div class="form-group"><label class="form-label">Mensaje</label><textarea class="form-textarea"></textarea></div>
-      <button class="form-submit">Enviar mensaje</button>
+    <div class="contact-form">
+      <div class="form-group"><label class="form-label" data-key="form_name">Nombre</label><input class="form-input" type="text"/></div>
+      <div class="form-group"><label class="form-label" data-key="form_email">Email</label><input class="form-input" type="email"/></div>
+      <div class="form-group"><label class="form-label" data-key="form_msg">Mensaje</label><textarea class="form-textarea"></textarea></div>
+      <button class="form-submit" data-key="form_send">Enviar mensaje</button>
     </div>
   </div>
 </section>
@@ -420,88 +432,237 @@
     <a class="footer-icon" href="#">LinkedIn</a>
     <a class="footer-icon" href="#">✉ Email</a>
   </div>
-  <span class="footer-copy">© 2026 Luis Arnau. Todos los derechos reservados.</span>
+  <span class="footer-copy" data-key="footer_copy">© 2026 Luis Arnau. Todos los derechos reservados.</span>
 </footer>
 
 <script>
-const P = [
-  {
-    name:"LoLocal", sub:"App marketplace para conectar comercios locales con compradores del barrio",
-    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:linear-gradient(135deg,#f97316,#fb923c);display:flex;align-items:center;justify-content:center"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"/></div></div>',
-    contexto:"Más de 40.000 tiendas cerraron entre 2019 y 2023 en España, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos y pequeños negocios. LoLocal nace para visibilizar estos comercios de manera sencilla y directa, recuperando el boca a boca y metiéndolo en el bolsillo.",
-    problema:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca ni cómo contactar con los negocios de su barrio.",
-    obj:["Visibilizar comercios locales de manera sencilla y directa","Conectar compradores y vendedores de forma emocional","Facilitar el descubrimiento por geolocalización","Crear sistema de fidelización para incentivar recurrencia","Diseño accesible para comerciantes poco digitalizados"],
-    rol:"UX Research, User Personas, Benchmark, Architecture, Wireframing, UI Design, Design System, Branding.",
-    proc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados","Wireframes baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
-    res:"App diseñada desde cero con sistema de navegación dual (negocios/compradores), UI Kit completo con tipografía Work Sans, arquitectura de información con sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
-    refl:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
-    extra:`<div class="detail-section"><h2>Propuesta de valor</h2><p>Visibilizar los comercios locales de manera sencilla y directa, conectando negocios con compradores de manera emocional. Diferenciación clave: humanización de la compra, facilidad para comprar local y apoyo genuino al comercio como herramienta de transformación social.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>3 perfiles clave: Carmen Lamadrid (comerciante, propietaria gourmet), Amaïa López (consumidora que valora trato cercano y productos locales) y Pedro Muñoz (no consumidor que prioriza comodidad y no conoce el comercio local).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Sesgos cognitivos aplicados</h2><p>6 principios: Efecto posición serial, Visión periférica, Gestalt y jerarquía visual, FOMO (disponibilidad limitada), Efecto Hick-Hyman (filtros inteligentes) y Ley de Fitts (botón Chat grande y accesible).</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes y prototipo</h2><p>5 tareas principales con wireframes de baja y media fidelidad. Pantalla de inicio con barra de búsqueda dinámica, toggle producto/negocio, categorías scrollables y secciones de patrocinados y recomendados.</p><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta (Primary-Green, Accent dorado, Surface), iconografía por categoría, y componentes: cards, botones, filtros, chat, reseñas, perfil y fidelización.</p><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
-    next:1
+// ── TRANSLATIONS ──────────────────────────────────────────────
+const T = {
+  es: {
+    nav_home:"Inicio", nav_about:"Sobre mí", nav_projects:"Proyectos", nav_contact:"Contacto",
+    hero_available:"Disponible para nuevos proyectos",
+    hero_title_1:"Product ", hero_title_2:"Designer",
+    hero_sub:"Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.",
+    hero_cta1:"Ver proyectos →", hero_cta2:"↓ Descargar CV",
+    about_title:"Sobre mí",
+    about_bio1:"Diseñador UX/UI con formación en ingeniería del diseño y background en diseño gráfico y fabricación industrial. Me enfoco en crear productos digitales funcionales, accesibles y centrados en el usuario.",
+    about_bio2:"Combino investigación, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre.",
+    tag_design:"Diseño", tag_mountain:"Montaña", tag_photo:"Fotografía", tag_eng:"Ingeniería",
+    exp_title:"Experiencia profesional",
+    exp1_role:"Ingeniero de fabricación", exp1_1:"Optimización de flujos mediante SAP", exp1_2:"Documentación técnica", exp1_3:"Diseño de componentes mecánicos",
+    exp2_role:"Diseñador UX/UI", exp2_2:"Investigación con usuarios", exp2_5:"Prototipos en Figma",
+    exp3_role:"Ingeniero de fabricación", exp3_1:"Optimización de flujos mediante SAP", exp3_2:"Diseño mecánico", exp3_3:"Colaboración con ingeniería",
+    exp4_role:"Diseñador gráfico", exp4_1:"Adaptación de productos y edición gráfica", exp4_2:"Diseño de aplicaciones cerámicas", exp4_3:"Gestión de color",
+    badge_on:"Presencial", badge_remote:"Remoto", badge_hybrid:"Híbrido",
+    tools_title:"Herramientas", skills_title:"Habilidades",
+    proj_title:"Proyectos", proj_sub:"Una selección de case studies donde diseño, investigación y estrategia se unen.",
+    p0_desc:"App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.",
+    p1_desc:"Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.",
+    p2_desc:"Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.",
+    p3_desc:"Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.",
+    see_proj:"Ver proyecto →", tag_redesign:"Rediseño", tag_proto:"Prototipado",
+    back:"Volver",
+    contact_title:"Contacto", contact_sub:"¿Tienes un proyecto en mente? Me encantaría escucharte.",
+    form_name:"Nombre", form_email:"Email", form_msg:"Mensaje", form_send:"Enviar mensaje",
+    footer_copy:"© 2026 Luis Arnau. Todos los derechos reservados.",
+    // Detail labels
+    d_context:"Contexto", d_problem:"Problema", d_objectives:"Objetivos", d_role:"Mi rol",
+    d_process:"Proceso", d_result:"Resultado", d_proto:"↗ Ver prototipo interactivo",
+    d_reflection:"Reflexión", d_next:"Proyecto siguiente", d_back:"Volver"
   },
-  {
-    name:"Remitly", sub:"Rediseño del flujo de confirmación y seguimiento de transferencias",
-    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:#1d3276;display:flex;align-items:center;justify-content:center"><img src="images/remitly-cover.png" style="width:50%;opacity:.9" onerror="this.parentElement.innerHTML=\'💸\'"/></div></div>',
-    contexto:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío entre usuarios frecuentes, especialmente la falta de confirmación clara al finalizar una transferencia, generando desconfianza y envíos duplicados.",
-    problema:"La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
-    obj:["Reducir envíos duplicados por falta de feedback","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
-    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
-    proc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación punto de intervención","Rediseño flujo confirmación y seguimiento","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
-    res:"Todos los participantes completaron las tareas. El flujo mejorado redujo la confusión en la confirmación. NPS de 62.5% en consulta del historial.",
-    refl:"Pequeños cambios en los mensajes del sistema tienen un impacto directo en la confianza del usuario. La transparencia es clave en apps fintech.",
-    extra:`<div class="detail-section"><h2>Research y Ley de Pareto</h2><p>Audiencia principal: migrantes latinos 25-34 años. El 20% de causas (incidencias en el envío + UI) provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="slide-img" alt=""/><p class="slide-caption">Análisis de reseñas + Ley de Pareto: incidencias en el envío y mal uso de la UI son las causas raíz.</p></div><div class="detail-section"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona. Envía dinero a Perú urgente y no recibe confirmación clara — genera desconfianza y envíos repetidos.</p><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><p class="slide-caption">De "Recopilando información..." a estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><p class="slide-caption">Mensajes más claros, empáticos y accionables en modales de confirmación.</p><img src="images/remitly-envios.png" class="slide-img" alt=""/><p class="slide-caption">Historial reorganizado con filtros por estado: En progreso, Recibido, Cancelado.</p></div><div class="detail-section"><h2>Pruebas de usabilidad</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div></div></div><div class="detail-section"><h2>Insights</h2><div class="insight-grid"><div class="insight-card"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso visibles</li><li>Unificar textos del flujo</li><li>Mostrar detalle desde tarjeta</li><li>Mensaje claro al confirmar</li><li>Accesos visibles a ayuda</li></ul></div><div class="insight-card"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" se perciben similares</li><li>Historial genera confianza</li><li>Interfaz familiar e intuitiva</li><li>Exceso de información en textos</li></ul></div><div class="insight-card"><h3>Conclusión</h3><ul><li>Experiencia más simple que la anterior</li><li>Usuarios entienden qué hacer</li><li>Pequeños ajustes mejorarían el flujo</li></ul></div></div></div>`,
-    next:2
-  },
-  {
-    name:"PedidosYA", sub:"Rediseño conceptual de app de delivery de comida",
-    cover:'<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#3d405b,#e07a5f)">🍔</div>',
-    contexto:"Rediseño conceptual para mejorar la experiencia de usuario en la app PedidosYA.",
-    problema:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
-    obj:["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo de pedido","Mejorar la legibilidad del menú"],
-    rol:"UX Research, UI Design, UX Writing, Prototipado.",
-    proc:["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes básico","Validación con usuarios"],
-    res:"Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
-    refl:"La jerarquía visual y la reducción de fricciones son clave en apps transaccionales.",
-    extra:"",
-    next:3
-  },
-  {
-    name:"Estudio Cactus", sub:"Design challenge — Branding y producto para estudio creativo",
-    cover:'<div class="detail-cover"><div style="width:100%;height:100%;background:linear-gradient(135deg,#064e3b,#10b981);display:flex;align-items:center;justify-content:center"><img src="images/cactus-1.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"/></div></div>',
-    contexto:"Design challenge de branding y diseño de producto para un estudio creativo con identidad visual propia.",
-    problema:"Crear una identidad y producto digital coherente para un estudio creativo partiendo desde cero.",
-    obj:["Definir identidad visual única","Diseñar sistema de componentes coherente","Crear prototipo funcional"],
-    rol:"Branding, UI Design, Prototyping.",
-    proc:["Definición de marca y valores","Paleta de color e identidad","Sistema tipográfico","Diseño de pantallas principales","Prototipo interactivo"],
-    res:"Identidad visual completa y prototipo funcional del producto digital.",
-    refl:"Un challenge que pone a prueba la coherencia visual y la toma de decisiones de diseño bajo restricciones.",
-    extra:`<div class="detail-section"><h2>Prototipo</h2><p>Añade tus imágenes a la carpeta <code>images/</code> como <code>cactus-1.png</code> y <code>cactus-2.png</code>.</p><img src="images/cactus-1.png" class="slide-img" onerror="this.style.display='none'" alt=""/><img src="images/cactus-2.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
-    next:null
+  en: {
+    nav_home:"Home", nav_about:"About", nav_projects:"Projects", nav_contact:"Contact",
+    hero_available:"Available for new projects",
+    hero_title_1:"Product ", hero_title_2:"Designer",
+    hero_sub:"I design clear, intuitive, people-centred digital experiences. I turn insights into functional and visually clean products.",
+    hero_cta1:"View projects →", hero_cta2:"↓ Download CV",
+    about_title:"About me",
+    about_bio1:"UX/UI Designer with a background in design engineering, graphic design and industrial manufacturing. I focus on building functional, accessible, user-centred digital products through iterative processes and data-driven design.",
+    about_bio2:"I combine research, validation and design best practices to build effective, well-justified digital solutions. Outside work I enjoy the mountains, photography and outdoor sports.",
+    tag_design:"Design", tag_mountain:"Mountains", tag_photo:"Photography", tag_eng:"Engineering",
+    exp_title:"Professional experience",
+    exp1_role:"Manufacturing Engineer", exp1_1:"Process optimisation via SAP", exp1_2:"Technical documentation", exp1_3:"Mechanical component design",
+    exp2_role:"UX/UI Designer", exp2_2:"User research", exp2_5:"Prototypes in Figma",
+    exp3_role:"Manufacturing Engineer", exp3_1:"Process optimisation via SAP", exp3_2:"Mechanical design", exp3_3:"Collaboration with engineering",
+    exp4_role:"Graphic designer", exp4_1:"Product adaptation and graphic editing", exp4_2:"Ceramic application design", exp4_3:"Colour management",
+    badge_on:"On-site", badge_remote:"Remote", badge_hybrid:"Hybrid",
+    tools_title:"Tools", skills_title:"Skills",
+    proj_title:"Projects", proj_sub:"A selection of case studies where design, research and strategy come together.",
+    p0_desc:"Marketplace app connecting local shops with neighbourhood buyers. Designed from scratch, focused on community, trust and local discovery.",
+    p1_desc:"Redesign of the transfer confirmation and tracking flow to reduce friction and distrust among frequent users.",
+    p2_desc:"Conceptual redesign to improve the food delivery app experience, focused on navigation and friction reduction.",
+    p3_desc:"Real UX/UI challenge for a selection process. Redesigned the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach.",
+    see_proj:"View project →", tag_redesign:"Redesign", tag_proto:"Prototyping",
+    back:"Back",
+    contact_title:"Contact", contact_sub:"Have a project in mind? I'd love to hear about it.",
+    form_name:"Name", form_email:"Email", form_msg:"Message", form_send:"Send message",
+    footer_copy:"© 2026 Luis Arnau. All rights reserved.",
+    d_context:"Context", d_problem:"Problem", d_objectives:"Objectives", d_role:"My role",
+    d_process:"Process", d_result:"Result", d_proto:"↗ View interactive prototype",
+    d_reflection:"Reflection", d_next:"Next project", d_back:"Back"
   }
-];
+};
 
+let lang = 'es';
+
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const k = el.getAttribute('data-key');
+    if (T[l][k] !== undefined) el.textContent = T[l][k];
+  });
+  document.documentElement.lang = l;
+}
+
+// ── PROJECTS DATA ─────────────────────────────────────────────
+const P = {
+  es: [
+    {
+      name:"LoLocal", sub:"App marketplace para conectar comercios locales con compradores del barrio",
+      cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="LoLocal" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
+      contexto:"Más de 40.000 tiendas cerraron entre 2019 y 2023 en España, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos y pequeños negocios. LoLocal nace para visibilizar estos comercios de manera sencilla y directa, recuperando el boca a boca y metiéndolo en el bolsillo.",
+      problema:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca ni cómo contactar con los negocios de su barrio.",
+      obj:["Visibilizar comercios locales de manera sencilla","Conectar compradores y vendedores de forma emocional","Facilitar el descubrimiento por geolocalización","Sistema de fidelización para incentivar recurrencia","Diseño accesible para comerciantes poco digitalizados"],
+      rol:"UX Research, User Personas, Benchmark, Architecture, Wireframing, UI Design, Design System, Branding.",
+      proc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados","Wireframes de baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
+      res:"App diseñada desde cero con navegación dual (negocios/compradores), UI Kit completo con tipografía Work Sans, sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
+      refl:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
+      extra:`<div class="detail-section"><h2>Propuesta de valor</h2><p>Visibilizar comercios locales conectando negocios con compradores de forma emocional. Diferenciación: humanización de la compra, facilidad para comprar local y apoyo al comercio como herramienta de transformación social.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>Carmen Lamadrid (comerciante, tienda gourmet), Amaïa López (consumidora que valora el trato cercano) y Pedro Muñoz (no consumidor que prioriza comodidad y no conoce el comercio local).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Sesgos cognitivos</h2><p>6 principios aplicados: Efecto posición serial, Visión periférica, Gestalt y jerarquía visual, FOMO (disponibilidad limitada), Efecto Hick-Hyman (filtros) y Ley de Fitts (botón Chat accesible).</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes</h2><p>5 tareas con wireframes de baja y media fidelidad. Pantalla de inicio con barra de búsqueda dinámica, toggle producto/negocio, categorías scrollables y secciones de patrocinados y recomendados.</p><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta (Primary-Green, Accent dorado), iconografía por categoría, componentes de card, botones, filtros, chat y fidelización.</p><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
+      next:1
+    },
+    {
+      name:"Remitly", sub:"Rediseño del flujo de confirmación y seguimiento de transferencias",
+      cover:`<div class="detail-cover" style="background:#1d3276"><img src="images/remitly-cover.png" alt="Remitly" style="width:100%;height:100%;object-fit:contain;padding:2rem" onerror="this.parentElement.style.fontSize='4rem';this.parentElement.innerHTML='💸'"/></div>`,
+      contexto:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío entre usuarios frecuentes, especialmente la falta de confirmación clara al finalizar una transferencia, generando desconfianza y envíos duplicados.",
+      problema:"La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
+      obj:["Reducir envíos duplicados por falta de feedback","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
+      rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
+      proc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación punto de intervención","Rediseño flujo de confirmación","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
+      res:"Todos los participantes completaron las tareas. Flujo mejorado que redujo la confusión en la confirmación del envío. NPS de 62.5% en historial.",
+      refl:"Pequeños cambios en los mensajes tienen un impacto directo en la confianza. La transparencia es clave en apps fintech.",
+      extra:`<div class="detail-section"><h2>Research y Ley de Pareto</h2><p>Audiencia principal: migrantes latinos 25-34 años. El 20% de causas (incidencias en el envío + UI) provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="slide-img" alt=""/><p class="slide-caption">Análisis de reseñas: incidencias en el envío y mal uso de la UI son las causas raíz.</p></div><div class="detail-section"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona. Envía dinero a Perú y no recibe confirmación clara, lo que genera desconfianza y envíos repetidos.</p><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><p class="slide-caption">De "Recopilando información..." a estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><p class="slide-caption">Mensajes más claros, empáticos y accionables en los modales de confirmación.</p><img src="images/remitly-envios.png" class="slide-img" alt=""/><p class="slide-caption">Historial con filtros por estado: En progreso, Recibido, Cancelado.</p></div><div class="detail-section"><h2>Pruebas de usabilidad</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div></div></div><div class="detail-section"><h2>Insights</h2><div class="insight-grid"><div class="insight-card"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso</li><li>Unificar textos del flujo</li><li>Detalle desde tarjeta</li><li>Mensaje claro al confirmar</li></ul></div><div class="insight-card"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" se perciben similares</li><li>Historial genera confianza</li><li>Interfaz familiar</li></ul></div><div class="insight-card"><h3>Conclusión</h3><ul><li>Experiencia más simple</li><li>Usuarios entienden el flujo</li><li>Pequeños ajustes mejorarían la intuición</li></ul></div></div></div>`,
+      next:2
+    },
+    {
+      name:"PedidosYA", sub:"Rediseño conceptual de app de delivery de comida",
+      cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+      contexto:"Rediseño conceptual para mejorar la experiencia de usuario en la app de pedidos de comida PedidosYA, con foco en simplificar el flujo de pedido y reducir el abandono.",
+      problema:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
+      obj:["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo hasta el pedido","Mejorar la legibilidad del menú"],
+      rol:"UX Research, UI Design, UX Writing, Prototipado.",
+      proc:["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes","Validación con usuarios"],
+      res:"Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
+      refl:"La jerarquía visual y la reducción de fricciones son fundamentales en apps transaccionales.",
+      extra:"",
+      next:3
+    },
+    {
+      name:"Estudio Cactus", sub:"Challenge UX/UI — Rediseño de mapa 3D interactivo",
+      cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">🌵</div>`,
+      contexto:"Prueba real para un proceso de selección. Había que mejorar la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach (EE.UU.).",
+      problema:"El menú lateral del mapa era poco intuitivo en móvil y ciertas áreas estaban mal numeradas.",
+      obj:["Navegación clara en móvil","Menú desplegable más comprensible","Optimizar espacio en pantalla","Mejorar consistencia de numeraciones"],
+      rol:"UX/UI, análisis, prototipado.",
+      proc:["Reorganización del menú","Menú tipo burger para no interferir con el mapa","Notas explicativas en submenús","Corrección de numeración siguiendo lógica paralela"],
+      res:"Mayor claridad, menor fricción y experiencia móvil mucho más intuitiva.",
+      refl:"Ejercicio sólido de navegación, claridad y diseño funcional.",
+      extra:"",
+      next:null
+    }
+  ],
+  en: [
+    {
+      name:"LoLocal", sub:"Marketplace app connecting local shops with neighbourhood buyers",
+      cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="LoLocal" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
+      contexto:"Over 40,000 shops closed in Spain between 2019 and 2023, most of them local businesses. Lack of digitalisation, rising costs and online competition are driving closures. LoLocal was created to make local businesses visible simply and directly, bringing word-of-mouth back into your pocket.",
+      problema:"Local shops lack accessible digital tools to gain visibility, and buyers don't know what's near them or how to contact neighbourhood businesses.",
+      obj:["Make local businesses easily discoverable","Connect buyers and sellers emotionally","Enable discovery by geolocation","Build a loyalty system to drive repeat visits","Accessible design for low-digital-literacy shopkeepers"],
+      rol:"UX Research, User Personas, Benchmarking, Architecture, Wireframing, UI Design, Design System, Branding.",
+      proc:["Desk Research + Mind Map","Interviews with shops and consumers","Surveys and benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Value proposition and MVP","Architecture and navigation","Cognitive biases applied","Low- and mid-fidelity wireframes","UI Kit + component library","Interactive prototype in Figma"],
+      res:"App designed from scratch with dual navigation (shops / buyers), full UI Kit with Work Sans, sitemap and task flows for 5 main tasks, and functional Figma prototype.",
+      refl:"Not just a marketplace — it's the neighbourhood, digitalised. We brought word-of-mouth back and put it in an app.",
+      extra:`<div class="detail-section"><h2>Value proposition</h2><p>Make local businesses visible in a simple, direct way — connecting shops with buyers emotionally. Key differentiators: humanising the shopping experience, ease of buying local, and supporting commerce as a social-transformation tool.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>Carmen Lamadrid (shop owner, gourmet store), Amaïa López (consumer who values personal service) and Pedro Muñoz (non-consumer who prioritises convenience and doesn't know local businesses).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Cognitive biases</h2><p>6 applied principles: Serial position effect, Peripheral vision, Gestalt & visual hierarchy, FOMO (limited availability), Hick-Hyman effect (smart filters) and Fitts' Law (large accessible Chat button).</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes</h2><p>5 tasks with low- and mid-fidelity wireframes. Home screen with dynamic search bar, product/business toggle, scrollable categories and sponsored and recommended sections.</p><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><p>Full UI Kit: Work Sans, palette (Primary-Green, golden Accent), category iconography, and card, button, filter, chat and loyalty components.</p><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
+      next:1
+    },
+    {
+      name:"Remitly", sub:"Redesign of the transfer confirmation and tracking flow",
+      cover:`<div class="detail-cover" style="background:#1d3276"><img src="images/remitly-cover.png" alt="Remitly" style="width:100%;height:100%;object-fit:contain;padding:2rem" onerror="this.parentElement.style.fontSize='4rem';this.parentElement.innerHTML='💸'"/></div>`,
+      contexto:"Remitly is one of the most widely used apps for sending remittances. We identified friction in the sending process for frequent users, especially around unclear confirmation after completing a transfer, leading to distrust and duplicate sends.",
+      problema:"Unclear confirmation at the end of a transfer caused distrust and duplicate sends. Users didn't know if the money had arrived or what state their transaction was in.",
+      obj:["Reduce duplicate sends caused by lack of feedback","Show transfer status in real time","Improve system messages (UX Writing)","Organise transfer history by status","Increase user confidence in the confirmation flow"],
+      rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototyping, Usability Testing.",
+      proc:["Desktop research and review analysis","Pareto analysis of pain points","User Persona: Martín Benitez","Journey Map of the transfer flow","Identifying the intervention point","Redesign of the confirmation flow","UX Writing on system messages","Heuristic and accessibility audit","Usability tests (8 participants)","Post-test NPS questionnaire"],
+      res:"All participants completed the tasks. The improved flow reduced confusion during transfer confirmation. NPS of 62.5% for history consultation.",
+      refl:"Small changes to system messages directly impact user trust. Transparency is critical in fintech apps.",
+      extra:`<div class="detail-section"><h2>Research & Pareto</h2><p>Primary audience: Latin migrants aged 25–34. 20% of causes (sending incidents + UI misuse) drive 80% of problems.</p><img src="images/remitly-pareto.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>User Persona & Journey Map</h2><p>Martín Benitez, 30-year-old Uber driver in Barcelona. Sends money to Peru urgently and gets no clear confirmation — causing distrust and repeated sends.</p><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solution</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><p class="slide-caption">From "Gathering information…" to a clear status screen with visible reference number.</p><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><p class="slide-caption">Clearer, more empathetic and actionable messages in confirmation modals.</p><img src="images/remitly-envios.png" class="slide-img" alt=""/><p class="slide-caption">History reorganised with filters by status: In progress, Received, Cancelled.</p></div><div class="detail-section"><h2>Usability tests</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participants</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completed Task 1</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS History</div></div></div></div><div class="detail-section"><h2>Insights</h2><div class="insight-grid"><div class="insight-card"><h3>Recommendations</h3><ul><li>Progress indicators</li><li>Unify copy across flow</li><li>Detail from card, not eye icon</li><li>Clear send confirmation</li></ul></div><div class="insight-card"><h3>Findings</h3><ul><li>"Recent" and "History" feel similar</li><li>History builds trust</li><li>Interface felt familiar</li></ul></div><div class="insight-card"><h3>Conclusion</h3><ul><li>Simpler experience overall</li><li>Users understand the flow</li><li>Small tweaks would improve intuition</li></ul></div></div></div>`,
+      next:2
+    },
+    {
+      name:"PedidosYA", sub:"Conceptual redesign of a food delivery app",
+      cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+      contexto:"Conceptual redesign to improve the user experience of PedidosYA, focused on simplifying the order flow and reducing drop-off.",
+      problema:"Category navigation and cart management caused confusion and order abandonment.",
+      obj:["Simplify category navigation","Improve cart visibility","Reduce time to order","Improve menu legibility"],
+      rol:"UX Research, UI Design, UX Writing, Prototyping.",
+      proc:["Delivery app benchmark","Current user journey mapping","Pain point identification","Key screen redesign","Component system","User validation"],
+      res:"Redesign proposal with clearer navigation, a persistent cart, and an optimised order flow.",
+      refl:"Visual hierarchy and friction reduction are fundamental in transactional apps.",
+      extra:"",
+      next:3
+    },
+    {
+      name:"Estudio Cactus", sub:"UX/UI Challenge — 3D interactive map redesign",
+      cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">🌵</div>`,
+      contexto:"Real test for a selection process. The goal was to improve the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach, USA.",
+      problema:"The map's side menu was unintuitive on mobile and certain areas were incorrectly numbered.",
+      obj:["Clear mobile navigation","More comprehensible dropdown menu","Optimise screen space","Improve numbering consistency"],
+      rol:"UX/UI, analysis, prototyping.",
+      proc:["Menu reorganisation","Hamburger menu to avoid covering the map","Explanatory notes in submenus","Numbering correction following parallel logic"],
+      res:"Greater clarity, less friction and a much more intuitive mobile experience.",
+      refl:"A solid exercise in navigation, clarity and functional design.",
+      extra:"",
+      next:null
+    }
+  ]
+};
+
+// ── NAVIGATION ─────────────────────────────────────────────────
 function showSection(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+function toggleMenu() {
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+
+// ── DETAIL ─────────────────────────────────────────────────────
 function showDetail(i) {
-  const p = P[i];
-  const next = p.next !== null ? `<div class="nav-project"><button class="nav-project-btn" onclick="showDetail(${p.next})"><div class="nav-project-text"><span class="nav-project-label">Proyecto siguiente</span><span class="nav-project-name">${P[p.next].name}</span></div><span>→</span></button></div>` : '';
+  const p = P[lang][i];
+  const L = T[lang];
+  const obj = p.obj.map(o=>`<li><div class="obj-check">✓</div>${o}</li>`).join('');
+  const proc = p.proc.map((s,j)=>`<div class="process-item"><div class="process-num">${j+1}</div>${s}</div>`).join('');
+  const nextHtml = p.next !== null
+    ? `<div class="nav-project"><button class="nav-project-btn" onclick="showDetail(${p.next})"><div class="nav-project-text"><span class="nav-project-label">${L.d_next}</span><span class="nav-project-name">${P[lang][p.next].name}</span></div><span>→</span></button></div>`
+    : '';
+
   document.getElementById('detalle-content').innerHTML = `
     <h1 class="detail-title">${p.name}</h1>
     <p class="detail-sub">${p.sub}</p>
     ${p.cover}
-    <div class="detail-section"><h2>Contexto</h2><p>${p.contexto}</p></div>
-    <div class="detail-section"><h2>Problema</h2><p>${p.problema}</p></div>
-    <div class="detail-section"><h2>Objetivos</h2><ul class="obj-list">${p.obj.map(o=>`<li><div class="obj-check">✓</div>${o}</li>`).join('')}</ul></div>
-    <div class="detail-section"><h2>Mi rol</h2><p>${p.rol}</p></div>
-    <div class="detail-section"><h2>Proceso</h2><div class="process-grid">${p.proc.map((s,j)=>`<div class="process-item"><div class="process-num">${j+1}</div>${s}</div>`).join('')}</div></div>
+    <div class="detail-section"><h2>${L.d_context}</h2><p>${p.contexto}</p></div>
+    <div class="detail-section"><h2>${L.d_problem}</h2><p>${p.problema}</p></div>
+    <div class="detail-section"><h2>${L.d_objectives}</h2><ul class="obj-list">${obj}</ul></div>
+    <div class="detail-section"><h2>${L.d_role}</h2><p>${p.rol}</p></div>
+    <div class="detail-section"><h2>${L.d_process}</h2><div class="process-grid">${proc}</div></div>
     ${p.extra}
-    <div class="result-card"><h2>Resultado</h2><p>${p.res}</p></div>
-    <button class="proto-btn">↗ Ver prototipo interactivo</button>
-    <div class="detail-section"><h2>Reflexión</h2><p class="reflexion-text">"${p.refl}"</p></div>
-    ${next}`;
+    <div class="result-card"><h2>${L.d_result}</h2><p>${p.res}</p></div>
+    <button class="proto-btn">${L.d_proto}</button>
+    <div class="detail-section"><h2>${L.d_reflection}</h2><p class="reflexion-text">"${p.refl}"</p></div>
+    ${nextHtml}`;
   showSection('detalle-wrap');
 }
 </script>
