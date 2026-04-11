@@ -5,600 +5,529 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Luis Arnau | Product & UX/UI Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
-<!-- Lucide icons CDN -->
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
-:root{--bg:#f0f2f5;--white:#fff;--blue:#3B5BDB;--blue-light:#e8edff;--text:#1a1d23;--muted:#6b7280;--border:#e5e7eb;--r:16px;--rs:10px}
+:root{--bg:#f0f2f5;--white:#fff;--blue:#3B5BDB;--bl:#e8edff;--text:#1a1d23;--mu:#6b7280;--bor:#e5e7eb;--r:16px;--rs:10px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;background:rgba(240,242,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
-.nav-logo{font-weight:700;font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;white-space:nowrap}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links button{font-size:.875rem;color:var(--muted);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .2s;padding:0}
-.nav-links button:hover{color:var(--text)}
-.nav-right{display:flex;align-items:center;gap:.75rem}
-.lang-toggle{display:flex;gap:3px}
-.lang-btn{padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;font-family:inherit}
-.lang-btn.active{background:var(--blue);color:#fff}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text);align-items:center;justify-content:center}
-.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(240,242,245,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 1.5rem;z-index:199;flex-direction:column;gap:0}
-.nav-mobile.open{display:flex}
-.nav-mobile button{font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:.75rem 0;border-bottom:1px solid var(--border)}
-.nav-mobile button:last-child{border-bottom:none}
-
-/* ── SECTIONS ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(240,242,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--bor);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
+.nlogo{font-weight:700;font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit}
+.nlinks{display:flex;gap:1.5rem;list-style:none}
+.nlinks button{font-size:.875rem;color:var(--mu);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .2s;padding:0}
+.nlinks button:hover{color:var(--text)}
+.nright{display:flex;align-items:center;gap:.75rem}
+.ltog{display:flex;gap:3px}
+.lb{padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--mu);transition:all .2s;font-family:inherit}
+.lb.active{background:var(--blue);color:#fff}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text)}
+.mobnav{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(240,242,245,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--bor);padding:1rem 1.5rem;z-index:199;flex-direction:column}
+.mobnav.open{display:flex}
+.mobnav button{font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:.75rem 0;border-bottom:1px solid var(--bor)}
+.mobnav button:last-child{border-bottom:none}
 section{display:none}
 section.active{display:block}
-#hero-wrap.active{display:flex;flex-direction:column}
-
-/* ── HERO ── */
+#hw.active{display:flex;flex-direction:column}
 #hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,91,219,.07) 0%,transparent 70%);pointer-events:none}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;animation:fadeUp .5s ease both}
+.htag{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--bor);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);margin-bottom:1.5rem;animation:fu .5s ease both}
 .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s ease infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,7rem);line-height:1.05;margin-bottom:1.5rem;animation:fadeUp .6s ease .1s both}
-.hero-title .static{color:var(--text)}
-.hero-title .grad{background:linear-gradient(90deg,#3B5BDB,#6366f1,#8b5cf6,#3B5BDB);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 4s ease infinite}
-@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:540px;margin:0 auto 2.5rem;animation:fadeUp .6s ease .2s both}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp .6s ease .3s both}
-.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2.5rem;animation:fadeUp .6s ease .4s both}
-.hero-pill{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--muted);font-weight:500}
-
-/* ── BUTTONS ── */
-.btn-primary{background:var(--blue);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s,transform .2s;text-decoration:none}
-.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
-.btn-secondary{background:var(--white);color:var(--text);border:1px solid var(--border);padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none}
-.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
-
-/* ── SOBRE ── */
-#sobre-wrap.active{display:block}
+.htitle{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,7rem);line-height:1.05;margin-bottom:1.5rem;animation:fu .6s ease .1s both}
+.st{color:var(--text)}
+.gr{background:linear-gradient(90deg,#3B5BDB,#6366f1,#8b5cf6,#3B5BDB);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s ease infinite}
+@keyframes gs{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hsub{font-size:1.05rem;color:var(--mu);line-height:1.7;max-width:540px;margin:0 auto 2.5rem;animation:fu .6s ease .2s both}
+.hact{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fu .6s ease .3s both}
+.hpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2.5rem;animation:fu .6s ease .4s both}
+.hpill{background:var(--white);border:1px solid var(--bor);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);font-weight:500}
+.bp{background:var(--blue);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s,transform .2s;text-decoration:none}
+.bp:hover{opacity:.88;transform:translateY(-1px)}
+.bs{background:var(--white);color:var(--text);border:1px solid var(--bor);padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none}
+.bs:hover{border-color:var(--blue);color:var(--blue)}
+#sw.active{display:block}
 #sobre{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
-.sobre-top{display:grid;grid-template-columns:240px 1fr;gap:1.5rem;margin-bottom:1.5rem}
-.photo-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:1.75rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
-.photo-circle{width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid var(--blue-light);background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
-.photo-circle img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.photo-name{font-weight:700;font-size:1rem;line-height:1.2}
-.photo-role{color:var(--blue);font-weight:600;font-size:.8rem}
-.photo-loc{color:var(--muted);font-size:.78rem;display:flex;align-items:center;gap:4px;justify-content:center}
-.photo-links{display:flex;gap:10px;margin-top:.25rem}
-.photo-links a{color:var(--blue);text-decoration:none;font-size:.8rem;display:flex;align-items:center;gap:4px;transition:opacity .2s}
-.photo-links a:hover{opacity:.7}
-.bio-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:1.75rem}
-.bio-card h2{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-.bio-text{font-size:.875rem;line-height:1.8;color:var(--muted)}
-.interest-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
-.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
-.card{background:var(--white);border-radius:var(--r);padding:1.75rem;border:1px solid var(--border)}
-.card-title{font-size:1rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
-.exp-item{margin-bottom:1.4rem}
-.exp-item:last-child{margin-bottom:0}
-.exp-role{font-weight:700;font-size:.9rem}
-.exp-company{color:var(--blue);font-size:.85rem;font-weight:600}
-.exp-meta{font-size:.78rem;color:var(--muted);margin:3px 0 7px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.badge{background:var(--bg);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:500;color:var(--muted);border:1px solid var(--border)}
-.exp-list{list-style:none}
-.exp-list li{font-size:.84rem;color:var(--muted);padding:2px 0 2px 13px;position:relative}
-.exp-list li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.stop{display:grid;grid-template-columns:240px 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.pcrd{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:1.75rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
+.pcirc{width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid var(--bl);background:var(--bl);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.pcirc img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.pname{font-weight:700;font-size:1rem}
+.prole{color:var(--blue);font-weight:600;font-size:.8rem}
+.ploc{color:var(--mu);font-size:.78rem;display:flex;align-items:center;gap:4px;justify-content:center}
+.plinks{display:flex;gap:10px}
+.plinks a{color:var(--blue);text-decoration:none;font-size:.8rem;display:flex;align-items:center;gap:4px;transition:opacity .2s}
+.plinks a:hover{opacity:.7}
+.bcrd{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:1.75rem}
+.bcrd h2{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.bt{font-size:.875rem;line-height:1.8;color:var(--mu)}
+.agrid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
+.card{background:var(--white);border-radius:var(--r);padding:1.75rem;border:1px solid var(--bor)}
+.ct{font-size:1rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.ei{margin-bottom:1.4rem}
+.ei:last-child{margin-bottom:0}
+.er{font-weight:700;font-size:.9rem}
+.ec{color:var(--blue);font-size:.85rem;font-weight:600}
+.em{font-size:.78rem;color:var(--mu);margin:3px 0 7px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.badge{background:var(--bg);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:500;color:var(--mu);border:1px solid var(--bor)}
+.el{list-style:none}
+.el li{font-size:.84rem;color:var(--mu);padding:2px 0 2px 13px;position:relative}
+.el li::before{content:'·';position:absolute;left:0;color:var(--blue)}
 .tags{display:flex;flex-wrap:wrap;gap:7px}
-.tag{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:500}
-.right-cards{display:flex;flex-direction:column;gap:1.5rem}
-
-/* ── PROYECTOS ── */
-#proyectos-wrap.active{display:block}
-#proyectos{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
-.section-header{text-align:center;margin-bottom:2.5rem}
-.section-title{font-size:2rem;font-weight:800;margin-bottom:.5rem}
-.section-sub{color:var(--muted);font-size:.95rem}
-.project-list{display:flex;flex-direction:column;gap:1.5rem}
-.project-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s}
-.project-card:hover{box-shadow:0 8px 32px rgba(59,91,219,.13);transform:translateY(-2px)}
-.project-cover{overflow:hidden;min-height:220px;position:relative}
-.project-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.project-cover-center img{object-fit:contain;padding:1.5rem}
-.proj-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem}
-.project-info{padding:1.75rem;display:flex;flex-direction:column;justify-content:center}
-.project-name{font-size:1.3rem;font-weight:800;color:var(--blue);margin-bottom:.6rem}
-.project-desc{color:var(--muted);font-size:.875rem;line-height:1.65;margin-bottom:1.1rem}
-.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.2rem}
-.project-tag{background:var(--blue-light);color:var(--blue);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600}
-.project-link{color:var(--blue);font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
-.project-link:hover{text-decoration:underline}
-
-/* ── DETALLE ── */
-#detalle-wrap.active{display:block}
-#detalle{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
-.back-btn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.875rem;font-family:inherit;margin-bottom:1.5rem;padding:0;transition:color .2s}
-.back-btn:hover{color:var(--text)}
-.detail-title{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;margin-bottom:.5rem}
-.detail-sub{color:var(--muted);font-size:1rem;margin-bottom:2rem}
-.detail-cover{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;overflow:hidden;position:relative}
-.detail-cover img{width:100%;height:100%;object-fit:cover}
-.detail-cover-emoji{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;font-size:5rem}
-.slide-img{width:100%;border-radius:var(--rs);margin:1.25rem 0;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.07)}
-.slide-caption{font-size:.78rem;color:var(--muted);text-align:center;margin-top:-.75rem;margin-bottom:1.25rem;font-style:italic}
-.detail-section{margin-bottom:2.5rem}
-.detail-section h2{color:var(--blue);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
-.detail-section p{color:var(--muted);font-size:.9rem;line-height:1.75}
-.obj-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.obj-list li{font-size:.875rem;color:var(--muted);display:flex;align-items:flex-start;gap:10px}
-.obj-check{width:22px;height:22px;min-width:22px;background:var(--blue-light);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
-.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.process-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:.84rem}
-.process-num{width:26px;height:26px;border-radius:50%;min-width:26px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
-.result-card{background:var(--blue-light);border:1px solid #c5d0f5;border-radius:var(--r);padding:1.5rem;margin-bottom:2.5rem}
-.result-card h2{color:var(--blue);font-size:1rem;font-weight:700;margin-bottom:.6rem}
-.result-card p{color:var(--text);font-size:.875rem;line-height:1.7}
-.reflexion-text{font-style:italic;color:var(--muted);font-size:.9rem;line-height:1.75}
-.proto-btn{background:var(--blue);color:#fff;border:none;padding:13px 26px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin:0 auto 2.5rem;font-family:inherit;transition:opacity .2s}
-.proto-btn:hover{opacity:.88}
-.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.insight-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:1rem}
-.insight-card h3{color:var(--blue);font-size:.84rem;font-weight:700;margin-bottom:.5rem}
-.insight-card ul{list-style:none}
-.insight-card ul li{font-size:.78rem;color:var(--muted);padding:2px 0 2px 11px;position:relative}
-.insight-card ul li::before{content:'·';position:absolute;left:0;color:var(--blue)}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1rem 0}
-.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:1rem;text-align:center}
-.stat-num{font-size:1.75rem;font-weight:800;color:var(--blue)}
-.stat-label{font-size:.78rem;color:var(--muted);margin-top:3px}
-.nav-project{display:flex;justify-content:flex-end;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
-.nav-project-btn{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;color:var(--text);transition:opacity .2s;display:flex;align-items:center;gap:8px}
-.nav-project-btn:hover{opacity:.7}
-.nav-project-text{text-align:right}
-.nav-project-label{font-size:.72rem;color:var(--muted);display:block}
-.nav-project-name{font-size:.95rem;font-weight:700}
-
-/* ── CONTACTO ── */
-#contacto-wrap.active{display:block}
-#contacto{max-width:680px;margin:0 auto;padding:4rem 1.5rem;text-align:center}
-.contact-title{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
-.contact-sub{color:var(--muted);margin-bottom:1.5rem}
-.contact-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
-.contact-link{color:var(--muted);font-size:.875rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
-.contact-link:hover{color:var(--blue)}
-.contact-form{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:2rem;text-align:left}
-.form-group{margin-bottom:1.1rem}
-.form-label{display:block;font-size:.875rem;font-weight:600;margin-bottom:.5rem}
-.form-input,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;font-size:.875rem;font-family:inherit;color:var(--text);transition:border-color .2s;outline:none}
-.form-input:focus,.form-textarea:focus{border-color:var(--blue)}
-.form-textarea{resize:vertical;min-height:110px}
-.form-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:var(--rs);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.form-submit:hover{opacity:.88}
-.form-success{display:none;background:#dcfce7;border:1px solid #86efac;border-radius:var(--rs);padding:1rem;text-align:center;color:#166534;font-size:.9rem;margin-top:1rem}
-.form-success.show{display:block}
-
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:.5rem}
-.footer-logo{font-weight:700;font-size:.95rem}
-.footer-icons{display:flex;gap:1rem}
-.footer-icon{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s;display:inline-flex;align-items:center;gap:4px}
-.footer-icon:hover{color:var(--blue)}
-.footer-copy{font-size:.8rem;color:var(--muted)}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp .5s ease both}
-.fade-up-1{animation-delay:.07s}
-.fade-up-2{animation-delay:.14s}
-.fade-up-3{animation-delay:.21s}
-
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .about-grid{grid-template-columns:1fr}
-  .project-card{grid-template-columns:1fr}
-  .project-cover{min-height:220px}
-  .sobre-top{grid-template-columns:1fr}
-  .photo-card{flex-direction:row;text-align:left;gap:1.25rem;align-items:flex-start}
-  .photo-circle{width:90px;height:90px;flex-shrink:0;font-size:2rem}
-  .photo-card>div{display:flex;flex-direction:column;gap:.3rem}
-  .photo-links{flex-wrap:wrap}
-}
-@media(max-width:600px){
-  nav{padding:0 1rem}
-  .nav-links{display:none}
-  .nav-hamburger{display:inline-flex}
-  .hero-title{font-size:clamp(2.5rem,14vw,4rem)}
-  .hero-sub{font-size:.95rem}
-  .hero-pills{gap:6px}
-  .hero-pill{font-size:.72rem;padding:5px 10px}
-  .process-grid,.insight-grid,.stats-row{grid-template-columns:1fr}
-  #detalle{padding:1.5rem 1rem 3rem}
-  #sobre{padding:1.5rem 1rem}
-  #proyectos{padding:1.5rem 1rem}
-  #contacto{padding:2.5rem 1rem}
-  .contact-form{padding:1.25rem}
-  .photo-card{flex-direction:column;text-align:center;align-items:center}
-  .photo-loc,.photo-links{justify-content:center}
-  footer{flex-direction:column;align-items:flex-start;gap:.75rem}
-  .btn-primary,.btn-secondary{padding:11px 18px;font-size:.85rem}
-}
+.tag{background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:500}
+.rc{display:flex;flex-direction:column;gap:1.5rem}
+#pw.active{display:block}
+#proy{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+.sh{text-align:center;margin-bottom:2.5rem}
+.stitle{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+.ssub{color:var(--mu);font-size:.95rem}
+.plist{display:flex;flex-direction:column;gap:1.5rem}
+.pcard{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s}
+.pcard:hover{box-shadow:0 8px 32px rgba(59,91,219,.13);transform:translateY(-2px)}
+.pcov{overflow:hidden;min-height:220px;position:relative}
+.pcov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pemj{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.pi{padding:1.75rem;display:flex;flex-direction:column;justify-content:center}
+.pn{font-size:1.3rem;font-weight:800;color:var(--blue);margin-bottom:.6rem}
+.pd{color:var(--mu);font-size:.875rem;line-height:1.65;margin-bottom:1.1rem}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.2rem}
+.ptag{background:var(--bl);color:var(--blue);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600}
+.plink{color:var(--blue);font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
+.plink:hover{text-decoration:underline}
+#dw.active{display:block}
+#det{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.bbtn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--mu);font-size:.875rem;font-family:inherit;margin-bottom:1.5rem;padding:0;transition:color .2s}
+.bbtn:hover{color:var(--text)}
+.dtitle{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;margin-bottom:.5rem}
+.dsub{color:var(--mu);font-size:1rem;margin-bottom:2rem}
+.dcov{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;overflow:hidden;position:relative}
+.dcov img{width:100%;height:100%;object-fit:cover}
+.dcove{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.simg{width:100%;border-radius:var(--rs);margin:1.25rem 0;border:1px solid var(--bor);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.scap{font-size:.78rem;color:var(--mu);text-align:center;margin-top:-.75rem;margin-bottom:1.25rem;font-style:italic}
+.ds{margin-bottom:2.5rem}
+.ds h2{color:var(--blue);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.ds p{color:var(--mu);font-size:.9rem;line-height:1.75}
+.ol{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ol li{font-size:.875rem;color:var(--mu);display:flex;align-items:flex-start;gap:10px}
+.och{width:22px;height:22px;min-width:22px;background:var(--bl);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pi2{background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:.84rem}
+.pnum{width:26px;height:26px;border-radius:50%;min-width:26px;background:var(--bl);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.rcrd{background:var(--bl);border:1px solid #c5d0f5;border-radius:var(--r);padding:1.5rem;margin-bottom:2.5rem}
+.rcrd h2{color:var(--blue);font-size:1rem;font-weight:700;margin-bottom:.6rem}
+.rcrd p{color:var(--text);font-size:.875rem;line-height:1.7}
+.rft{font-style:italic;color:var(--mu);font-size:.9rem;line-height:1.75}
+.pbtn{background:var(--blue);color:#fff;border:none;padding:13px 26px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin:0 auto 2.5rem;font-family:inherit;transition:opacity .2s}
+.pbtn:hover{opacity:.88}
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ic{background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:1rem}
+.ic h3{color:var(--blue);font-size:.84rem;font-weight:700;margin-bottom:.5rem}
+.ic ul{list-style:none}
+.ic ul li{font-size:.78rem;color:var(--mu);padding:2px 0 2px 11px;position:relative}
+.ic ul li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1rem 0}
+.sc{background:var(--white);border:1px solid var(--bor);border-radius:var(--rs);padding:1rem;text-align:center}
+.sn{font-size:1.75rem;font-weight:800;color:var(--blue)}
+.sl{font-size:.78rem;color:var(--mu);margin-top:3px}
+/* prev/next */
+.dnav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bor);padding-top:1.5rem;margin-top:1rem;gap:1rem}
+.dnbtn{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;color:var(--text);transition:opacity .2s;display:flex;align-items:center;gap:8px}
+.dnbtn:hover{opacity:.7}
+.nlb{font-size:.72rem;color:var(--mu);display:block}
+.npn{font-size:.95rem;font-weight:700}
+.dnbtn.prev .nt{text-align:left}
+.dnbtn.next .nt{text-align:right}
+/* contact */
+#cw.active{display:block}
+#cont{max-width:680px;margin:0 auto;padding:4rem 1.5rem;text-align:center}
+.ctitle{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
+.csub{color:var(--mu);margin-bottom:1.5rem}
+.clinks{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.clink{color:var(--mu);font-size:.875rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
+.clink:hover{color:var(--blue)}
+.cform{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:2rem;text-align:left}
+.fg{margin-bottom:1.1rem}
+.fl{display:block;font-size:.875rem;font-weight:600;margin-bottom:.5rem}
+.fi,.ft{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:11px 14px;font-size:.875rem;font-family:inherit;color:var(--text);transition:border-color .2s;outline:none}
+.fi:focus,.ft:focus{border-color:var(--blue)}
+.ft{resize:vertical;min-height:110px}
+.fsub{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:var(--rs);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.fsub:hover{opacity:.88}
+.fok{display:none;background:#dcfce7;border:1px solid #86efac;border-radius:var(--rs);padding:1rem;text-align:center;color:#166534;font-size:.875rem;margin-top:1rem}
+.fok.show{display:block}
+footer{border-top:1px solid var(--bor);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:.5rem}
+.flogo{font-weight:700;font-size:.95rem}
+.fics{display:flex;gap:1rem}
+.fic{color:var(--mu);text-decoration:none;font-size:.875rem;transition:color .2s;display:inline-flex;align-items:center;gap:4px}
+.fic:hover{color:var(--blue)}
+.fcp{font-size:.8rem;color:var(--mu)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fu .5s ease both}.fu1{animation-delay:.07s}.fu2{animation-delay:.14s}.fu3{animation-delay:.21s}
+@media(max-width:960px){.agrid{grid-template-columns:1fr}.pcard{grid-template-columns:1fr}.pcov{min-height:220px}.stop{grid-template-columns:1fr}.pcrd{flex-direction:row;text-align:left;gap:1.25rem;align-items:flex-start}.pcirc{width:90px;height:90px;flex-shrink:0;font-size:2rem}.pcrd>div{display:flex;flex-direction:column;gap:.3rem}}
+@media(max-width:600px){nav{padding:0 1rem}.nlinks{display:none}.ham{display:inline-flex}.htitle{font-size:clamp(2.5rem,14vw,4rem)}.pgrid,.ig,.sr{grid-template-columns:1fr}#det{padding:1.5rem 1rem 3rem}#sobre,#proy{padding:1.5rem 1rem}#cont{padding:2.5rem 1rem}.cform{padding:1.25rem}.pcrd{flex-direction:column;text-align:center;align-items:center}.ploc,.plinks{justify-content:center}footer{flex-direction:column;align-items:flex-start;gap:.75rem}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <button class="nav-logo" onclick="showSection('hero-wrap')">Luis Arnau</button>
-  <ul class="nav-links">
-    <li><button onclick="showSection('hero-wrap')" data-key="nav_home">Inicio</button></li>
-    <li><button onclick="showSection('sobre-wrap')" data-key="nav_about">Sobre mí</button></li>
-    <li><button onclick="showSection('proyectos-wrap')" data-key="nav_projects">Proyectos</button></li>
-    <li><button onclick="showSection('contacto-wrap')" data-key="nav_contact">Contacto</button></li>
+  <button class="nlogo" onclick="go('hw')">Luis Arnau</button>
+  <ul class="nlinks">
+    <li><button onclick="go('hw')" data-key="nh">Inicio</button></li>
+    <li><button onclick="go('sw')" data-key="na">Sobre mí</button></li>
+    <li><button onclick="go('pw')" data-key="np">Proyectos</button></li>
+    <li><button onclick="go('cw')" data-key="nc">Contacto</button></li>
   </ul>
-  <div class="nav-right">
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('es')">ES</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <div class="nright">
+    <div class="ltog">
+      <button class="lb active" onclick="setLang('es')">ES</button>
+      <button class="lb" onclick="setLang('en')">EN</button>
     </div>
-    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <button class="ham" onclick="togMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <button onclick="showSection('hero-wrap');toggleMenu()" data-key="nav_home">Inicio</button>
-  <button onclick="showSection('sobre-wrap');toggleMenu()" data-key="nav_about">Sobre mí</button>
-  <button onclick="showSection('proyectos-wrap');toggleMenu()" data-key="nav_projects">Proyectos</button>
-  <button onclick="showSection('contacto-wrap');toggleMenu()" data-key="nav_contact">Contacto</button>
+<div class="mobnav" id="mobnav">
+  <button onclick="go('hw');togMenu()" data-key="nh">Inicio</button>
+  <button onclick="go('sw');togMenu()" data-key="na">Sobre mí</button>
+  <button onclick="go('pw');togMenu()" data-key="np">Proyectos</button>
+  <button onclick="go('cw');togMenu()" data-key="nc">Contacto</button>
 </div>
 
 <!-- HERO -->
-<section id="hero-wrap" class="active">
-  <div id="hero">
-    <div class="hero-tag"><span class="dot"></span><span data-key="hero_avail">Disponible para nuevos proyectos</span></div>
-    <h1 class="hero-title">
-      <span class="static" data-key="h_t1">Product </span><span class="grad" data-key="h_t2">Designer</span>
-    </h1>
-    <p class="hero-sub" data-key="h_sub">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="showSection('proyectos-wrap')" data-key="h_cta1">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <span data-key="h_cta1">Ver proyectos</span>
-      </button>
-      <a class="btn-secondary" href="luis-arnau-cv.pdf" download="Luis-Arnau-CV-UX-UI.pdf">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-key="h_cta2">Descargar CV</span>
-      </a>
-    </div>
-    <div class="hero-pills">
-      <span class="hero-pill">UX Research</span><span class="hero-pill">UI Design</span>
-      <span class="hero-pill">Figma</span><span class="hero-pill">Design Systems</span>
-      <span class="hero-pill">Prototyping</span><span class="hero-pill">Usability Testing</span>
-    </div>
+<section id="hw" class="active">
+<div id="hero">
+  <div class="htag"><span class="dot"></span><span data-key="hav">Disponible para nuevos proyectos</span></div>
+  <h1 class="htitle"><span class="st" data-key="ht1">Product </span><span class="gr" data-key="ht2">Designer</span></h1>
+  <p class="hsub" data-key="hsb">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
+  <div class="hact">
+    <button class="bp" onclick="go('pw')">
+      <!-- Grid of squares = portfolio of work, intuitive and clean -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span data-key="hc1">Ver proyectos</span>
+    </button>
+    <a class="bs" href="luis-arnau-cv.pdf" download="Luis-Arnau-CV-UX-UI.pdf">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-key="hc2">Descargar CV</span>
+    </a>
   </div>
+  <div class="hpills">
+    <span class="hpill">UX Research</span><span class="hpill">UI Design</span>
+    <span class="hpill">Figma</span><span class="hpill">Design Systems</span>
+    <span class="hpill">Prototyping</span><span class="hpill">Usability Testing</span>
+  </div>
+</div>
 </section>
 
-<!-- SOBRE MÍ -->
-<section id="sobre-wrap">
-  <div id="sobre">
-    <div class="sobre-top">
-      <div class="photo-card fade-up">
-        <div class="photo-circle">
-          <!-- Sube images/foto-luis.jpg para activar tu foto:
-          <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
-          🧑‍💻
-        </div>
-        <div>
-          <div class="photo-name">Luis Arnau</div>
-          <div class="photo-role">Product &amp; UX/UI Designer</div>
-          <div class="photo-loc">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            España
-          </div>
-          <div class="photo-links">
-            <a href="mailto:luisarnau9@gmail.com">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              Email
-            </a>
-            <a href="https://www.linkedin.com/in/luisarnauuribe/" target="_blank" rel="noopener">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-          </div>
-        </div>
+<!-- SOBRE -->
+<section id="sw">
+<div id="sobre">
+  <div class="stop">
+    <div class="pcrd fu">
+      <div class="pcirc">
+        <!-- Para añadir tu foto: sube images/foto-luis.jpg y reemplaza el emoji por:
+        <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
+        🧑‍💻
       </div>
-
-      <div class="bio-card fade-up fade-up-1">
-        <h2>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-          <span data-key="ab_title">Sobre mí</span>
-        </h2>
-        <p class="bio-text" data-key="ab_1">Diseñador UX/UI con formación en Ingeniería del Diseño Industrial y background en diseño gráfico y fabricación industrial. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
-        <p class="bio-text" style="margin-top:.85rem" data-key="ab_2">Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.</p>
-        <p class="bio-text" style="margin-top:.85rem" data-key="ab_3">Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me ayudan a mantener una mente curiosa y creativa.</p>
-        <div class="interest-tags">
-          <span class="tag">🎨 <span data-key="t_des">Diseño</span></span>
-          <span class="tag">🏔️ <span data-key="t_mnt">Montaña</span></span>
-          <span class="tag">📷 <span data-key="t_pho">Fotografía</span></span>
-          <span class="tag">🤖 <span data-key="t_ai">IA aplicada</span></span>
-          <span class="tag">⚙️ <span data-key="t_eng">Ingeniería</span></span>
+      <div>
+        <div class="pname">Luis Arnau</div>
+        <div class="prole">Product &amp; UX/UI Designer</div>
+        <div class="ploc">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          España
+        </div>
+        <div class="plinks">
+          <a href="mailto:luisarnau9@gmail.com">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email
+          </a>
+          <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
+          </a>
         </div>
       </div>
     </div>
-
-    <div class="about-grid">
-      <div class="card fade-up">
-        <div class="card-title">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          <span data-key="exp_h">Experiencia profesional</span>
-        </div>
-        <div class="exp-item">
-          <div class="exp-role" data-key="e1r">Diseñador UX/UI</div>
-          <div class="exp-company">CO·UX</div>
-          <div class="exp-meta">Feb 2023 – Jun 2023 <span class="badge" data-key="b_rem">Remoto</span></div>
-          <ul class="exp-list">
-            <li>Design Thinking &amp; Design Research</li>
-            <li data-key="e1_2">Investigación con usuarios</li>
-            <li>Wireframes, user flows y prototipos en Figma</li>
-            <li>Accesibilidad WCAG</li>
-          </ul>
-        </div>
-        <div class="exp-item">
-          <div class="exp-role" data-key="e2r">Ingeniero de fabricación</div>
-          <div class="exp-company">Tecnobit</div>
-          <div class="exp-meta">Oct 2023 – Abr 2024 <span class="badge" data-key="b_hyb">Híbrido</span></div>
-          <ul class="exp-list">
-            <li data-key="e2_1">Optimización de flujos mediante SAP</li>
-            <li data-key="e2_2">Diseño mecánico y documentación técnica</li>
-            <li data-key="e2_3">Colaboración con ingeniería</li>
-          </ul>
-        </div>
-        <div class="exp-item">
-          <div class="exp-role" data-key="e3r">Ingeniero de fabricación</div>
-          <div class="exp-company">Inhiset</div>
-          <div class="exp-meta">May 2024 – Jul 2024 <span class="badge" data-key="b_on">Presencial</span></div>
-          <ul class="exp-list">
-            <li data-key="e3_1">Optimización de flujos mediante SAP</li>
-            <li data-key="e3_2">Diseño de componentes mecánicos</li>
-          </ul>
-        </div>
-        <div class="exp-item">
-          <div class="exp-role" data-key="e4r">Diseñador gráfico</div>
-          <div class="exp-company">Esmalglass</div>
-          <div class="exp-meta">Ene 2021 – Abr 2022 <span class="badge" data-key="b_on">Presencial</span></div>
-          <ul class="exp-list">
-            <li data-key="e4_1">Adaptación de productos y edición gráfica</li>
-            <li data-key="e4_2">Diseño de aplicaciones cerámicas</li>
-            <li data-key="e4_3">Gestión de color</li>
-          </ul>
-        </div>
+    <div class="bcrd fu fu1">
+      <h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span data-key="abh">Sobre mí</span>
+      </h2>
+      <p class="bt" data-key="ab1">Diseñador UX/UI con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI) y Máster en UX/UI en Nuclio Digital School. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
+      <p class="bt" style="margin-top:.85rem" data-key="ab2">Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.</p>
+      <p class="bt" style="margin-top:.85rem" data-key="ab3">Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem">
+        <span class="tag">🎨 <span data-key="tdes">Diseño</span></span>
+        <span class="tag">🏔️ <span data-key="tmnt">Montaña</span></span>
+        <span class="tag">📷 <span data-key="tpho">Fotografía</span></span>
+        <span class="tag">🤖 <span data-key="tai">IA aplicada</span></span>
+        <span class="tag">⚙️ <span data-key="teng">Ingeniería</span></span>
       </div>
+    </div>
+  </div>
 
-      <div class="right-cards">
-        <div class="card fade-up fade-up-1">
-          <div class="card-title">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 5 18.67M14.83 9.17A10 10 0 0 1 21 21H3"/></svg>
-            <span data-key="tools_h">Herramientas</span>
-          </div>
-          <div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Miro</span><span class="tag">Jira</span><span class="tag">VS Code</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Confluence</span><span class="tag">SolidWorks</span><span class="tag">3DS Max</span><span class="tag">Autocad</span></div>
+  <div class="agrid">
+    <div class="card fu">
+      <div class="ct">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-key="exph">Experiencia profesional</span>
+      </div>
+      <!-- Inhiset -->
+      <div class="ei">
+        <div class="er" data-key="e1r">Ingeniero de fabricación</div>
+        <div class="ec">Inhiset</div>
+        <div class="em">May 2024 – Jul 2024 <span class="badge" data-key="bon">Presencial</span></div>
+        <ul class="el">
+          <li data-key="e1a">Optimización de flujos mediante SAP</li>
+          <li data-key="e1b">Documentación técnica</li>
+          <li data-key="e1c">Diseño de componentes mecánicos</li>
+          <li data-key="e1d">Soporte en análisis de problemas</li>
+          <li data-key="e1e">Colaboración con ingeniería y operaciones</li>
+        </ul>
+      </div>
+      <!-- Tecnobit -->
+      <div class="ei">
+        <div class="er" data-key="e2r">Ingeniero de fabricación</div>
+        <div class="ec">Tecnobit</div>
+        <div class="em">Oct 2023 – Abr 2024 <span class="badge" data-key="bhyb">Híbrido</span></div>
+        <ul class="el">
+          <li data-key="e2a">Optimización de flujos mediante SAP</li>
+          <li data-key="e2b">Documentación técnica</li>
+          <li data-key="e2c">Diseño mecánico</li>
+          <li data-key="e2d">Análisis de problemas</li>
+          <li data-key="e2e">Colaboración con ingeniería</li>
+        </ul>
+      </div>
+      <!-- CO·UX -->
+      <div class="ei">
+        <div class="er" data-key="e3r">Diseñador UX/UI</div>
+        <div class="ec">CO·UX</div>
+        <div class="em">Feb 2023 – Jun 2023 <span class="badge" data-key="brem">Remoto</span></div>
+        <ul class="el">
+          <li>Design Thinking &amp; Design Research</li>
+          <li data-key="e3b">Investigación con usuarios</li>
+          <li>Wireframes y user flows</li>
+          <li>Accesibilidad (WCAG)</li>
+          <li data-key="e3e">Prototipos en Figma</li>
+        </ul>
+      </div>
+      <!-- Esmalglass -->
+      <div class="ei">
+        <div class="er" data-key="e4r">Diseñador gráfico</div>
+        <div class="ec">Esmalglass</div>
+        <div class="em">Ene 2021 – Abr 2022 <span class="badge" data-key="bon">Presencial</span></div>
+        <ul class="el">
+          <li data-key="e4a">Adaptación de productos</li>
+          <li data-key="e4b">Edición gráfica</li>
+          <li data-key="e4c">Diseño de aplicaciones cerámicas</li>
+          <li data-key="e4d">Gestión de color</li>
+        </ul>
+      </div>
+      <!-- SCN -->
+      <div class="ei">
+        <div class="er" data-key="e5r">Coordinador de Sistemas de Calidad</div>
+        <div class="ec">SCN</div>
+        <div class="em">2019 – 2021 <span class="badge" data-key="bon">Presencial</span></div>
+        <ul class="el">
+          <li data-key="e5a">Gestión y coordinación de sistemas de calidad</li>
+          <li data-key="e5b">Documentación y procesos internos</li>
+          <li data-key="e5c">Mejora continua de procedimientos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rc">
+      <div class="card fu fu1">
+        <div class="ct">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <span data-key="toolh">Herramientas</span>
         </div>
-        <div class="card fade-up fade-up-2">
-          <div class="card-title">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span data-key="skills_h">Habilidades</span>
-          </div>
-          <div class="tags"><span class="tag">User Research</span><span class="tag">User Interviews</span><span class="tag">Journey Maps</span><span class="tag">Usability Testing</span><span class="tag">UX Writing</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Interaction Design</span><span class="tag">Information Architecture</span><span class="tag">Design System</span><span class="tag" data-key="sk_ai">IA aplicada al diseño</span></div>
+        <div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Jira</span><span class="tag">Miro</span><span class="tag">VS Code</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Confluence</span><span class="tag">SolidWorks</span><span class="tag">3DS Max</span><span class="tag">KeyShot</span><span class="tag">Autocad</span><span class="tag">Fusion 360</span></div>
+      </div>
+      <div class="card fu fu2">
+        <div class="ct">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-key="skillh">Habilidades</span>
         </div>
-        <div class="card fade-up fade-up-3">
-          <div class="card-title">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            <span data-key="edu_h">Formación</span>
-          </div>
-          <div class="exp-item">
-            <div class="exp-role" data-key="ed1r">Ingeniería en Diseño Industrial y Producto</div>
-            <div class="exp-company">Universitat Jaume I (UJI)</div>
-            <div class="exp-meta">2016 – 2022</div>
-          </div>
-          <div class="exp-item" style="margin-bottom:0">
-            <div class="exp-role" data-key="ed2r">Máster / Bootcamp UX/UI</div>
-            <div class="exp-company">CO·UX</div>
-            <div class="exp-meta">2023</div>
-          </div>
+        <div class="tags"><span class="tag">User Interviews</span><span class="tag">User Research</span><span class="tag">Journey Maps</span><span class="tag">Usability Testing</span><span class="tag">UX Writing</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Interaction Design</span><span class="tag">Information Architecture</span><span class="tag">Design System</span><span class="tag" data-key="skai">IA aplicada al diseño</span></div>
+      </div>
+      <div class="card fu fu3">
+        <div class="ct">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span data-key="eduh">Formación</span>
+        </div>
+        <div class="ei">
+          <div class="er" data-key="ed1">Máster en Diseño UX/UI</div>
+          <div class="ec">Nuclio Digital School</div>
+          <div class="em">2023 – 2024</div>
+        </div>
+        <div class="ei" style="margin-bottom:0">
+          <div class="er" data-key="ed2">Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto</div>
+          <div class="ec">Universitat Jaume I (UJI)</div>
+          <div class="em">2016 – 2022</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- PROYECTOS -->
-<section id="proyectos-wrap">
-  <div id="proyectos">
-    <div class="section-header fade-up">
-      <h2 class="section-title" data-key="pr_h">Proyectos</h2>
-      <p class="section-sub" data-key="pr_sub">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
+<section id="pw">
+<div id="proy">
+  <div class="sh fu">
+    <h2 class="stitle" data-key="prh">Proyectos</h2>
+    <p class="ssub" data-key="prs">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
+  </div>
+  <div class="plist">
+    <div class="pcard fu" onclick="det(0)">
+      <div class="pcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="LoLocal" onerror="this.style.display='none'"/></div>
+      <div class="pi"><div class="pn">LoLocal</div><p class="pd" data-key="p0">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p><div class="ptags"><span class="ptag">UX Research</span><span class="ptag">UI Design</span><span class="ptag">Design System</span><span class="ptag">Figma</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
     </div>
-    <div class="project-list">
-
-      <div class="project-card fade-up" onclick="showDetail(0)">
-        <div class="project-cover" style="background:linear-gradient(135deg,#f97316,#fb923c)">
-          <img src="images/lolocal-cover.png" alt="LoLocal" onerror="this.style.display='none'"/>
-        </div>
-        <div class="project-info">
-          <div class="project-name">LoLocal</div>
-          <p class="project-desc" data-key="p0d">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p>
-          <div class="project-tags"><span class="project-tag">UX Research</span><span class="project-tag">UI Design</span><span class="project-tag">Design System</span><span class="project-tag">Figma</span></div>
-          <button class="project-link" data-key="see">Ver proyecto →</button>
-        </div>
+    <div class="pcard fu fu1" onclick="det(1)">
+      <div class="pcov" style="background:#1d3276"><img src="images/remitly-cover.png" alt="Remitly" onerror="this.style.display='none'"/></div>
+      <div class="pi"><div class="pn">Remitly</div><p class="pd" data-key="p1">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p><div class="ptags"><span class="ptag">Fintech</span><span class="ptag">UX Research</span><span class="ptag">UX Writing</span><span class="ptag">Prototyping</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    </div>
+    <div class="pcard fu fu2" onclick="det(2)">
+      <div class="pcov" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)"><div class="pemj">🍔</div></div>
+      <div class="pi"><div class="pn">PedidosYA</div><p class="pd" data-key="p2">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p><div class="ptags"><span class="ptag" data-key="tred">Rediseño</span><span class="ptag">Mobile</span><span class="ptag">UX Writing</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    </div>
+    <div class="pcard fu fu2" onclick="det(3)">
+      <div class="pcov" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><div class="pemj">🎵</div></div>
+      <div class="pi"><div class="pn">Telepianxs</div><p class="pd" data-key="p3">Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.</p><div class="ptags"><span class="ptag">UX Research</span><span class="ptag">Product Design</span><span class="ptag">Figma</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    </div>
+    <div class="pcard fu fu3" onclick="det(4)">
+      <div class="pcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">
+        <img src="images/cactus-logo.png" alt="Estudio Cactus" style="position:absolute;width:55%;height:auto;top:50%;left:50%;transform:translate(-50%,-50%);object-fit:contain" onerror="this.style.display='none'"/>
+        <div class="pemj" id="cfe">🌵</div>
       </div>
-
-      <div class="project-card fade-up fade-up-1" onclick="showDetail(1)">
-        <div class="project-cover" style="background:#1d3276">
-          <img src="images/remitly-cover.png" alt="Remitly" onerror="this.style.display='none'"/>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Remitly</div>
-          <p class="project-desc" data-key="p1d">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p>
-          <div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">UX Research</span><span class="project-tag">UX Writing</span><span class="project-tag">Prototyping</span></div>
-          <button class="project-link" data-key="see">Ver proyecto →</button>
-        </div>
-      </div>
-
-      <div class="project-card fade-up fade-up-2" onclick="showDetail(2)">
-        <div class="project-cover" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">
-          <div class="proj-emoji">🍔</div>
-        </div>
-        <div class="project-info">
-          <div class="project-name">PedidosYA</div>
-          <p class="project-desc" data-key="p2d">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p>
-          <div class="project-tags"><span class="project-tag" data-key="t_red">Rediseño</span><span class="project-tag">Mobile</span><span class="project-tag">UX Writing</span></div>
-          <button class="project-link" data-key="see">Ver proyecto →</button>
-        </div>
-      </div>
-
-      <div class="project-card fade-up fade-up-3" onclick="showDetail(3)">
-        <div class="project-cover" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">
-          <img src="images/cactus-logo.png" alt="Estudio Cactus" style="width:55%;height:auto;object-fit:contain;padding:1rem" onerror="this.style.display='none'"/>
-          <div class="proj-emoji" id="cactus-emoji" style="display:none">🌵</div>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Estudio Cactus</div>
-          <p class="project-desc" data-key="p3d">Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.</p>
-          <div class="project-tags"><span class="project-tag">Challenge</span><span class="project-tag">UX/UI</span><span class="project-tag" data-key="t_pro">Prototipado</span></div>
-          <button class="project-link" data-key="see">Ver proyecto →</button>
-        </div>
-      </div>
-
+      <div class="pi"><div class="pn">Estudio Cactus</div><p class="pd" data-key="p4">Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.</p><div class="ptags"><span class="ptag">Challenge</span><span class="ptag">UX/UI</span><span class="ptag" data-key="tpro">Prototipado</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- DETALLE -->
-<section id="detalle-wrap">
-  <div id="detalle">
-    <button class="back-btn" onclick="showSection('proyectos-wrap')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-      <span data-key="back">Volver</span>
-    </button>
-    <div id="detalle-content"></div>
-  </div>
+<section id="dw">
+<div id="det">
+  <button class="bbtn" onclick="go('pw')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    <span data-key="back">Volver</span>
+  </button>
+  <div id="dc"></div>
+</div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto-wrap">
-  <div id="contacto">
-    <h2 class="contact-title" data-key="ct_h">Contacto</h2>
-    <p class="contact-sub" data-key="ct_sub">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
-    <div class="contact-links">
-      <a href="mailto:luisarnau9@gmail.com" class="contact-link">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        luisarnau9@gmail.com
-      </a>
-      <a href="https://www.linkedin.com/in/luisarnauuribe/" target="_blank" rel="noopener" class="contact-link">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-    </div>
-    <div class="contact-form">
-      <div class="form-group"><label class="form-label" data-key="f_name">Nombre</label><input class="form-input" type="text" id="f-name" required/></div>
-      <div class="form-group"><label class="form-label" data-key="f_email">Email</label><input class="form-input" type="email" id="f-email" required/></div>
-      <div class="form-group"><label class="form-label" data-key="f_msg">Mensaje</label><textarea class="form-textarea" id="f-msg" required></textarea></div>
-      <button class="form-submit" onclick="sendForm()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-        <span data-key="f_send">Enviar mensaje</span>
-      </button>
-      <div class="form-success" id="form-success" data-key="f_ok">¡Mensaje enviado! Te responderé lo antes posible.</div>
-    </div>
+<section id="cw">
+<div id="cont">
+  <h2 class="ctitle" data-key="cth">Contacto</h2>
+  <p class="csub" data-key="cts">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
+  <div class="clinks">
+    <a href="mailto:luisarnau9@gmail.com" class="clink">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      luisarnau9@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener" class="clink">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
   </div>
+  <div class="cform">
+    <div class="fg"><label class="fl" data-key="fn">Nombre</label><input class="fi" type="text" id="fn"/></div>
+    <div class="fg"><label class="fl" data-key="fe">Email</label><input class="fi" type="email" id="fe"/></div>
+    <div class="fg"><label class="fl" data-key="fm">Mensaje</label><textarea class="ft" id="fm"></textarea></div>
+    <button class="fsub" onclick="sendF()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+      <span data-key="fs">Enviar mensaje</span>
+    </button>
+    <div class="fok" id="fok" data-key="fsucc">¡Mensaje enviado! Te responderé lo antes posible.</div>
+  </div>
+</div>
 </section>
 
 <footer>
-  <span class="footer-logo">Luis Arnau</span>
-  <div class="footer-icons">
-    <a class="footer-icon" href="https://www.linkedin.com/in/luisarnauuribe/" target="_blank" rel="noopener">
+  <span class="flogo">Luis Arnau</span>
+  <div class="fics">
+    <a class="fic" href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
-    <a class="footer-icon" href="mailto:luisarnau9@gmail.com">
+    <a class="fic" href="mailto:luisarnau9@gmail.com">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       Email
     </a>
   </div>
-  <span class="footer-copy" data-key="foot">© 2026 Luis Arnau. Todos los derechos reservados.</span>
+  <span class="fcp" data-key="foot">© 2026 Luis Arnau. Todos los derechos reservados.</span>
 </footer>
 
 <script>
-// ─── TRANSLATIONS ────────────────────────────────────────────
 const T={
-es:{
-  nav_home:"Inicio",nav_about:"Sobre mí",nav_projects:"Proyectos",nav_contact:"Contacto",
-  hero_avail:"Disponible para nuevos proyectos",
-  h_t1:"Product ",h_t2:"Designer",
-  h_sub:"Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.",
-  h_cta1:"Ver proyectos",h_cta2:"Descargar CV",
-  ab_title:"Sobre mí",
-  ab_1:"Diseñador UX/UI con formación en Ingeniería del Diseño Industrial y background en diseño gráfico y fabricación industrial. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.",
-  ab_2:"Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.",
-  ab_3:"Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me ayudan a mantener una mente curiosa y creativa.",
-  t_des:"Diseño",t_mnt:"Montaña",t_pho:"Fotografía",t_ai:"IA aplicada",t_eng:"Ingeniería",
-  exp_h:"Experiencia profesional",
-  e1r:"Diseñador UX/UI",e1_2:"Investigación con usuarios",
-  e2r:"Ingeniero de fabricación",e2_1:"Optimización de flujos mediante SAP",e2_2:"Diseño mecánico y documentación técnica",e2_3:"Colaboración con ingeniería",
-  e3r:"Ingeniero de fabricación",e3_1:"Optimización de flujos mediante SAP",e3_2:"Diseño de componentes mecánicos",
-  e4r:"Diseñador gráfico",e4_1:"Adaptación de productos y edición gráfica",e4_2:"Diseño de aplicaciones cerámicas",e4_3:"Gestión de color",
-  b_rem:"Remoto",b_hyb:"Híbrido",b_on:"Presencial",
-  tools_h:"Herramientas",skills_h:"Habilidades",edu_h:"Formación",
-  sk_ai:"IA aplicada al diseño",
-  ed1r:"Ingeniería en Diseño Industrial y Producto",ed2r:"Máster / Bootcamp UX/UI",
-  pr_h:"Proyectos",pr_sub:"Una selección de case studies donde diseño, investigación y estrategia se unen.",
-  p0d:"App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.",
-  p1d:"Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.",
-  p2d:"Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.",
-  p3d:"Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.",
-  see:"Ver proyecto →",t_red:"Rediseño",t_pro:"Prototipado",
-  back:"Volver",
-  ct_h:"Contacto",ct_sub:"¿Tienes un proyecto en mente? Me encantaría escucharte.",
-  f_name:"Nombre",f_email:"Email",f_msg:"Mensaje",f_send:"Enviar mensaje",
-  f_ok:"¡Mensaje enviado! Te responderé lo antes posible.",
-  foot:"© 2026 Luis Arnau. Todos los derechos reservados.",
-  // detail
-  dc:"Contexto",dp:"Problema",do:"Objetivos",dr:"Mi rol",dpr:"Proceso",
-  dres:"Resultado",dpro:"↗ Ver prototipo interactivo",dref:"Reflexión",dnxt:"Proyecto siguiente"
-},
-en:{
-  nav_home:"Home",nav_about:"About",nav_projects:"Projects",nav_contact:"Contact",
-  hero_avail:"Available for new projects",
-  h_t1:"Product ",h_t2:"Designer",
-  h_sub:"I design clear, intuitive, people-centred digital experiences. I turn insights into functional and visually clean products.",
-  h_cta1:"View projects",h_cta2:"Download CV",
-  ab_title:"About me",
-  ab_1:"UX/UI Designer with a degree in Industrial Design Engineering and a background in graphic design and industrial manufacturing. I specialise in building functional, accessible, user-centred digital products through iterative processes and data-driven design.",
-  ab_2:"I combine user research, validation and design best practices to create effective, well-justified solutions. I work continuously with AI as a productivity and design tool, adapting to a constantly evolving landscape.",
-  ab_3:"Outside work I enjoy the mountains, photography and outdoor sports — activities that keep my mind curious and creative.",
-  t_des:"Design",t_mnt:"Mountains",t_pho:"Photography",t_ai:"Applied AI",t_eng:"Engineering",
-  exp_h:"Professional experience",
-  e1r:"UX/UI Designer",e1_2:"User research",
-  e2r:"Manufacturing Engineer",e2_1:"Process optimisation via SAP",e2_2:"Mechanical design and technical documentation",e2_3:"Collaboration with engineering",
-  e3r:"Manufacturing Engineer",e3_1:"Process optimisation via SAP",e3_2:"Mechanical component design",
-  e4r:"Graphic designer",e4_1:"Product adaptation and graphic editing",e4_2:"Ceramic application design",e4_3:"Colour management",
-  b_rem:"Remote",b_hyb:"Hybrid",b_on:"On-site",
-  tools_h:"Tools",skills_h:"Skills",edu_h:"Education",
-  sk_ai:"AI-assisted design",
-  ed1r:"Industrial and Product Design Engineering",ed2r:"UX/UI Master / Bootcamp",
-  pr_h:"Projects",pr_sub:"A selection of case studies where design, research and strategy come together.",
-  p0d:"Marketplace app connecting local shops with neighbourhood buyers. Designed from scratch, focused on community, trust and local discovery.",
-  p1d:"Redesign of the transfer confirmation and tracking flow to reduce friction and distrust among frequent users.",
-  p2d:"Conceptual redesign to improve the food delivery app experience, focused on navigation and friction reduction.",
-  p3d:"Real UX/UI challenge for a selection process. Redesigned the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach.",
-  see:"View project →",t_red:"Redesign",t_pro:"Prototyping",
-  back:"Back",
-  ct_h:"Contact",ct_sub:"Have a project in mind? I'd love to hear about it.",
-  f_name:"Name",f_email:"Email",f_msg:"Message",f_send:"Send message",
-  f_ok:"Message sent! I'll get back to you as soon as possible.",
-  foot:"© 2026 Luis Arnau. All rights reserved.",
-  dc:"Context",dp:"Problem",do:"Objectives",dr:"My role",dpr:"Process",
-  dres:"Result",dpro:"↗ View interactive prototype",dref:"Reflection",dnxt:"Next project"
-}
+es:{nh:"Inicio",na:"Sobre mí",np:"Proyectos",nc:"Contacto",
+hav:"Disponible para nuevos proyectos",ht1:"Product ",ht2:"Designer",
+hsb:"Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.",
+hc1:"Ver proyectos",hc2:"Descargar CV",
+abh:"Sobre mí",
+ab1:"Diseñador UX/UI con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI) y Máster en UX/UI en Nuclio Digital School. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.",
+ab2:"Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.",
+ab3:"Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.",
+tdes:"Diseño",tmnt:"Montaña",tpho:"Fotografía",tai:"IA aplicada",teng:"Ingeniería",
+exph:"Experiencia profesional",
+e1r:"Ingeniero de fabricación",e1a:"Optimización de flujos mediante SAP",e1b:"Documentación técnica",e1c:"Diseño de componentes mecánicos",e1d:"Soporte en análisis de problemas",e1e:"Colaboración con ingeniería y operaciones",
+e2r:"Ingeniero de fabricación",e2a:"Optimización de flujos mediante SAP",e2b:"Documentación técnica",e2c:"Diseño mecánico",e2d:"Análisis de problemas",e2e:"Colaboración con ingeniería",
+e3r:"Diseñador UX/UI",e3b:"Investigación con usuarios",e3e:"Prototipos en Figma",
+e4r:"Diseñador gráfico",e4a:"Adaptación de productos",e4b:"Edición gráfica",e4c:"Diseño de aplicaciones cerámicas",e4d:"Gestión de color",
+e5r:"Coordinador de Sistemas de Calidad",e5a:"Gestión y coordinación de sistemas de calidad",e5b:"Documentación y procesos internos",e5c:"Mejora continua de procedimientos",
+bon:"Presencial",brem:"Remoto",bhyb:"Híbrido",
+toolh:"Herramientas",skillh:"Habilidades",eduh:"Formación",
+skai:"IA aplicada al diseño",
+ed1:"Máster en Diseño UX/UI",ed2:"Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto",
+prh:"Proyectos",prs:"Una selección de case studies donde diseño, investigación y estrategia se unen.",
+p0:"App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.",
+p1:"Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.",
+p2:"Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.",
+p3:"Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.",
+p4:"Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.",
+see:"Ver proyecto →",tred:"Rediseño",tpro:"Prototipado",back:"Volver",
+cth:"Contacto",cts:"¿Tienes un proyecto en mente? Me encantaría escucharte.",
+fn:"Nombre",fe:"Email",fm:"Mensaje",fs:"Enviar mensaje",fsucc:"¡Mensaje enviado! Te responderé lo antes posible.",
+foot:"© 2026 Luis Arnau. Todos los derechos reservados.",
+dc:"Contexto",dpb:"Problema",do:"Objetivos",dr:"Mi rol",dpr:"Proceso",
+dres:"Resultado",dpro:"↗ Ver prototipo interactivo",dref:"Reflexión",
+dnxt:"Proyecto siguiente",dprev:"Proyecto anterior"},
+en:{nh:"Home",na:"About",np:"Projects",nc:"Contact",
+hav:"Available for new projects",ht1:"Product ",ht2:"Designer",
+hsb:"I design clear, intuitive, people-centred digital experiences. I turn insights into functional and visually clean products.",
+hc1:"View projects",hc2:"Download CV",
+abh:"About me",
+ab1:"UX/UI Designer with a degree in Industrial Design Engineering and Product Development (UJI) and a Master's in UX/UI at Nuclio Digital School. I specialise in building functional, accessible, user-centred digital products through iterative processes and data-driven design.",
+ab2:"I combine user research, validation and design best practices to create effective, well-justified solutions. I work continuously with AI as a productivity and design tool, adapting to a constantly evolving landscape.",
+ab3:"Outside work I enjoy the mountains, photography and outdoor sports — activities that keep my mind curious and creative.",
+tdes:"Design",tmnt:"Mountains",tpho:"Photography",tai:"Applied AI",teng:"Engineering",
+exph:"Professional experience",
+e1r:"Manufacturing Engineer",e1a:"Process optimisation via SAP",e1b:"Technical documentation",e1c:"Mechanical component design",e1d:"Problem analysis support",e1e:"Collaboration with engineering and operations",
+e2r:"Manufacturing Engineer",e2a:"Process optimisation via SAP",e2b:"Technical documentation",e2c:"Mechanical design",e2d:"Problem analysis",e2e:"Collaboration with engineering",
+e3r:"UX/UI Designer",e3b:"User research",e3e:"Prototypes in Figma",
+e4r:"Graphic designer",e4a:"Product adaptation",e4b:"Graphic editing",e4c:"Ceramic application design",e4d:"Colour management",
+e5r:"Quality Systems Coordinator",e5a:"Quality systems management and coordination",e5b:"Internal documentation and processes",e5c:"Continuous improvement of procedures",
+bon:"On-site",brem:"Remote",bhyb:"Hybrid",
+toolh:"Tools",skillh:"Skills",eduh:"Education",
+skai:"AI-assisted design",
+ed1:"Master's in UX/UI Design",ed2:"Degree in Industrial Design Engineering and Product Development",
+prh:"Projects",prs:"A selection of case studies where design, research and strategy come together.",
+p0:"Marketplace app connecting local shops with neighbourhood buyers. Designed from scratch, focused on community, trust and local discovery.",
+p1:"Redesign of the transfer confirmation and tracking flow to reduce friction and distrust among frequent users.",
+p2:"Conceptual redesign to improve the food delivery app experience, focused on navigation and friction reduction.",
+p3:"Digital platform connecting piano teachers and students online. End-to-end product design.",
+p4:"Real UX/UI challenge for a selection process. Redesigned the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach.",
+see:"View project →",tred:"Redesign",tpro:"Prototyping",back:"Back",
+cth:"Contact",cts:"Have a project in mind? I'd love to hear about it.",
+fn:"Name",fe:"Email",fm:"Message",fs:"Send message",fsucc:"Message sent! I'll get back to you as soon as possible.",
+foot:"© 2026 Luis Arnau. All rights reserved.",
+dc:"Context",dpb:"Problem",do:"Objectives",dr:"My role",dpr:"Process",
+dres:"Result",dpro:"↗ View interactive prototype",dref:"Reflection",
+dnxt:"Next project",dprev:"Previous project"}
 };
-
 let lang='es';
 function setLang(l){
   lang=l;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.lb[onclick="setLang('${l}')"]`).classList.add('active');
   document.querySelectorAll('[data-key]').forEach(el=>{
     const k=el.getAttribute('data-key');
     if(T[l][k]!==undefined) el.textContent=T[l][k];
@@ -606,160 +535,172 @@ function setLang(l){
   document.documentElement.lang=l;
 }
 
-// ─── PROJECTS DATA ───────────────────────────────────────────
 const P={
 es:[
-  {name:"LoLocal",sub:"App marketplace para conectar comercios locales con compradores del barrio",
-   cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
-   ctx:"Más de 40.000 tiendas cerraron en España entre 2019 y 2023, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos y pequeños negocios. LoLocal nace para visibilizar estos comercios de manera sencilla y directa.",
-   prob:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca ni cómo contactar con los negocios de su barrio.",
+  {nm:"LoLocal",sb:"App marketplace para conectar comercios locales con compradores del barrio",
+   cv:`<div class="dcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Más de 40.000 tiendas cerraron en España entre 2019 y 2023, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos. LoLocal nace para visibilizar estos comercios de manera sencilla y directa.",
+   prb:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca.",
    obj:["Visibilizar comercios locales de forma sencilla","Conectar compradores y vendedores emocionalmente","Facilitar el descubrimiento por geolocalización","Sistema de fidelización para incentivar recurrencia","Diseño accesible para comerciantes poco digitalizados"],
    rol:"UX Research, User Personas, Benchmark, Arquitectura, Wireframing, UI Design, Design System, Branding.",
-   proc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados al diseño","Wireframes baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
-   res:"App diseñada desde cero con navegación dual (negocios/compradores), UI Kit completo con tipografía Work Sans, sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
-   refl:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
-   extra:`<div class="detail-section"><h2>Propuesta de valor</h2><p>Visibilizar comercios locales conectando negocios con compradores de forma emocional. Diferenciación: humanización de la compra, facilidad para comprar local y apoyo al comercio como herramienta de transformación social.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>Carmen Lamadrid (comerciante, tienda gourmet), Amaïa López (consumidora que valora el trato cercano) y Pedro Muñoz (no consumidor que prioriza comodidad).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Sesgos cognitivos</h2><p>6 principios aplicados: Efecto posición serial, Visión periférica, Gestalt y jerarquía visual, FOMO, Efecto Hick-Hyman y Ley de Fitts.</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta (Primary-Green, Accent dorado), iconografía por categoría, y componentes de card, botones, filtros, chat y fidelización.</p><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
-   next:1},
-
-  {name:"Remitly",sub:"Rediseño del flujo de confirmación y seguimiento de transferencias",
-   cover:`<div class="detail-cover" style="background:#1d3276"><img src="images/remitly-cover.png" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
-   ctx:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío entre usuarios frecuentes, especialmente la falta de confirmación clara al finalizar una transferencia, generando desconfianza y envíos duplicados.",
-   prob:"La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado ni en qué estado estaba su transacción.",
-   obj:["Reducir envíos duplicados por falta de feedback","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
+   prc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados","Wireframes baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
+   res:"App diseñada desde cero con navegación dual, UI Kit completo con Work Sans, sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
+   ref:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
+   ext:`<div class="ds"><h2>Propuesta de valor</h2><p>Visibilizar comercios locales conectando negocios con compradores de forma emocional.</p><img src="images/lolocal-conectar.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><p>Carmen Lamadrid (comerciante), Amaïa López (consumidora) y Pedro Muñoz (no consumidor).</p><img src="images/lolocal-personas.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Sesgos cognitivos</h2><p>6 principios: Efecto posición serial, Visión periférica, Gestalt, FOMO, Hick-Hyman y Ley de Fitts.</p><img src="images/lolocal-sesgos.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta, iconografía por categoría, y componentes de card, botones, filtros, chat y fidelización.</p><img src="images/lolocal-uikit.png" class="simg" onerror="this.style.display='none'" alt=""/></div>`,
+   nx:1,pv:null},
+  {nm:"Remitly",sb:"Rediseño del flujo de confirmación y seguimiento de transferencias",
+   cv:`<div class="dcov" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío, especialmente la falta de confirmación clara al finalizar una transferencia.",
+   prb:"La falta de confirmación clara generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado.",
+   obj:["Reducir envíos duplicados","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
-   proc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación del punto de intervención","Rediseño del flujo de confirmación","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
-   res:"Todos los participantes completaron las tareas. Flujo mejorado que redujo la confusión en la confirmación del envío. NPS de 62.5% en historial.",
-   refl:"Pequeños cambios en los mensajes tienen un impacto directo en la confianza. La transparencia es clave en apps fintech.",
-   extra:`<div class="detail-section"><h2>Research y Ley de Pareto</h2><p>Audiencia principal: migrantes latinos 25-34 años. El 20% de causas provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="slide-img" alt=""/><p class="slide-caption">Análisis de reseñas + Ley de Pareto: incidencias en el envío y UI son las causas raíz.</p></div><div class="detail-section"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona que envía dinero a Perú.</p><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><p class="slide-caption">De "Recopilando información..." a estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><p class="slide-caption">Mensajes más claros, empáticos y accionables en los modales de confirmación.</p><img src="images/remitly-envios.png" class="slide-img" alt=""/><p class="slide-caption">Historial con filtros por estado: En progreso, Recibido, Cancelado.</p></div><div class="detail-section"><h2>Pruebas de usabilidad</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participantes</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Completaron Tarea 1</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS Historial</div></div></div></div><div class="detail-section"><h2>Insights</h2><div class="insight-grid"><div class="insight-card"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso</li><li>Unificar textos del flujo</li><li>Detalle desde tarjeta</li><li>Mensaje claro al confirmar</li></ul></div><div class="insight-card"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" similares</li><li>Historial genera confianza</li><li>Interfaz familiar</li></ul></div><div class="insight-card"><h3>Conclusión</h3><ul><li>Experiencia más simple</li><li>Flujo comprensible</li><li>Pequeños ajustes mejorarían la intuición</li></ul></div></div></div>`,
-   next:2},
-
-  {name:"PedidosYA",sub:"Rediseño conceptual de app de delivery de comida",
-   cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
-   ctx:"Rediseño conceptual para mejorar la experiencia de usuario en la app PedidosYA, con foco en simplificar el flujo de pedido y reducir el abandono.",
-   prob:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
+   prc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación del punto de intervención","Rediseño del flujo de confirmación","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
+   res:"Todos los participantes completaron las tareas. Flujo mejorado que redujo la confusión. NPS de 62.5% en historial.",
+   ref:"Pequeños cambios en los mensajes tienen un impacto directo en la confianza. La transparencia es clave en apps fintech.",
+   ext:`<div class="ds"><h2>Research y Ley de Pareto</h2><p>Audiencia: migrantes latinos 25-34 años. El 20% de causas provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="simg" alt=""/></div><div class="ds"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona, envía dinero a Perú sin confirmar llegada.</p><img src="images/remitly-journey.png" class="simg" alt=""/></div><div class="ds"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="simg" alt=""/><p class="scap">Estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="simg" alt=""/><p class="scap">Mensajes más claros y accionables en modales.</p><img src="images/remitly-envios.png" class="simg" alt=""/><p class="scap">Historial con filtros: En progreso, Recibido, Cancelado.</p></div><div class="ds"><h2>Pruebas de usabilidad</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participantes</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Completaron Tarea 1</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS Historial</div></div></div></div><div class="ds"><h2>Insights</h2><div class="ig"><div class="ic"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso</li><li>Unificar textos</li><li>Detalle desde tarjeta</li><li>Mensaje al confirmar</li></ul></div><div class="ic"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" similares</li><li>Historial genera confianza</li><li>Interfaz familiar</li></ul></div><div class="ic"><h3>Conclusión</h3><ul><li>Experiencia más simple</li><li>Flujo comprensible</li><li>Pequeños ajustes mejorarían intuición</li></ul></div></div></div>`,
+   nx:2,pv:0},
+  {nm:"PedidosYA",sb:"Rediseño conceptual de app de delivery de comida",
+   cv:`<div class="dcove" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+   ctx:"Rediseño conceptual para mejorar la experiencia en PedidosYA, con foco en simplificar el flujo de pedido y reducir el abandono.",
+   prb:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
    obj:["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo hasta el pedido","Mejorar la legibilidad del menú"],
    rol:"UX Research, UI Design, UX Writing, Prototipado.",
-   proc:["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes","Validación con usuarios"],
+   prc:["Benchmark de apps de delivery","Mapeo del user journey actual","Identificación de pain points","Rediseño de pantallas clave","Sistema de componentes","Validación con usuarios"],
    res:"Propuesta de rediseño con navegación más clara, carrito siempre visible y flujo de pedido optimizado.",
-   refl:"La jerarquía visual y la reducción de fricciones son fundamentales en apps transaccionales.",
-   extra:"",next:3},
-
-  {name:"Estudio Cactus",sub:"Challenge UX/UI — Rediseño de mapa 3D interactivo",
-   cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" alt="Estudio Cactus" onerror="this.style.display='none'"/></div>`,
+   ref:"La jerarquía visual y la reducción de fricciones son fundamentales en apps transaccionales.",
+   ext:"",nx:3,pv:1},
+  {nm:"Telepianxs",sb:"Plataforma digital para conectar profesores y alumnos de piano online",
+   cv:`<div class="dcove" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
+   ctx:"Telepianxs es una plataforma digital diseñada para conectar profesores y alumnos de piano de forma online, facilitando la enseñanza musical a distancia con una experiencia fluida y accesible.",
+   prb:"No existía una plataforma específica para la enseñanza de piano online que integrara comunicación, seguimiento del progreso y gestión de clases en un solo lugar.",
+   obj:["Conectar profesores y alumnos de piano fácilmente","Gestionar clases y horarios desde la plataforma","Seguimiento del progreso del alumno","Experiencia accesible para usuarios no técnicos","Diseño que transmita confianza y profesionalidad"],
+   rol:"UX Research, Product Design, Wireframing, UI Design, Prototipado.",
+   prc:["Research del sector educación musical online","Definición de user personas","Mapeo de user journeys","Arquitectura de información","Wireframes de baja y media fidelidad","Diseño visual e identidad de producto","Prototipo interactivo en Figma"],
+   res:"Plataforma con flujos claros para profesores y alumnos, sistema de reserva de clases, seguimiento de progreso y comunicación integrada.",
+   ref:"Un proyecto que demuestra cómo el diseño puede democratizar el acceso a la educación musical eliminando barreras geográficas.",
+   ext:"",nx:4,pv:2},
+  {nm:"Estudio Cactus",sb:"Challenge UX/UI — Rediseño de mapa 3D interactivo",
+   cv:`<div class="dcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
    ctx:"Prueba real para un proceso de selección. Había que mejorar la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach (EE.UU.).",
-   prob:"El menú lateral del mapa era poco intuitivo en móvil y ciertas áreas estaban mal numeradas.",
+   prb:"El menú lateral del mapa era poco intuitivo en móvil y ciertas áreas estaban mal numeradas.",
    obj:["Navegación clara en móvil","Menú desplegable más comprensible","Optimizar espacio en pantalla","Mejorar consistencia de numeraciones"],
    rol:"UX/UI, análisis, prototipado.",
-   proc:["Reorganización del menú","Menú tipo burger para no interferir con el mapa","Notas explicativas en submenús","Corrección de numeración siguiendo lógica paralela"],
+   prc:["Reorganización del menú","Menú tipo burger para no interferir con el mapa","Notas explicativas en submenús","Corrección de numeración siguiendo lógica paralela"],
    res:"Mayor claridad, menor fricción y experiencia móvil mucho más intuitiva.",
-   refl:"Ejercicio sólido de navegación, claridad y diseño funcional.",
-   extra:"",next:null}
+   ref:"Ejercicio sólido de navegación, claridad y diseño funcional.",
+   ext:"",nx:null,pv:3}
 ],
 en:[
-  {name:"LoLocal",sub:"Marketplace app connecting local shops with neighbourhood buyers",
-   cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
-   ctx:"Over 40,000 shops closed in Spain between 2019 and 2023. LoLocal was created to make local businesses visible simply and directly, bringing word-of-mouth back into your pocket.",
-   prob:"Local shops lack accessible digital tools, and buyers don't know what's near them or how to contact neighbourhood businesses.",
-   obj:["Make local businesses easily discoverable","Connect buyers and sellers emotionally","Enable discovery by geolocation","Loyalty system to drive repeat visits","Accessible design for low-digital-literacy shopkeepers"],
+  {nm:"LoLocal",sb:"Marketplace app connecting local shops with neighbourhood buyers",
+   cv:`<div class="dcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Over 40,000 shops closed in Spain between 2019 and 2023. LoLocal brings word-of-mouth back into your pocket.",
+   prb:"Local shops lack accessible digital tools, and buyers don't know what's near them.",
+   obj:["Make local businesses easily discoverable","Connect buyers and sellers emotionally","Enable discovery by geolocation","Loyalty system to drive repeat visits","Accessible design for low-digital shopkeepers"],
    rol:"UX Research, User Personas, Benchmarking, Architecture, Wireframing, UI Design, Design System, Branding.",
-   proc:["Desk Research + Mind Map","Shop and consumer interviews","Surveys and benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Value proposition and MVP","Architecture and navigation","Cognitive biases applied","Low- and mid-fidelity wireframes","UI Kit + component library","Interactive prototype in Figma"],
-   res:"App designed from scratch with dual navigation, full UI Kit with Work Sans, sitemap and task flows for 5 tasks, and functional Figma prototype.",
-   refl:"Not just a marketplace — the neighbourhood, digitalised. We brought word-of-mouth back and put it in an app.",
-   extra:`<div class="detail-section"><h2>Value proposition</h2><p>Making local businesses visible by connecting shops with buyers emotionally. Key differentiators: humanising shopping, ease of buying local, and supporting commerce as social transformation.</p><img src="images/lolocal-conectar.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>User Personas</h2><p>Carmen Lamadrid (shop owner), Amaïa López (consumer who values personal service) and Pedro Muñoz (non-consumer who prioritises convenience).</p><img src="images/lolocal-personas.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Cognitive biases</h2><p>6 principles: Serial position effect, Peripheral vision, Gestalt, FOMO, Hick-Hyman and Fitts' Law.</p><img src="images/lolocal-sesgos.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div><div class="detail-section"><h2>Design System</h2><img src="images/lolocal-uikit.png" class="slide-img" onerror="this.style.display='none'" alt=""/></div>`,
-   next:1},
-  {name:"Remitly",sub:"Redesign of transfer confirmation and tracking flow",
-   cover:`<div class="detail-cover" style="background:#1d3276"><img src="images/remitly-cover.png" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
-   ctx:"Remitly is one of the most used remittance apps. We identified friction in the sending process — especially unclear confirmation after completing a transfer, causing distrust and duplicate sends.",
-   prob:"Unclear confirmation caused distrust and duplicate sends. Users didn't know if the money had arrived or what state their transaction was in.",
-   obj:["Reduce duplicate sends","Show transfer status in real time","Improve system messages (UX Writing)","Organise history by status","Increase user confidence"],
+   prc:["Desk Research + Mind Map","Shop and consumer interviews","Surveys and benchmarking","3 User Personas","Value proposition and MVP","Architecture and navigation","Cognitive biases applied","Low- and mid-fidelity wireframes","UI Kit + component library","Interactive prototype in Figma"],
+   res:"App designed from scratch with dual navigation, full UI Kit with Work Sans, sitemap, task flows and functional Figma prototype.",
+   ref:"Not just a marketplace — the neighbourhood, digitalised.",
+   ext:`<div class="ds"><h2>Value proposition</h2><img src="images/lolocal-conectar.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><img src="images/lolocal-personas.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Cognitive biases</h2><img src="images/lolocal-sesgos.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><img src="images/lolocal-uikit.png" class="simg" onerror="this.style.display='none'" alt=""/></div>`,
+   nx:1,pv:null},
+  {nm:"Remitly",sb:"Redesign of transfer confirmation and tracking flow",
+   cv:`<div class="dcov" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Remitly is widely used for remittances. Unclear confirmation caused distrust and duplicate sends.",
+   prb:"Users didn't know if money had arrived or what state their transaction was in.",
+   obj:["Reduce duplicate sends","Show transfer status in real time","Improve system messages","Organise history by status","Increase user confidence"],
    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototyping, Usability Testing.",
-   proc:["Desktop research and review analysis","Pareto analysis","User Persona: Martín Benitez","Journey Map","Intervention point identification","Confirmation flow redesign","UX Writing on system messages","Heuristic and accessibility audit","Usability tests (8 participants)","Post-test NPS questionnaire"],
-   res:"All participants completed the tasks. Improved flow reduced confusion. NPS of 62.5% for history.",
-   refl:"Small message changes directly impact trust. Transparency is critical in fintech.",
-   extra:`<div class="detail-section"><h2>Research & Pareto</h2><img src="images/remitly-pareto.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>User Persona & Journey Map</h2><img src="images/remitly-journey.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Solution</h2><img src="images/remitly-seguimiento.png" class="slide-img" alt=""/><img src="images/remitly-mensajes.png" class="slide-img" alt=""/><img src="images/remitly-envios.png" class="slide-img" alt=""/></div><div class="detail-section"><h2>Usability tests</h2><div class="stats-row"><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Participants</div></div><div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Task 1 complete</div></div><div class="stat-card"><div class="stat-num">62.5%</div><div class="stat-label">NPS History</div></div></div></div>`,
-   next:2},
-  {name:"PedidosYA",sub:"Conceptual redesign of a food delivery app",
-   cover:`<div class="detail-cover-emoji" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
-   ctx:"Conceptual redesign to improve PedidosYA's user experience, focused on simplifying the order flow.",
-   prob:"Category navigation and cart management caused confusion and order abandonment.",
+   prc:["Desktop research and review analysis","Pareto analysis","User Persona: Martín Benitez","Journey Map","Intervention point","Confirmation flow redesign","UX Writing","Heuristic audit","Usability tests (8 participants)","Post-test NPS"],
+   res:"All participants completed the tasks. Improved flow, reduced confusion. NPS 62.5%.",
+   ref:"Small message changes directly impact trust. Transparency is critical in fintech.",
+   ext:`<div class="ds"><h2>Research & Pareto</h2><img src="images/remitly-pareto.png" class="simg" alt=""/></div><div class="ds"><h2>Journey Map</h2><img src="images/remitly-journey.png" class="simg" alt=""/></div><div class="ds"><h2>Solution</h2><img src="images/remitly-seguimiento.png" class="simg" alt=""/><img src="images/remitly-mensajes.png" class="simg" alt=""/><img src="images/remitly-envios.png" class="simg" alt=""/></div><div class="ds"><h2>Usability tests</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participants</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Task 1 complete</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS History</div></div></div></div>`,
+   nx:2,pv:0},
+  {nm:"PedidosYA",sb:"Conceptual redesign of a food delivery app",
+   cv:`<div class="dcove" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+   ctx:"Conceptual redesign to improve PedidosYA's UX, focused on simplifying the order flow.",
+   prb:"Category navigation and cart management caused confusion and order abandonment.",
    obj:["Simplify category navigation","Improve cart visibility","Reduce time to order","Improve menu legibility"],
    rol:"UX Research, UI Design, UX Writing, Prototyping.",
-   proc:["Delivery app benchmark","User journey mapping","Pain point identification","Key screen redesign","Component system","User validation"],
+   prc:["Delivery app benchmark","User journey mapping","Pain point identification","Key screen redesign","Component system","User validation"],
    res:"Redesign proposal with clearer navigation, persistent cart and optimised order flow.",
-   refl:"Visual hierarchy and friction reduction are fundamental in transactional apps.",
-   extra:"",next:3},
-  {name:"Estudio Cactus",sub:"UX/UI Challenge — 3D interactive map redesign",
-   cover:`<div class="detail-cover" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" alt="Estudio Cactus" onerror="this.style.display='none'"/></div>`,
-   ctx:"Real test for a selection process. The goal was to improve the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach, USA.",
-   prob:"The map's side menu was unintuitive on mobile and certain areas were incorrectly numbered.",
+   ref:"Visual hierarchy and friction reduction are fundamental in transactional apps.",
+   ext:"",nx:3,pv:1},
+  {nm:"Telepianxs",sb:"Digital platform connecting piano teachers and students online",
+   cv:`<div class="dcove" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
+   ctx:"Telepianxs connects piano teachers and students online, removing geographical barriers from music education.",
+   prb:"No dedicated platform existed for online piano teaching integrating communication, progress tracking and class management.",
+   obj:["Connect teachers and students simply","Manage classes and schedules","Track student progress","Accessible for non-technical users","Design conveying trust and professionalism"],
+   rol:"UX Research, Product Design, Wireframing, UI Design, Prototyping.",
+   prc:["Online music education research","User persona definition","User journey mapping","Information architecture","Low- and mid-fidelity wireframes","Visual design and product identity","Interactive Figma prototype"],
+   res:"Platform with clear flows for teachers and students, class booking, progress tracking and integrated communication.",
+   ref:"A project showing how design can democratise music education by removing geographical barriers.",
+   ext:"",nx:4,pv:2},
+  {nm:"Estudio Cactus",sb:"UX/UI Challenge — 3D interactive map redesign",
+   cv:`<div class="dcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Real test for a selection process. Improve the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach, USA.",
+   prb:"The map's side menu was unintuitive on mobile and certain areas were incorrectly numbered.",
    obj:["Clear mobile navigation","More comprehensible dropdown menu","Optimise screen space","Improve numbering consistency"],
    rol:"UX/UI, analysis, prototyping.",
-   proc:["Menu reorganisation","Hamburger menu to avoid covering the map","Explanatory notes in submenus","Numbering correction following parallel logic"],
+   prc:["Menu reorganisation","Hamburger menu to avoid covering the map","Explanatory notes in submenus","Numbering correction with parallel logic"],
    res:"Greater clarity, less friction and a much more intuitive mobile experience.",
-   refl:"A solid exercise in navigation, clarity and functional design.",
-   extra:"",next:null}
-]
-};
+   ref:"A solid exercise in navigation, clarity and functional design.",
+   ext:"",nx:null,pv:3}
+]};
 
-// ─── NAV ─────────────────────────────────────────────────────
-function showSection(id){
+function go(id){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
-}
+function togMenu(){document.getElementById('mobnav').classList.toggle('open')}
 
-// ─── DETAIL ──────────────────────────────────────────────────
-function showDetail(i){
-  const p=P[lang][i], L=T[lang];
-  const obj=p.obj.map(o=>`<li><div class="obj-check">✓</div>${o}</li>`).join('');
-  const proc=p.proc.map((s,j)=>`<div class="process-item"><div class="process-num">${j+1}</div>${s}</div>`).join('');
-  const nxt=p.next!==null
-    ?`<div class="nav-project"><button class="nav-project-btn" onclick="showDetail(${p.next})"><div class="nav-project-text"><span class="nav-project-label">${L.dnxt}</span><span class="nav-project-name">${P[lang][p.next].name}</span></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>`:'';
-  document.getElementById('detalle-content').innerHTML=`
-    <h1 class="detail-title">${p.name}</h1>
-    <p class="detail-sub">${p.sub}</p>
-    ${p.cover}
-    <div class="detail-section"><h2>${L.dc}</h2><p>${p.ctx}</p></div>
-    <div class="detail-section"><h2>${L.dp}</h2><p>${p.prob}</p></div>
-    <div class="detail-section"><h2>${L.do}</h2><ul class="obj-list">${obj}</ul></div>
-    <div class="detail-section"><h2>${L.dr}</h2><p>${p.rol}</p></div>
-    <div class="detail-section"><h2>${L.dpr}</h2><div class="process-grid">${proc}</div></div>
-    ${p.extra}
-    <div class="result-card"><h2>${L.dres}</h2><p>${p.res}</p></div>
-    <button class="proto-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>${L.dpro}</button>
-    <div class="detail-section"><h2>${L.dref}</h2><p class="reflexion-text">"${p.refl}"</p></div>
-    ${nxt}`;
-  showSection('detalle-wrap');
-}
-
-// ─── CONTACT FORM ─────────────────────────────────────────────
-function sendForm(){
-  const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const msg=document.getElementById('f-msg').value.trim();
-  if(!name||!email||!msg){
-    alert(lang==='es'?'Por favor rellena todos los campos.':'Please fill in all fields.');
-    return;
+function det(i){
+  const p=P[lang][i],L=T[lang];
+  const obj=p.obj.map(o=>`<li><div class="och">✓</div>${o}</li>`).join('');
+  const prc=p.prc.map((s,j)=>`<div class="pi2"><div class="pnum">${j+1}</div>${s}</div>`).join('');
+  let nav='<div class="dnav">';
+  if(p.pv!==null){
+    nav+=`<button class="dnbtn prev" onclick="det(${p.pv})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><div class="nt"><span class="nlb">${L.dprev}</span><span class="npn">${P[lang][p.pv].nm}</span></div></button>`;
+  } else nav+='<div></div>';
+  nav+='<div style="flex:1"></div>';
+  if(p.nx!==null){
+    nav+=`<button class="dnbtn next" onclick="det(${p.nx})"><div class="nt"><span class="nlb">${L.dnxt}</span><span class="npn">${P[lang][p.nx].nm}</span></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>`;
   }
-  // Open mailto to send message to Luis
-  const subject=encodeURIComponent(`[Portfolio] Mensaje de ${name}`);
-  const body=encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${msg}`);
-  window.location.href=`mailto:luisarnau9@gmail.com?subject=${subject}&body=${body}`;
-  document.getElementById('form-success').classList.add('show');
-  document.getElementById('f-name').value='';
-  document.getElementById('f-email').value='';
-  document.getElementById('f-msg').value='';
+  nav+='</div>';
+  document.getElementById('dc').innerHTML=`
+    <h1 class="dtitle">${p.nm}</h1><p class="dsub">${p.sb}</p>
+    ${p.cv}
+    <div class="ds"><h2>${L.dc}</h2><p>${p.ctx}</p></div>
+    <div class="ds"><h2>${L.dpb}</h2><p>${p.prb}</p></div>
+    <div class="ds"><h2>${L.do}</h2><ul class="ol">${obj}</ul></div>
+    <div class="ds"><h2>${L.dr}</h2><p>${p.rol}</p></div>
+    <div class="ds"><h2>${L.dpr}</h2><div class="pgrid">${prc}</div></div>
+    ${p.ext}
+    <div class="rcrd"><h2>${L.dres}</h2><p>${p.res}</p></div>
+    <button class="pbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>${L.dpro}</button>
+    <div class="ds"><h2>${L.dref}</h2><p class="rft">"${p.ref}"</p></div>
+    ${nav}`;
+  go('dw');
 }
 
-// Fix cactus cover if image fails
-document.addEventListener('DOMContentLoaded',()=>{
-  const ci=document.querySelector('.project-card:last-child .project-cover img');
-  if(ci) ci.addEventListener('error',()=>{
-    document.getElementById('cactus-emoji').style.display='flex';
-  });
+function sendF(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  if(!n||!e||!m){alert(lang==='es'?'Por favor rellena todos los campos.':'Please fill in all fields.');return;}
+  const sub=encodeURIComponent(`[Portfolio] Mensaje de ${n}`);
+  const bod=encodeURIComponent(`Nombre: ${n}\nEmail: ${e}\n\nMensaje:\n${m}`);
+  window.location.href=`mailto:luisarnau9@gmail.com?subject=${sub}&body=${bod}`;
+  document.getElementById('fok').classList.add('show');
+  ['fn','fe','fm'].forEach(id=>document.getElementById(id).value='');
+}
+
+// Hide cactus emoji if logo loads
+window.addEventListener('load',()=>{
+  const img=document.querySelector('#cfe')?.previousElementSibling;
+  if(img&&img.tagName==='IMG'){
+    if(img.complete&&img.naturalWidth>0){document.getElementById('cfe').style.display='none';}
+    else img.addEventListener('load',()=>{document.getElementById('cfe').style.display='none';});
+    img.addEventListener('error',()=>{img.style.display='none';document.getElementById('cfe').style.display='flex';});
+  }
 });
 </script>
 </body>
