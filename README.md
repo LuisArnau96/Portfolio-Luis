@@ -1,2 +1,2 @@
 # Portfolio-Luis
-portfolio de claude
+Portfolio de diseño UX/UI
