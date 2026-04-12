@@ -2,331 +2,337 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Luis Arnau | Product & UX/UI Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#f0f2f5;--white:#fff;--blue:#3B5BDB;--bl:#e8edff;--text:#1a1d23;--mu:#6b7280;--bor:#e5e7eb;--r:16px;--rs:10px}
+:root{--bg:#f0f2f5;--wh:#fff;--bl:#3B5BDB;--bll:#e8edff;--tx:#1a1d23;--mu:#6b7280;--bo:#e5e7eb;--r:16px;--rs:10px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-nav{position:sticky;top:0;z-index:200;background:rgba(240,242,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--bor);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
-.nlogo{font-weight:700;font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit}
-.nlinks{display:flex;gap:1.5rem;list-style:none}
-.nlinks button{font-size:.875rem;color:var(--mu);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .2s;padding:0}
-.nlinks button:hover{color:var(--text)}
-.nright{display:flex;align-items:center;gap:.75rem}
-.ltog{display:flex;gap:3px}
-.lb{padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--mu);transition:all .2s;font-family:inherit}
-.lb.active{background:var(--blue);color:#fff}
-.ham{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--text)}
-.mobnav{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(240,242,245,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--bor);padding:1rem 1.5rem;z-index:199;flex-direction:column}
-.mobnav.open{display:flex}
-.mobnav button{font-size:1rem;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:.75rem 0;border-bottom:1px solid var(--bor)}
-.mobnav button:last-child{border-bottom:none}
-section{display:none}
-section.active{display:block}
-#hw.active{display:flex;flex-direction:column}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(240,242,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--bo);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
+.nlo{font-weight:700;font-size:1rem;color:var(--tx);background:none;border:none;cursor:pointer;font-family:inherit}
+.nli{display:flex;gap:1.5rem;list-style:none}
+.nli button{font-size:.875rem;color:var(--mu);background:none;border:none;cursor:pointer;font-family:inherit;transition:color .2s;padding:0}
+.nli button:hover{color:var(--tx)}
+.nr{display:flex;align-items:center;gap:.75rem}
+.lt{display:flex;gap:3px}
+.lb{padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--mu);font-family:inherit;transition:all .2s}
+.lb.on{background:var(--bl);color:#fff}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--tx)}
+.mnav{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(240,242,245,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--bo);padding:1rem 1.5rem;z-index:199;flex-direction:column}
+.mnav.open{display:flex}
+.mnav button{font-size:1rem;color:var(--tx);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:.75rem 0;border-bottom:1px solid var(--bo)}
+.mnav button:last-child{border-bottom:none}
+/* SECTIONS */
+section{display:none}.sa{display:block}#hw.sa{display:flex;flex-direction:column}
+/* HERO */
 #hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,91,219,.07) 0%,transparent 70%);pointer-events:none}
-.htag{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--bor);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);margin-bottom:1.5rem;animation:fu .5s ease both}
-.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s ease infinite;flex-shrink:0}
+.htag{display:inline-flex;align-items:center;gap:8px;background:var(--wh);border:1px solid var(--bo);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);margin-bottom:1.5rem;animation:fu .5s ease both}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s ease infinite;flex-shrink:0;display:inline-block}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.htitle{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,7rem);line-height:1.05;margin-bottom:1.5rem;animation:fu .6s ease .1s both}
-.st{color:var(--text)}
+.hti{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,7rem);line-height:1.05;margin-bottom:1.5rem;animation:fu .6s ease .1s both}
+.st{color:var(--tx)}
 .gr{background:linear-gradient(90deg,#3B5BDB,#6366f1,#8b5cf6,#3B5BDB);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s ease infinite}
 @keyframes gs{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hsub{font-size:1.05rem;color:var(--mu);line-height:1.7;max-width:540px;margin:0 auto 2.5rem;animation:fu .6s ease .2s both}
-.hact{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fu .6s ease .3s both}
-.hpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2.5rem;animation:fu .6s ease .4s both}
-.hpill{background:var(--white);border:1px solid var(--bor);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);font-weight:500}
-.bp{background:var(--blue);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s,transform .2s;text-decoration:none}
+.hsu{font-size:1.05rem;color:var(--mu);line-height:1.7;max-width:540px;margin:0 auto 2.5rem;animation:fu .6s ease .2s both}
+.hac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fu .6s ease .3s both}
+.hpi{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2.5rem;animation:fu .6s ease .4s both}
+.hp{background:var(--wh);border:1px solid var(--bo);border-radius:20px;padding:6px 14px;font-size:.8rem;color:var(--mu);font-weight:500}
+/* BUTTONS */
+.bp{background:var(--bl);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s,transform .2s;text-decoration:none}
 .bp:hover{opacity:.88;transform:translateY(-1px)}
-.bs{background:var(--white);color:var(--text);border:1px solid var(--bor);padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none}
-.bs:hover{border-color:var(--blue);color:var(--blue)}
-#sw.active{display:block}
-#sobre{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
-.stop{display:grid;grid-template-columns:240px 1fr;gap:1.5rem;margin-bottom:1.5rem}
-.pcrd{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:1.75rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
-.pcirc{width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid var(--bl);background:var(--bl);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
-.pcirc img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.pname{font-weight:700;font-size:1rem}
-.prole{color:var(--blue);font-weight:600;font-size:.8rem}
-.ploc{color:var(--mu);font-size:.78rem;display:flex;align-items:center;gap:4px;justify-content:center}
-.plinks{display:flex;gap:10px}
-.plinks a{color:var(--blue);text-decoration:none;font-size:.8rem;display:flex;align-items:center;gap:4px;transition:opacity .2s}
-.plinks a:hover{opacity:.7}
-.bcrd{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:1.75rem}
-.bcrd h2{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.bs{background:var(--wh);color:var(--tx);border:1px solid var(--bo);padding:12px 24px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none}
+.bs:hover{border-color:var(--bl);color:var(--bl)}
+/* SOBRE */
+#sw.sa{display:block}
+#so{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+.stpb{display:grid;grid-template-columns:1fr 1.8fr;gap:1.5rem;margin-bottom:1.5rem}
+/* Identity card — no photo, just text info */
+.idc{background:var(--wh);border-radius:var(--r);border:1px solid var(--bo);padding:1.75rem;display:flex;flex-direction:column;gap:.85rem}
+.idname{font-weight:800;font-size:1.25rem;color:var(--tx)}
+.idrole{color:var(--bl);font-weight:600;font-size:.875rem}
+.idloc{color:var(--mu);font-size:.8rem;display:flex;align-items:center;gap:5px}
+.idlinks{display:flex;gap:.75rem;flex-wrap:wrap}
+.idlinks a{color:var(--bl);text-decoration:none;font-size:.8rem;display:inline-flex;align-items:center;gap:4px;background:var(--bll);border-radius:6px;padding:4px 10px;transition:opacity .2s;font-weight:500}
+.idlinks a:hover{opacity:.7}
+.idtags{display:flex;gap:7px;flex-wrap:wrap}
+.biocard{background:var(--wh);border-radius:var(--r);border:1px solid var(--bo);padding:1.75rem}
+.biocard h2{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
 .bt{font-size:.875rem;line-height:1.8;color:var(--mu)}
-.agrid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
-.card{background:var(--white);border-radius:var(--r);padding:1.75rem;border:1px solid var(--bor)}
+.agr{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
+.card{background:var(--wh);border-radius:var(--r);padding:1.75rem;border:1px solid var(--bo)}
 .ct{font-size:1rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
-.ei{margin-bottom:1.4rem}
-.ei:last-child{margin-bottom:0}
+.ei{margin-bottom:1.4rem}.ei:last-child{margin-bottom:0}
 .er{font-weight:700;font-size:.9rem}
-.ec{color:var(--blue);font-size:.85rem;font-weight:600}
+.ec{color:var(--bl);font-size:.85rem;font-weight:600}
 .em{font-size:.78rem;color:var(--mu);margin:3px 0 7px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.badge{background:var(--bg);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:500;color:var(--mu);border:1px solid var(--bor)}
+.badge{background:var(--bg);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:500;color:var(--mu);border:1px solid var(--bo)}
 .el{list-style:none}
 .el li{font-size:.84rem;color:var(--mu);padding:2px 0 2px 13px;position:relative}
-.el li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.el li::before{content:'·';position:absolute;left:0;color:var(--bl)}
 .tags{display:flex;flex-wrap:wrap;gap:7px}
-.tag{background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:500}
+.tag{background:var(--bg);border:1px solid var(--bo);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:500}
 .rc{display:flex;flex-direction:column;gap:1.5rem}
-#pw.active{display:block}
-#proy{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+/* PROYECTOS */
+#pw.sa{display:block}
+#pr{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
 .sh{text-align:center;margin-bottom:2.5rem}
-.stitle{font-size:2rem;font-weight:800;margin-bottom:.5rem}
-.ssub{color:var(--mu);font-size:.95rem}
-.plist{display:flex;flex-direction:column;gap:1.5rem}
-.pcard{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s}
-.pcard:hover{box-shadow:0 8px 32px rgba(59,91,219,.13);transform:translateY(-2px)}
-.pcov{overflow:hidden;min-height:220px;position:relative}
-.pcov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pemj{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.sti{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+.ssu{color:var(--mu);font-size:.95rem}
+.pli{display:flex;flex-direction:column;gap:1.5rem}
+.pc{background:var(--wh);border-radius:var(--r);border:1px solid var(--bo);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s}
+.pc:hover{box-shadow:0 8px 32px rgba(59,91,219,.13);transform:translateY(-2px)}
+.pco{overflow:hidden;min-height:220px;position:relative}
+.pco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pem{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem}
 .pi{padding:1.75rem;display:flex;flex-direction:column;justify-content:center}
-.pn{font-size:1.3rem;font-weight:800;color:var(--blue);margin-bottom:.6rem}
+.pn{font-size:1.3rem;font-weight:800;color:var(--bl);margin-bottom:.6rem}
 .pd{color:var(--mu);font-size:.875rem;line-height:1.65;margin-bottom:1.1rem}
-.ptags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.2rem}
-.ptag{background:var(--bl);color:var(--blue);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600}
-.plink{color:var(--blue);font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
-.plink:hover{text-decoration:underline}
-#dw.active{display:block}
-#det{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
-.bbtn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--mu);font-size:.875rem;font-family:inherit;margin-bottom:1.5rem;padding:0;transition:color .2s}
-.bbtn:hover{color:var(--text)}
-.dtitle{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;margin-bottom:.5rem}
-.dsub{color:var(--mu);font-size:1rem;margin-bottom:2rem}
-.dcov{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;overflow:hidden;position:relative}
-.dcov img{width:100%;height:100%;object-fit:cover}
-.dcove{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;font-size:5rem}
-.simg{width:100%;border-radius:var(--rs);margin:1.25rem 0;border:1px solid var(--bor);box-shadow:0 4px 16px rgba(0,0,0,.07)}
-.scap{font-size:.78rem;color:var(--mu);text-align:center;margin-top:-.75rem;margin-bottom:1.25rem;font-style:italic}
+.pt{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.2rem}
+.ptag{background:var(--bll);color:var(--bl);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600}
+.pli2{color:var(--bl);font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
+.pli2:hover{text-decoration:underline}
+/* DETALLE */
+#dw.sa{display:block}
+#de{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.bb{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--mu);font-size:.875rem;font-family:inherit;margin-bottom:1.5rem;padding:0;transition:color .2s}
+.bb:hover{color:var(--tx)}
+.dt{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;margin-bottom:.5rem}
+.ds2{color:var(--mu);font-size:1rem;margin-bottom:2rem}
+.dc{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;overflow:hidden;position:relative}
+.dc img{width:100%;height:100%;object-fit:cover}
+.dce{width:100%;aspect-ratio:16/9;border-radius:var(--r);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.si{width:100%;border-radius:var(--rs);margin:1.25rem 0;border:1px solid var(--bo);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.sca{font-size:.78rem;color:var(--mu);text-align:center;margin-top:-.75rem;margin-bottom:1.25rem;font-style:italic}
 .ds{margin-bottom:2.5rem}
-.ds h2{color:var(--blue);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.ds h2{color:var(--bl);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
 .ds p{color:var(--mu);font-size:.9rem;line-height:1.75}
 .ol{list-style:none;display:flex;flex-direction:column;gap:8px}
 .ol li{font-size:.875rem;color:var(--mu);display:flex;align-items:flex-start;gap:10px}
-.och{width:22px;height:22px;min-width:22px;background:var(--bl);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pi2{background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:.84rem}
-.pnum{width:26px;height:26px;border-radius:50%;min-width:26px;background:var(--bl);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
-.rcrd{background:var(--bl);border:1px solid #c5d0f5;border-radius:var(--r);padding:1.5rem;margin-bottom:2.5rem}
-.rcrd h2{color:var(--blue);font-size:1rem;font-weight:700;margin-bottom:.6rem}
-.rcrd p{color:var(--text);font-size:.875rem;line-height:1.7}
-.rft{font-style:italic;color:var(--mu);font-size:.9rem;line-height:1.75}
-.pbtn{background:var(--blue);color:#fff;border:none;padding:13px 26px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin:0 auto 2.5rem;font-family:inherit;transition:opacity .2s}
-.pbtn:hover{opacity:.88}
+.oc{width:22px;height:22px;min-width:22px;background:var(--bll);color:var(--bl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.pgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pit{background:var(--bg);border:1px solid var(--bo);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:.84rem}
+.pnu{width:26px;height:26px;border-radius:50%;min-width:26px;background:var(--bll);color:var(--bl);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.rca{background:var(--bll);border:1px solid #c5d0f5;border-radius:var(--r);padding:1.5rem;margin-bottom:2.5rem}
+.rca h2{color:var(--bl);font-size:1rem;font-weight:700;margin-bottom:.6rem}
+.rca p{color:var(--tx);font-size:.875rem;line-height:1.7}
+.rf{font-style:italic;color:var(--mu);font-size:.9rem;line-height:1.75}
+.pbt{background:var(--bl);color:#fff;border:none;padding:13px 26px;border-radius:var(--rs);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin:0 auto 2.5rem;font-family:inherit;transition:opacity .2s;text-decoration:none}
+.pbt:hover{opacity:.88}
 .ig{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.ic{background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:1rem}
-.ic h3{color:var(--blue);font-size:.84rem;font-weight:700;margin-bottom:.5rem}
-.ic ul{list-style:none}
-.ic ul li{font-size:.78rem;color:var(--mu);padding:2px 0 2px 11px;position:relative}
-.ic ul li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+.ica{background:var(--bg);border:1px solid var(--bo);border-radius:var(--rs);padding:1rem}
+.ica h3{color:var(--bl);font-size:.84rem;font-weight:700;margin-bottom:.5rem}
+.ica ul{list-style:none}
+.ica ul li{font-size:.78rem;color:var(--mu);padding:2px 0 2px 11px;position:relative}
+.ica ul li::before{content:'·';position:absolute;left:0;color:var(--bl)}
 .sr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1rem 0}
-.sc{background:var(--white);border:1px solid var(--bor);border-radius:var(--rs);padding:1rem;text-align:center}
-.sn{font-size:1.75rem;font-weight:800;color:var(--blue)}
+.sc{background:var(--wh);border:1px solid var(--bo);border-radius:var(--rs);padding:1rem;text-align:center}
+.sn{font-size:1.75rem;font-weight:800;color:var(--bl)}
 .sl{font-size:.78rem;color:var(--mu);margin-top:3px}
 /* prev/next */
-.dnav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bor);padding-top:1.5rem;margin-top:1rem;gap:1rem}
-.dnbtn{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;color:var(--text);transition:opacity .2s;display:flex;align-items:center;gap:8px}
-.dnbtn:hover{opacity:.7}
+.dna{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bo);padding-top:1.5rem;margin-top:1rem;gap:1rem}
+.dnb{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;color:var(--tx);transition:opacity .2s;display:flex;align-items:center;gap:8px}
+.dnb:hover{opacity:.7}
 .nlb{font-size:.72rem;color:var(--mu);display:block}
 .npn{font-size:.95rem;font-weight:700}
-.dnbtn.prev .nt{text-align:left}
-.dnbtn.next .nt{text-align:right}
-/* contact */
-#cw.active{display:block}
-#cont{max-width:680px;margin:0 auto;padding:4rem 1.5rem;text-align:center}
-.ctitle{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
+.dnb.prev .nt{text-align:left}
+.dnb.next .nt{text-align:right}
+/* CONTACT */
+#cw.sa{display:block}
+#co{max-width:680px;margin:0 auto;padding:4rem 1.5rem;text-align:center}
+.ctit{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
 .csub{color:var(--mu);margin-bottom:1.5rem}
-.clinks{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
-.clink{color:var(--mu);font-size:.875rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
-.clink:hover{color:var(--blue)}
-.cform{background:var(--white);border-radius:var(--r);border:1px solid var(--bor);padding:2rem;text-align:left}
+.clin{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.cla{color:var(--mu);font-size:.875rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
+.cla:hover{color:var(--bl)}
+.cfo{background:var(--wh);border-radius:var(--r);border:1px solid var(--bo);padding:2rem;text-align:left}
 .fg{margin-bottom:1.1rem}
 .fl{display:block;font-size:.875rem;font-weight:600;margin-bottom:.5rem}
-.fi,.ft{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:var(--rs);padding:11px 14px;font-size:.875rem;font-family:inherit;color:var(--text);transition:border-color .2s;outline:none}
-.fi:focus,.ft:focus{border-color:var(--blue)}
-.ft{resize:vertical;min-height:110px}
-.fsub{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:var(--rs);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.fsub:hover{opacity:.88}
+.fi,.fte{width:100%;background:var(--bg);border:1px solid var(--bo);border-radius:var(--rs);padding:11px 14px;font-size:.875rem;font-family:inherit;color:var(--tx);outline:none;transition:border-color .2s}
+.fi:focus,.fte:focus{border-color:var(--bl)}
+.fte{resize:vertical;min-height:110px}
+.fsu{width:100%;background:var(--bl);color:#fff;border:none;padding:13px;border-radius:var(--rs);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.fsu:hover{opacity:.88}
 .fok{display:none;background:#dcfce7;border:1px solid #86efac;border-radius:var(--rs);padding:1rem;text-align:center;color:#166534;font-size:.875rem;margin-top:1rem}
 .fok.show{display:block}
-footer{border-top:1px solid var(--bor);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:.5rem}
-.flogo{font-weight:700;font-size:.95rem}
-.fics{display:flex;gap:1rem}
-.fic{color:var(--mu);text-decoration:none;font-size:.875rem;transition:color .2s;display:inline-flex;align-items:center;gap:4px}
-.fic:hover{color:var(--blue)}
-.fcp{font-size:.8rem;color:var(--mu)}
+/* FOOTER */
+footer{border-top:1px solid var(--bo);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;flex-wrap:wrap;gap:.5rem}
+.flo{font-weight:700;font-size:.95rem}
+.fic{display:flex;gap:1rem}
+.fia{color:var(--mu);text-decoration:none;font-size:.875rem;transition:color .2s;display:inline-flex;align-items:center;gap:4px}
+.fia:hover{color:var(--bl)}
+.fco{font-size:.8rem;color:var(--mu)}
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fu{animation:fu .5s ease both}.fu1{animation-delay:.07s}.fu2{animation-delay:.14s}.fu3{animation-delay:.21s}
-@media(max-width:960px){.agrid{grid-template-columns:1fr}.pcard{grid-template-columns:1fr}.pcov{min-height:220px}.stop{grid-template-columns:1fr}.pcrd{flex-direction:row;text-align:left;gap:1.25rem;align-items:flex-start}.pcirc{width:90px;height:90px;flex-shrink:0;font-size:2rem}.pcrd>div{display:flex;flex-direction:column;gap:.3rem}}
-@media(max-width:600px){nav{padding:0 1rem}.nlinks{display:none}.ham{display:inline-flex}.htitle{font-size:clamp(2.5rem,14vw,4rem)}.pgrid,.ig,.sr{grid-template-columns:1fr}#det{padding:1.5rem 1rem 3rem}#sobre,#proy{padding:1.5rem 1rem}#cont{padding:2.5rem 1rem}.cform{padding:1.25rem}.pcrd{flex-direction:column;text-align:center;align-items:center}.ploc,.plinks{justify-content:center}footer{flex-direction:column;align-items:flex-start;gap:.75rem}}
+/* RESPONSIVE */
+@media(max-width:960px){.agr{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.pco{min-height:220px}.stpb{grid-template-columns:1fr}}
+@media(max-width:600px){nav{padding:0 1rem}.nli{display:none}.ham{display:inline-flex}.hti{font-size:clamp(2.5rem,14vw,4rem)}.pgr,.ig,.sr{grid-template-columns:1fr}#de{padding:1.5rem 1rem 3rem}#so,#pr{padding:1.5rem 1rem}#co{padding:2.5rem 1rem}.cfo{padding:1.25rem}footer{flex-direction:column;align-items:flex-start;gap:.75rem}}
 </style>
 </head>
 <body>
+
 <nav>
-  <button class="nlogo" onclick="go('hw')">Luis Arnau</button>
-  <ul class="nlinks">
-    <li><button onclick="go('hw')" data-key="nh">Inicio</button></li>
-    <li><button onclick="go('sw')" data-key="na">Sobre mí</button></li>
-    <li><button onclick="go('pw')" data-key="np">Proyectos</button></li>
-    <li><button onclick="go('cw')" data-key="nc">Contacto</button></li>
+  <button class="nlo" onclick="go('hw')">Luis Arnau</button>
+  <ul class="nli">
+    <li><button onclick="go('hw')" data-k="nh">Inicio</button></li>
+    <li><button onclick="go('sw')" data-k="na">Sobre mí</button></li>
+    <li><button onclick="go('pw')" data-k="np">Proyectos</button></li>
+    <li><button onclick="go('cw')" data-k="nc">Contacto</button></li>
   </ul>
-  <div class="nright">
-    <div class="ltog">
-      <button class="lb active" onclick="setLang('es')">ES</button>
-      <button class="lb" onclick="setLang('en')">EN</button>
+  <div class="nr">
+    <div class="lt">
+      <button class="lb on" onclick="setL('es')">ES</button>
+      <button class="lb" onclick="setL('en')">EN</button>
     </div>
-    <button class="ham" onclick="togMenu()">
+    <button class="ham" onclick="togM()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
   </div>
 </nav>
-<div class="mobnav" id="mobnav">
-  <button onclick="go('hw');togMenu()" data-key="nh">Inicio</button>
-  <button onclick="go('sw');togMenu()" data-key="na">Sobre mí</button>
-  <button onclick="go('pw');togMenu()" data-key="np">Proyectos</button>
-  <button onclick="go('cw');togMenu()" data-key="nc">Contacto</button>
+<div class="mnav" id="mnav">
+  <button onclick="go('hw');togM()" data-k="nh">Inicio</button>
+  <button onclick="go('sw');togM()" data-k="na">Sobre mí</button>
+  <button onclick="go('pw');togM()" data-k="np">Proyectos</button>
+  <button onclick="go('cw');togM()" data-k="nc">Contacto</button>
 </div>
 
 <!-- HERO -->
-<section id="hw" class="active">
+<section id="hw" class="sa">
 <div id="hero">
-  <div class="htag"><span class="dot"></span><span data-key="hav">Disponible para nuevos proyectos</span></div>
-  <h1 class="htitle"><span class="st" data-key="ht1">Product </span><span class="gr" data-key="ht2">Designer</span></h1>
-  <p class="hsub" data-key="hsb">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
-  <div class="hact">
+  <div class="htag"><span class="dot"></span><span data-k="hav">Disponible para nuevos proyectos</span></div>
+  <h1 class="hti"><span class="st" data-k="ht1">Product </span><span class="gr" data-k="ht2">Designer</span></h1>
+  <p class="hsu" data-k="hsu">Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.</p>
+  <div class="hac">
     <button class="bp" onclick="go('pw')">
-      <!-- Grid of squares = portfolio of work, intuitive and clean -->
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      <span data-key="hc1">Ver proyectos</span>
+      <span data-k="hc1">Ver proyectos</span>
     </button>
-    <a class="bs" href="luis-arnau-cv.pdf" download="Luis-Arnau-CV-UX-UI.pdf">
+    <a class="bs" id="cv-btn" href="luis-arnau-cv-es.pdf" download="Luis-Arnau-CV-ES.pdf">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span data-key="hc2">Descargar CV</span>
+      <span data-k="hc2">Descargar CV</span>
     </a>
   </div>
-  <div class="hpills">
-    <span class="hpill">UX Research</span><span class="hpill">UI Design</span>
-    <span class="hpill">Figma</span><span class="hpill">Design Systems</span>
-    <span class="hpill">Prototyping</span><span class="hpill">Usability Testing</span>
+  <div class="hpi">
+    <span class="hp">UX Research</span><span class="hp">UI Design</span>
+    <span class="hp">Figma</span><span class="hp">Design Systems</span>
+    <span class="hp">Prototyping</span><span class="hp">Usability Testing</span>
   </div>
 </div>
 </section>
 
 <!-- SOBRE -->
 <section id="sw">
-<div id="sobre">
-  <div class="stop">
-    <div class="pcrd fu">
-      <div class="pcirc">
-        <!-- Para añadir tu foto: sube images/foto-luis.jpg y reemplaza el emoji por:
-        <img src="images/foto-luis.jpg" alt="Luis Arnau"/> -->
-        🧑‍💻
-      </div>
+<div id="so">
+  <div class="stpb">
+    <!-- Identity card — profesional, sin foto -->
+    <div class="idc fu">
       <div>
-        <div class="pname">Luis Arnau</div>
-        <div class="prole">Product &amp; UX/UI Designer</div>
-        <div class="ploc">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          España
-        </div>
-        <div class="plinks">
-          <a href="mailto:luisarnau9@gmail.com">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email
-          </a>
-          <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
-          </a>
-        </div>
+        <div class="idname">Luis Arnau Rodríguez</div>
+        <div class="idrole">Product &amp; UX/UI Designer</div>
+      </div>
+      <div class="idloc">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Sagunto (Valencia), España
+      </div>
+      <div class="idlinks">
+        <a href="mailto:luisarnau9@gmail.com">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          luisarnau9@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a class="bs" id="cv-btn2" href="luis-arnau-cv-es.pdf" download="Luis-Arnau-CV-ES.pdf" style="font-size:.78rem;padding:4px 10px">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-k="hc2">Descargar CV</span>
+        </a>
+      </div>
+      <div class="idtags">
+        <span class="tag">🎨 <span data-k="tde">Diseño</span></span>
+        <span class="tag">🏔️ <span data-k="tmo">Montaña</span></span>
+        <span class="tag">📷 <span data-k="tph">Fotografía</span></span>
+        <span class="tag">🤖 <span data-k="tai">IA aplicada</span></span>
+        <span class="tag">⚙️ <span data-k="ten">Ingeniería</span></span>
       </div>
     </div>
-    <div class="bcrd fu fu1">
+
+    <div class="biocard fu fu1">
       <h2>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-        <span data-key="abh">Sobre mí</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span data-k="abh">Sobre mí</span>
       </h2>
-      <p class="bt" data-key="ab1">Diseñador UX/UI con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI) y Máster en UX/UI en Nuclio Digital School. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.</p>
-      <p class="bt" style="margin-top:.85rem" data-key="ab2">Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.</p>
-      <p class="bt" style="margin-top:.85rem" data-key="ab3">Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem">
-        <span class="tag">🎨 <span data-key="tdes">Diseño</span></span>
-        <span class="tag">🏔️ <span data-key="tmnt">Montaña</span></span>
-        <span class="tag">📷 <span data-key="tpho">Fotografía</span></span>
-        <span class="tag">🤖 <span data-key="tai">IA aplicada</span></span>
-        <span class="tag">⚙️ <span data-key="teng">Ingeniería</span></span>
-      </div>
+      <p class="bt" data-k="ab1">Ingeniero de Producción con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI, 2015–2020) y Máster en UX/UI en Nuclio Digital School (2024–2025). Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario, combinando rigor técnico con comunicación clara.</p>
+      <p class="bt" style="margin-top:.85rem" data-k="ab2">Mi background en fabricación industrial, diseño gráfico y UX me permite abordar los problemas desde múltiples perspectivas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.</p>
+      <p class="bt" style="margin-top:.85rem" data-k="ab3">Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.</p>
     </div>
   </div>
 
-  <div class="agrid">
+  <div class="agr">
     <div class="card fu">
       <div class="ct">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        <span data-key="exph">Experiencia profesional</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-k="exh">Experiencia profesional</span>
+      </div>
+      <!-- SCN — puesto actual -->
+      <div class="ei">
+        <div class="er" data-k="e0r">Ingeniero de Producción</div>
+        <div class="ec">SCN (Stadler Rail)</div>
+        <div class="em"><span data-k="e0d">Actual</span> <span class="badge" data-k="bon">Presencial</span></div>
+        <ul class="el">
+          <li data-k="e0a">Gestión y optimización de procesos de fabricación</li>
+          <li data-k="e0b">Coordinación de sistemas de calidad y mejora continua</li>
+          <li data-k="e0c">Documentación técnica y soporte a producción</li>
+        </ul>
       </div>
       <!-- Inhiset -->
       <div class="ei">
-        <div class="er" data-key="e1r">Ingeniero de fabricación</div>
+        <div class="er" data-k="e1r">Ingeniero de Fabricación</div>
         <div class="ec">Inhiset</div>
-        <div class="em">May 2024 – Jul 2024 <span class="badge" data-key="bon">Presencial</span></div>
+        <div class="em">May 2024 – Jul 2025 · Massalfassar (Valencia) <span class="badge" data-k="bon">Presencial</span></div>
         <ul class="el">
-          <li data-key="e1a">Optimización de flujos mediante SAP</li>
-          <li data-key="e1b">Documentación técnica</li>
-          <li data-key="e1c">Diseño de componentes mecánicos</li>
-          <li data-key="e1d">Soporte en análisis de problemas</li>
-          <li data-key="e1e">Colaboración con ingeniería y operaciones</li>
+          <li data-k="e1a">Optimización de flujos de trabajo mediante SAP y ERP</li>
+          <li data-k="e1b">Creación de documentación técnica e instrucciones de trabajo</li>
+          <li data-k="e1c">Diseño de herramientas mecánicas para procesos de ensamblaje</li>
+          <li data-k="e1d">Soporte en análisis de causas raíz y resolución de problemas</li>
+          <li data-k="e1e">Colaboración con equipos de ingeniería y operaciones</li>
         </ul>
       </div>
       <!-- Tecnobit -->
       <div class="ei">
-        <div class="er" data-key="e2r">Ingeniero de fabricación</div>
-        <div class="ec">Tecnobit</div>
-        <div class="em">Oct 2023 – Abr 2024 <span class="badge" data-key="bhyb">Híbrido</span></div>
+        <div class="er" data-k="e2r">Ingeniero de Fabricación</div>
+        <div class="ec">Tecnobit – Grupo Oesía</div>
+        <div class="em">Oct 2023 – Abr 2024 · Valdepeñas (CLM) <span class="badge" data-k="bhyb">Híbrido</span></div>
         <ul class="el">
-          <li data-key="e2a">Optimización de flujos mediante SAP</li>
-          <li data-key="e2b">Documentación técnica</li>
-          <li data-key="e2c">Diseño mecánico</li>
-          <li data-key="e2d">Análisis de problemas</li>
-          <li data-key="e2e">Colaboración con ingeniería</li>
+          <li data-k="e2a">Optimización de flujos de trabajo mediante SAP y ERP</li>
+          <li data-k="e2b">Documentación técnica y herramientas de ensamblaje</li>
+          <li data-k="e2c">Análisis de causas raíz y colaboración con ingeniería</li>
         </ul>
       </div>
       <!-- CO·UX -->
       <div class="ei">
-        <div class="er" data-key="e3r">Diseñador UX/UI</div>
+        <div class="er" data-k="e3r">Diseñador UX/UI</div>
         <div class="ec">CO·UX</div>
-        <div class="em">Feb 2023 – Jun 2023 <span class="badge" data-key="brem">Remoto</span></div>
+        <div class="em">Feb 2025 – Jun 2025 <span class="badge" data-k="brem">Remoto</span></div>
         <ul class="el">
-          <li>Design Thinking &amp; Design Research</li>
-          <li data-key="e3b">Investigación con usuarios</li>
-          <li>Wireframes y user flows</li>
-          <li>Accesibilidad (WCAG)</li>
-          <li data-key="e3e">Prototipos en Figma</li>
+          <li data-k="e3a">Design Thinking y Human-Centered Design con equipos internacionales</li>
+          <li data-k="e3b">Investigación con usuarios: entrevistas, encuestas, pain points</li>
+          <li data-k="e3c">Personas, user journeys y mapas de empatía</li>
+          <li data-k="e3d">Wireframes y prototipos interactivos en Figma (WCAG)</li>
+          <li data-k="e3e">Pruebas de usabilidad e iteración basada en insights</li>
         </ul>
       </div>
       <!-- Esmalglass -->
       <div class="ei">
-        <div class="er" data-key="e4r">Diseñador gráfico</div>
+        <div class="er" data-k="e4r">Diseñador Gráfico</div>
         <div class="ec">Esmalglass</div>
-        <div class="em">Ene 2021 – Abr 2022 <span class="badge" data-key="bon">Presencial</span></div>
+        <div class="em">Jun 2021 – Jul 2022 · Villarreal (Castellón) <span class="badge" data-k="bon">Presencial</span></div>
         <ul class="el">
-          <li data-key="e4a">Adaptación de productos</li>
-          <li data-key="e4b">Edición gráfica</li>
-          <li data-key="e4c">Diseño de aplicaciones cerámicas</li>
-          <li data-key="e4d">Gestión de color</li>
-        </ul>
-      </div>
-      <!-- SCN -->
-      <div class="ei">
-        <div class="er" data-key="e5r">Coordinador de Sistemas de Calidad</div>
-        <div class="ec">SCN</div>
-        <div class="em">2019 – 2021 <span class="badge" data-key="bon">Presencial</span></div>
-        <ul class="el">
-          <li data-key="e5a">Gestión y coordinación de sistemas de calidad</li>
-          <li data-key="e5b">Documentación y procesos internos</li>
-          <li data-key="e5c">Mejora continua de procedimientos</li>
+          <li data-k="e4a">Diseño y adaptación de productos de impresión Inkjet</li>
+          <li data-k="e4b">Gestión de flujos de color y desarrollo de perfiles de color</li>
+          <li data-k="e4c">Composiciones decorativas para aplicaciones cerámicas</li>
         </ul>
       </div>
     </div>
@@ -334,32 +340,56 @@ footer{border-top:1px solid var(--bor);padding:1.25rem 1.5rem;display:flex;justi
     <div class="rc">
       <div class="card fu fu1">
         <div class="ct">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <span data-key="toolh">Herramientas</span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <span data-k="toh">Herramientas</span>
         </div>
-        <div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Jira</span><span class="tag">Miro</span><span class="tag">VS Code</span><span class="tag">Notion</span><span class="tag">Trello</span><span class="tag">Confluence</span><span class="tag">SolidWorks</span><span class="tag">3DS Max</span><span class="tag">KeyShot</span><span class="tag">Autocad</span><span class="tag">Fusion 360</span></div>
+        <div class="tags">
+          <span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span>
+          <span class="tag">InDesign</span><span class="tag">Framer</span><span class="tag">WordPress</span>
+          <span class="tag">Blender</span><span class="tag">Notion</span><span class="tag">SAP</span>
+          <span class="tag">TeamCenter</span><span class="tag">SolidWorks</span><span class="tag">AutoCAD</span>
+          <span class="tag">NX</span><span class="tag">Fusion 360</span>
+        </div>
       </div>
       <div class="card fu fu2">
         <div class="ct">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span data-key="skillh">Habilidades</span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-k="skh">Habilidades</span>
         </div>
-        <div class="tags"><span class="tag">User Interviews</span><span class="tag">User Research</span><span class="tag">Journey Maps</span><span class="tag">Usability Testing</span><span class="tag">UX Writing</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Interaction Design</span><span class="tag">Information Architecture</span><span class="tag">Design System</span><span class="tag" data-key="skai">IA aplicada al diseño</span></div>
+        <div class="tags">
+          <span class="tag">User Research</span><span class="tag">User Interviews</span>
+          <span class="tag">Journey Maps</span><span class="tag">Usability Testing</span>
+          <span class="tag">UX Writing</span><span class="tag">Wireframing</span>
+          <span class="tag">Prototyping</span><span class="tag">Interaction Design</span>
+          <span class="tag">Information Architecture</span><span class="tag">Design System</span>
+          <span class="tag" data-k="skai">IA aplicada al diseño</span>
+        </div>
       </div>
       <div class="card fu fu3">
         <div class="ct">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          <span data-key="eduh">Formación</span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span data-k="edh">Formación</span>
         </div>
         <div class="ei">
-          <div class="er" data-key="ed1">Máster en Diseño UX/UI</div>
+          <div class="er" data-k="ed1">Máster en Diseño UX/UI</div>
           <div class="ec">Nuclio Digital School</div>
-          <div class="em">2023 – 2024</div>
+          <div class="em">2024 – 2025 · Online</div>
         </div>
         <div class="ei" style="margin-bottom:0">
-          <div class="er" data-key="ed2">Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto</div>
+          <div class="er" data-k="ed2">Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto</div>
           <div class="ec">Universitat Jaume I (UJI)</div>
-          <div class="em">2016 – 2022</div>
+          <div class="em">2015 – 2020 · Castellón</div>
+        </div>
+        <div style="margin-top:1.2rem">
+          <div class="ct" style="margin-bottom:.75rem">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            <span data-k="lah">Idiomas</span>
+          </div>
+          <div class="tags">
+            <span class="tag">🇪🇸 <span data-k="lsp">Español — Nativo</span></span>
+            <span class="tag">🏴󠁥󠁳󠁶󠁣󠁿 <span data-k="lva">Valenciano — Nativo</span></span>
+            <span class="tag">🇬🇧 English — B1/B2</span>
+          </div>
         </div>
       </div>
     </div>
@@ -369,34 +399,34 @@ footer{border-top:1px solid var(--bor);padding:1.25rem 1.5rem;display:flex;justi
 
 <!-- PROYECTOS -->
 <section id="pw">
-<div id="proy">
+<div id="pr">
   <div class="sh fu">
-    <h2 class="stitle" data-key="prh">Proyectos</h2>
-    <p class="ssub" data-key="prs">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
+    <h2 class="sti" data-k="prh">Proyectos</h2>
+    <p class="ssu" data-k="prs">Una selección de case studies donde diseño, investigación y estrategia se unen.</p>
   </div>
-  <div class="plist">
-    <div class="pcard fu" onclick="det(0)">
-      <div class="pcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="LoLocal" onerror="this.style.display='none'"/></div>
-      <div class="pi"><div class="pn">LoLocal</div><p class="pd" data-key="p0">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p><div class="ptags"><span class="ptag">UX Research</span><span class="ptag">UI Design</span><span class="ptag">Design System</span><span class="ptag">Figma</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+  <div class="pli">
+    <div class="pc fu" onclick="showD(0)">
+      <div class="pco" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" alt="LoLocal" onerror="this.style.display='none'"/></div>
+      <div class="pi"><div class="pn">LoLocal</div><p class="pd" data-k="p0">App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.</p><div class="pt"><span class="ptag">UX Research</span><span class="ptag">UI Design</span><span class="ptag">Design System</span><span class="ptag">Figma</span></div><button class="pli2" data-k="see">Ver proyecto →</button></div>
     </div>
-    <div class="pcard fu fu1" onclick="det(1)">
-      <div class="pcov" style="background:#1d3276"><img src="images/remitly-cover.png" alt="Remitly" onerror="this.style.display='none'"/></div>
-      <div class="pi"><div class="pn">Remitly</div><p class="pd" data-key="p1">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p><div class="ptags"><span class="ptag">Fintech</span><span class="ptag">UX Research</span><span class="ptag">UX Writing</span><span class="ptag">Prototyping</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    <div class="pc fu fu1" onclick="showD(1)">
+      <div class="pco" style="background:#1d3276"><img src="images/remitly-cover.png" alt="Remitly" onerror="this.style.display='none'"/></div>
+      <div class="pi"><div class="pn">Remitly</div><p class="pd" data-k="p1">Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.</p><div class="pt"><span class="ptag">Fintech</span><span class="ptag">UX Research</span><span class="ptag">UX Writing</span><span class="ptag">Prototyping</span></div><button class="pli2" data-k="see">Ver proyecto →</button></div>
     </div>
-    <div class="pcard fu fu2" onclick="det(2)">
-      <div class="pcov" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)"><div class="pemj">🍔</div></div>
-      <div class="pi"><div class="pn">PedidosYA</div><p class="pd" data-key="p2">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p><div class="ptags"><span class="ptag" data-key="tred">Rediseño</span><span class="ptag">Mobile</span><span class="ptag">UX Writing</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    <div class="pc fu fu2" onclick="showD(2)">
+      <div class="pco" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)"><div class="pem">🍔</div></div>
+      <div class="pi"><div class="pn">PedidosYA</div><p class="pd" data-k="p2">Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.</p><div class="pt"><span class="ptag" data-k="tred">Rediseño</span><span class="ptag">Mobile</span><span class="ptag">UX Writing</span></div><button class="pli2" data-k="see">Ver proyecto →</button></div>
     </div>
-    <div class="pcard fu fu2" onclick="det(3)">
-      <div class="pcov" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><div class="pemj">🎵</div></div>
-      <div class="pi"><div class="pn">Telepianxs</div><p class="pd" data-key="p3">Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.</p><div class="ptags"><span class="ptag">UX Research</span><span class="ptag">Product Design</span><span class="ptag">Figma</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+    <div class="pc fu fu2" onclick="showD(3)">
+      <div class="pco" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><div class="pem">🎵</div></div>
+      <div class="pi"><div class="pn">Telepianxs</div><p class="pd" data-k="p3">Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.</p><div class="pt"><span class="ptag">UX Research</span><span class="ptag">Product Design</span><span class="ptag">Figma</span></div><button class="pli2" data-k="see">Ver proyecto →</button></div>
     </div>
-    <div class="pcard fu fu3" onclick="det(4)">
-      <div class="pcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">
-        <img src="images/cactus-logo.png" alt="Estudio Cactus" style="position:absolute;width:55%;height:auto;top:50%;left:50%;transform:translate(-50%,-50%);object-fit:contain" onerror="this.style.display='none'"/>
-        <div class="pemj" id="cfe">🌵</div>
+    <div class="pc fu fu3" onclick="showD(4)">
+      <div class="pco" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f)">
+        <img src="images/cactus-logo.png" alt="Estudio Cactus" style="position:absolute;width:55%;height:auto;top:50%;left:50%;transform:translate(-50%,-50%);object-fit:contain" id="cimg" onerror="this.style.display='none';document.getElementById('cfe').style.display='flex'"/>
+        <div class="pem" id="cfe" style="display:none">🌵</div>
       </div>
-      <div class="pi"><div class="pn">Estudio Cactus</div><p class="pd" data-key="p4">Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.</p><div class="ptags"><span class="ptag">Challenge</span><span class="ptag">UX/UI</span><span class="ptag" data-key="tpro">Prototipado</span></div><button class="plink" data-key="see">Ver proyecto →</button></div>
+      <div class="pi"><div class="pn">Estudio Cactus</div><p class="pd" data-k="p4">Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.</p><div class="pt"><span class="ptag">Challenge</span><span class="ptag">UX/UI</span><span class="ptag" data-k="tpro">Prototipado</span></div><button class="pli2" data-k="see">Ver proyecto →</button></div>
     </div>
   </div>
 </div>
@@ -404,163 +434,205 @@ footer{border-top:1px solid var(--bor);padding:1.25rem 1.5rem;display:flex;justi
 
 <!-- DETALLE -->
 <section id="dw">
-<div id="det">
-  <button class="bbtn" onclick="go('pw')">
+<div id="de">
+  <button class="bb" onclick="go('pw')">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-    <span data-key="back">Volver</span>
+    <span data-k="bk">Volver</span>
   </button>
-  <div id="dc"></div>
+  <div id="dc2"></div>
 </div>
 </section>
 
 <!-- CONTACTO -->
 <section id="cw">
-<div id="cont">
-  <h2 class="ctitle" data-key="cth">Contacto</h2>
-  <p class="csub" data-key="cts">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
-  <div class="clinks">
-    <a href="mailto:luisarnau9@gmail.com" class="clink">
+<div id="co">
+  <h2 class="ctit" data-k="cth">Contacto</h2>
+  <p class="csub" data-k="cts">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
+  <div class="clin">
+    <a href="mailto:luisarnau9@gmail.com" class="cla">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       luisarnau9@gmail.com
     </a>
-    <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener" class="clink">
+    <a href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener" class="cla">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
   </div>
-  <div class="cform">
-    <div class="fg"><label class="fl" data-key="fn">Nombre</label><input class="fi" type="text" id="fn"/></div>
-    <div class="fg"><label class="fl" data-key="fe">Email</label><input class="fi" type="email" id="fe"/></div>
-    <div class="fg"><label class="fl" data-key="fm">Mensaje</label><textarea class="ft" id="fm"></textarea></div>
-    <button class="fsub" onclick="sendF()">
+  <div class="cfo">
+    <div class="fg"><label class="fl" data-k="fn">Nombre</label><input class="fi" type="text" id="fn"/></div>
+    <div class="fg"><label class="fl" data-k="fe">Email</label><input class="fi" type="email" id="fe"/></div>
+    <div class="fg"><label class="fl" data-k="fm">Mensaje</label><textarea class="fte" id="fm"></textarea></div>
+    <button class="fsu" onclick="sendF()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-      <span data-key="fs">Enviar mensaje</span>
+      <span data-k="fs">Enviar mensaje</span>
     </button>
-    <div class="fok" id="fok" data-key="fsucc">¡Mensaje enviado! Te responderé lo antes posible.</div>
+    <div class="fok" id="fok" data-k="fok">¡Mensaje enviado! Te responderé lo antes posible.</div>
   </div>
 </div>
 </section>
 
 <footer>
-  <span class="flogo">Luis Arnau</span>
-  <div class="fics">
-    <a class="fic" href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
+  <span class="flo">Luis Arnau</span>
+  <div class="fic">
+    <a class="fia" href="https://www.linkedin.com/in/luis-arnau" target="_blank" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
-    <a class="fic" href="mailto:luisarnau9@gmail.com">
+    <a class="fia" href="mailto:luisarnau9@gmail.com">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       Email
     </a>
   </div>
-  <span class="fcp" data-key="foot">© 2026 Luis Arnau. Todos los derechos reservados.</span>
+  <span class="fco" data-k="fco">© 2026 Luis Arnau. Todos los derechos reservados.</span>
 </footer>
 
 <script>
+// ── TRANSLATIONS (all keys for every screen) ──────────────────
 const T={
-es:{nh:"Inicio",na:"Sobre mí",np:"Proyectos",nc:"Contacto",
-hav:"Disponible para nuevos proyectos",ht1:"Product ",ht2:"Designer",
-hsb:"Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.",
-hc1:"Ver proyectos",hc2:"Descargar CV",
-abh:"Sobre mí",
-ab1:"Diseñador UX/UI con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI) y Máster en UX/UI en Nuclio Digital School. Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario mediante procesos iterativos y diseño basado en datos.",
-ab2:"Combino investigación con usuarios, validación y buenas prácticas de diseño para crear soluciones efectivas y bien justificadas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.",
-ab3:"Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.",
-tdes:"Diseño",tmnt:"Montaña",tpho:"Fotografía",tai:"IA aplicada",teng:"Ingeniería",
-exph:"Experiencia profesional",
-e1r:"Ingeniero de fabricación",e1a:"Optimización de flujos mediante SAP",e1b:"Documentación técnica",e1c:"Diseño de componentes mecánicos",e1d:"Soporte en análisis de problemas",e1e:"Colaboración con ingeniería y operaciones",
-e2r:"Ingeniero de fabricación",e2a:"Optimización de flujos mediante SAP",e2b:"Documentación técnica",e2c:"Diseño mecánico",e2d:"Análisis de problemas",e2e:"Colaboración con ingeniería",
-e3r:"Diseñador UX/UI",e3b:"Investigación con usuarios",e3e:"Prototipos en Figma",
-e4r:"Diseñador gráfico",e4a:"Adaptación de productos",e4b:"Edición gráfica",e4c:"Diseño de aplicaciones cerámicas",e4d:"Gestión de color",
-e5r:"Coordinador de Sistemas de Calidad",e5a:"Gestión y coordinación de sistemas de calidad",e5b:"Documentación y procesos internos",e5c:"Mejora continua de procedimientos",
-bon:"Presencial",brem:"Remoto",bhyb:"Híbrido",
-toolh:"Herramientas",skillh:"Habilidades",eduh:"Formación",
-skai:"IA aplicada al diseño",
-ed1:"Máster en Diseño UX/UI",ed2:"Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto",
-prh:"Proyectos",prs:"Una selección de case studies donde diseño, investigación y estrategia se unen.",
-p0:"App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.",
-p1:"Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.",
-p2:"Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.",
-p3:"Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.",
-p4:"Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.",
-see:"Ver proyecto →",tred:"Rediseño",tpro:"Prototipado",back:"Volver",
-cth:"Contacto",cts:"¿Tienes un proyecto en mente? Me encantaría escucharte.",
-fn:"Nombre",fe:"Email",fm:"Mensaje",fs:"Enviar mensaje",fsucc:"¡Mensaje enviado! Te responderé lo antes posible.",
-foot:"© 2026 Luis Arnau. Todos los derechos reservados.",
-dc:"Contexto",dpb:"Problema",do:"Objetivos",dr:"Mi rol",dpr:"Proceso",
-dres:"Resultado",dpro:"↗ Ver prototipo interactivo",dref:"Reflexión",
-dnxt:"Proyecto siguiente",dprev:"Proyecto anterior"},
-en:{nh:"Home",na:"About",np:"Projects",nc:"Contact",
-hav:"Available for new projects",ht1:"Product ",ht2:"Designer",
-hsb:"I design clear, intuitive, people-centred digital experiences. I turn insights into functional and visually clean products.",
-hc1:"View projects",hc2:"Download CV",
-abh:"About me",
-ab1:"UX/UI Designer with a degree in Industrial Design Engineering and Product Development (UJI) and a Master's in UX/UI at Nuclio Digital School. I specialise in building functional, accessible, user-centred digital products through iterative processes and data-driven design.",
-ab2:"I combine user research, validation and design best practices to create effective, well-justified solutions. I work continuously with AI as a productivity and design tool, adapting to a constantly evolving landscape.",
-ab3:"Outside work I enjoy the mountains, photography and outdoor sports — activities that keep my mind curious and creative.",
-tdes:"Design",tmnt:"Mountains",tpho:"Photography",tai:"Applied AI",teng:"Engineering",
-exph:"Professional experience",
-e1r:"Manufacturing Engineer",e1a:"Process optimisation via SAP",e1b:"Technical documentation",e1c:"Mechanical component design",e1d:"Problem analysis support",e1e:"Collaboration with engineering and operations",
-e2r:"Manufacturing Engineer",e2a:"Process optimisation via SAP",e2b:"Technical documentation",e2c:"Mechanical design",e2d:"Problem analysis",e2e:"Collaboration with engineering",
-e3r:"UX/UI Designer",e3b:"User research",e3e:"Prototypes in Figma",
-e4r:"Graphic designer",e4a:"Product adaptation",e4b:"Graphic editing",e4c:"Ceramic application design",e4d:"Colour management",
-e5r:"Quality Systems Coordinator",e5a:"Quality systems management and coordination",e5b:"Internal documentation and processes",e5c:"Continuous improvement of procedures",
-bon:"On-site",brem:"Remote",bhyb:"Hybrid",
-toolh:"Tools",skillh:"Skills",eduh:"Education",
-skai:"AI-assisted design",
-ed1:"Master's in UX/UI Design",ed2:"Degree in Industrial Design Engineering and Product Development",
-prh:"Projects",prs:"A selection of case studies where design, research and strategy come together.",
-p0:"Marketplace app connecting local shops with neighbourhood buyers. Designed from scratch, focused on community, trust and local discovery.",
-p1:"Redesign of the transfer confirmation and tracking flow to reduce friction and distrust among frequent users.",
-p2:"Conceptual redesign to improve the food delivery app experience, focused on navigation and friction reduction.",
-p3:"Digital platform connecting piano teachers and students online. End-to-end product design.",
-p4:"Real UX/UI challenge for a selection process. Redesigned the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach.",
-see:"View project →",tred:"Redesign",tpro:"Prototyping",back:"Back",
-cth:"Contact",cts:"Have a project in mind? I'd love to hear about it.",
-fn:"Name",fe:"Email",fm:"Message",fs:"Send message",fsucc:"Message sent! I'll get back to you as soon as possible.",
-foot:"© 2026 Luis Arnau. All rights reserved.",
-dc:"Context",dpb:"Problem",do:"Objectives",dr:"My role",dpr:"Process",
-dres:"Result",dpro:"↗ View interactive prototype",dref:"Reflection",
-dnxt:"Next project",dprev:"Previous project"}
+es:{
+  nh:"Inicio",na:"Sobre mí",np:"Proyectos",nc:"Contacto",
+  hav:"Disponible para nuevos proyectos",ht1:"Product ",ht2:"Designer",
+  hsu:"Diseño experiencias digitales claras, intuitivas y centradas en las personas. Transformo insights en productos funcionales y visualmente limpios.",
+  hc1:"Ver proyectos",hc2:"Descargar CV",
+  abh:"Sobre mí",
+  ab1:"Ingeniero de Producción con formación en Ingeniería en Diseño Industrial y Desarrollo de Producto (UJI, 2015–2020) y Máster en UX/UI en Nuclio Digital School (2024–2025). Me especializo en crear productos digitales funcionales, accesibles y centrados en el usuario, combinando rigor técnico con comunicación clara.",
+  ab2:"Mi background en fabricación industrial, diseño gráfico y UX me permite abordar los problemas desde múltiples perspectivas. Trabajo con IA de forma continua como herramienta de productividad y diseño, adaptándome a un entorno en constante evolución.",
+  ab3:"Fuera del trabajo disfruto de la montaña, la fotografía y el deporte al aire libre — actividades que me mantienen con una mente curiosa y creativa.",
+  tde:"Diseño",tmo:"Montaña",tph:"Fotografía",tai:"IA aplicada",ten:"Ingeniería",
+  exh:"Experiencia profesional",
+  e0r:"Ingeniero de Producción",e0d:"Actual",e0a:"Gestión y optimización de procesos de fabricación",e0b:"Coordinación de sistemas de calidad y mejora continua",e0c:"Documentación técnica y soporte a producción",
+  e1r:"Ingeniero de Fabricación",e1a:"Optimización de flujos de trabajo mediante SAP y ERP",e1b:"Creación de documentación técnica e instrucciones de trabajo",e1c:"Diseño de herramientas mecánicas para procesos de ensamblaje",e1d:"Soporte en análisis de causas raíz y resolución de problemas",e1e:"Colaboración con equipos de ingeniería y operaciones",
+  e2r:"Ingeniero de Fabricación",e2a:"Optimización de flujos de trabajo mediante SAP y ERP",e2b:"Documentación técnica y herramientas de ensamblaje",e2c:"Análisis de causas raíz y colaboración con ingeniería",
+  e3r:"Diseñador UX/UI",e3a:"Design Thinking y Human-Centered Design con equipos internacionales",e3b:"Investigación con usuarios: entrevistas, encuestas, pain points",e3c:"Personas, user journeys y mapas de empatía",e3d:"Wireframes y prototipos interactivos en Figma (WCAG)",e3e:"Pruebas de usabilidad e iteración basada en insights",
+  e4r:"Diseñador Gráfico",e4a:"Diseño y adaptación de productos de impresión Inkjet",e4b:"Gestión de flujos de color y desarrollo de perfiles de color",e4c:"Composiciones decorativas para aplicaciones cerámicas",
+  bon:"Presencial",brem:"Remoto",bhyb:"Híbrido",
+  toh:"Herramientas",skh:"Habilidades",edh:"Formación",lah:"Idiomas",
+  skai:"IA aplicada al diseño",
+  ed1:"Máster en Diseño UX/UI",ed2:"Grado en Ingeniería en Diseño Industrial y Desarrollo de Producto",
+  lsp:"Español — Nativo",lva:"Valenciano — Nativo",
+  prh:"Proyectos",prs:"Una selección de case studies donde diseño, investigación y estrategia se unen.",
+  p0:"App marketplace para conectar comercios locales con compradores del barrio. Diseño desde cero con foco en comunidad, confianza y descubrimiento local.",
+  p1:"Rediseño del flujo de confirmación y seguimiento de transferencias para reducir fricción y desconfianza en usuarios frecuentes.",
+  p2:"Rediseño conceptual para mejorar la experiencia en la app de pedidos de comida, con foco en navegación y reducción de fricción.",
+  p3:"Plataforma digital para conectar profesores y alumnos de piano de forma online. Diseño de producto end-to-end.",
+  p4:"Challenge UX/UI real para proceso de selección. Rediseño de la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach.",
+  see:"Ver proyecto →",tred:"Rediseño",tpro:"Prototipado",bk:"Volver",
+  cth:"Contacto",cts:"¿Tienes un proyecto en mente? Me encantaría escucharte.",
+  fn:"Nombre",fe:"Email",fm:"Mensaje",fs:"Enviar mensaje",fok:"¡Mensaje enviado! Te responderé lo antes posible.",
+  fco:"© 2026 Luis Arnau. Todos los derechos reservados.",
+  dc:"Contexto",dpb:"Problema",do:"Objetivos",dr:"Mi rol",dpr:"Proceso",
+  dres:"Resultado",dpro:"Ver prototipo interactivo",dref:"Reflexión",
+  dnxt:"Proyecto siguiente",dpv:"Proyecto anterior"
+},
+en:{
+  nh:"Home",na:"About",np:"Projects",nc:"Contact",
+  hav:"Available for new projects",ht1:"Product ",ht2:"Designer",
+  hsu:"I design clear, intuitive, people-centred digital experiences. I turn insights into functional and visually clean products.",
+  hc1:"View projects",hc2:"Download CV",
+  abh:"About me",
+  ab1:"Production Engineer with a degree in Industrial Design Engineering and Product Development (UJI, 2015–2020) and a Master's in UX/UI at Nuclio Digital School (2024–2025). I specialise in building functional, accessible, user-centred digital products, combining technical rigour with clear communication.",
+  ab2:"My background in industrial manufacturing, graphic design and UX allows me to approach problems from multiple perspectives. I work continuously with AI as a productivity and design tool, adapting to a constantly evolving landscape.",
+  ab3:"Outside work I enjoy the mountains, photography and outdoor sports — activities that keep my mind curious and creative.",
+  tde:"Design",tmo:"Mountains",tph:"Photography",tai:"Applied AI",ten:"Engineering",
+  exh:"Professional experience",
+  e0r:"Production Engineer",e0d:"Current",e0a:"Manufacturing process management and optimisation",e0b:"Quality systems coordination and continuous improvement",e0c:"Technical documentation and production support",
+  e1r:"Manufacturing Engineer",e1a:"Optimised workflows using SAP and ERP systems",e1b:"Created technical documentation and work instructions",e1c:"Designed mechanical tools to improve assembly line processes",e1d:"Supported manufacturing with root cause analysis",e1e:"Collaborated with engineering and operations teams",
+  e2r:"Manufacturing Engineer",e2a:"Optimised workflows using SAP and ERP systems",e2b:"Technical documentation and assembly tools",e2c:"Root cause analysis and engineering collaboration",
+  e3r:"UX/UI Designer",e3a:"Design Thinking and Human-Centered Design with international teams",e3b:"User research: interviews, surveys, pain points",e3c:"Personas, user journeys, and empathy maps",e3d:"Wireframes and interactive prototypes in Figma (WCAG)",e3e:"Usability testing and iteration based on insights",
+  e4r:"Graphic Designer",e4a:"Designed and adapted Inkjet printing products and formats",e4b:"Managed colour workflows and developed colour profiles",e4c:"Decorative compositions for ceramic applications",
+  bon:"On-site",brem:"Remote",bhyb:"Hybrid",
+  toh:"Tools",skh:"Skills",edh:"Education",lah:"Languages",
+  skai:"AI-assisted design",
+  ed1:"Master's in UX/UI Design",ed2:"Degree in Industrial Design Engineering and Product Development",
+  lsp:"Spanish — Native",lva:"Valencian — Native",
+  prh:"Projects",prs:"A selection of case studies where design, research and strategy come together.",
+  p0:"Marketplace app connecting local shops with neighbourhood buyers. Designed from scratch, focused on community, trust and local discovery.",
+  p1:"Redesign of the transfer confirmation and tracking flow to reduce friction and distrust among frequent users.",
+  p2:"Conceptual redesign to improve the food delivery app experience, focused on navigation and friction reduction.",
+  p3:"Digital platform connecting piano teachers and students online. End-to-end product design.",
+  p4:"Real UX/UI challenge for a selection process. Redesigned the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach.",
+  see:"View project →",tred:"Redesign",tpro:"Prototyping",bk:"Back",
+  cth:"Contact",cts:"Have a project in mind? I'd love to hear about it.",
+  fn:"Name",fe:"Email",fm:"Message",fs:"Send message",fok:"Message sent! I'll get back to you as soon as possible.",
+  fco:"© 2026 Luis Arnau. All rights reserved.",
+  dc:"Context",dpb:"Problem",do:"Objectives",dr:"My role",dpr:"Process",
+  dres:"Result",dpro:"View interactive prototype",dref:"Reflection",
+  dnxt:"Next project",dpv:"Previous project"
+}};
+
+// Prototype links per project
+const PROTO = {
+  0:"https://www.figma.com/proto/tsvGnRXFTtUxC9JPHY9lxz/Lolocal?node-id=1259-14935&t=61AzZSrJZyDvVOKp-1",
+  1:"https://www.figma.com/proto/N2vZDX3fSpePXeR2rCssBZ/Prueba-Estudio-Cactus?node-id=2017-21186&viewport=-307%2C-47%2C0.11&t=DnouGepIJtR0Vg0y-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2017%3A21186&show-proto-sidebar=1",
+  2:"https://www.figma.com/proto/N2vZDX3fSpePXeR2rCssBZ/Prueba-Estudio-Cactus?page-id=1%3A2&node-id=2027-3289&viewport=-307%2C-1400%2C0.11&t=dQGxMttcB5mxbjyU-9&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2027%3A3289&show-proto-sidebar=1",
+  3:"https://www.figma.com/proto/N2vZDX3fSpePXeR2rCssBZ/Prueba-Estudio-Cactus?node-id=2017-5041&viewport=-307%2C-47%2C0.11&t=DnouGepIJtR0Vg0y-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2017%3A5041&show-proto-sidebar=1",
+  4:"https://www.figma.com/proto/N2vZDX3fSpePXeR2rCssBZ/Prueba-Estudio-Cactus?node-id=2040-5766&viewport=726%2C505%2C0.13&t=DnouGepIJtR0Vg0y-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2040%3A5766&show-proto-sidebar=1"
 };
+
 let lang='es';
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lb[onclick="setLang('${l}')"]`).classList.add('active');
-  document.querySelectorAll('[data-key]').forEach(el=>{
-    const k=el.getAttribute('data-key');
-    if(T[l][k]!==undefined) el.textContent=T[l][k];
+
+// ── GLOBAL TRANSLATE — works on any screen ────────────────────
+function applyLang(){
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    const k=el.getAttribute('data-k');
+    if(T[lang][k]!==undefined) el.textContent=T[lang][k];
   });
-  document.documentElement.lang=l;
+  document.documentElement.lang=lang;
+  // Update CV download links
+  const file = lang==='es' ? 'luis-arnau-cv-es.pdf' : 'luis-arnau-cv-en.pdf';
+  const dl   = lang==='es' ? 'Luis-Arnau-CV-ES.pdf' : 'Luis-Arnau-CV-EN.pdf';
+  ['cv-btn','cv-btn2'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.href=file; el.download=dl;}
+  });
 }
 
+function setL(l){
+  lang=l;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
+  document.querySelector(`.lb[onclick="setL('${l}')"]`).classList.add('on');
+  applyLang();
+  // If currently viewing a project detail, re-render it in new language
+  if(document.getElementById('dw').classList.contains('sa') && currentDetail!==null){
+    buildDetail(currentDetail);
+  }
+}
+
+// ── NAVIGATION ────────────────────────────────────────────────
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('sa'));
+  document.getElementById(id).classList.add('sa');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function togM(){document.getElementById('mnav').classList.toggle('open')}
+
+// ── PROJECTS DATA ─────────────────────────────────────────────
 const P={
 es:[
   {nm:"LoLocal",sb:"App marketplace para conectar comercios locales con compradores del barrio",
-   cv:`<div class="dcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
-   ctx:"Más de 40.000 tiendas cerraron en España entre 2019 y 2023, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos. LoLocal nace para visibilizar estos comercios de manera sencilla y directa.",
-   prb:"Los comercios locales carecen de herramientas digitales accesibles para visibilizarse, y los compradores no saben qué tienen cerca.",
+   cv:`<div class="dc" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Más de 40.000 tiendas cerraron en España entre 2019 y 2023, la gran mayoría comercios locales. La falta de digitalización, el aumento de costes y la competencia online llevan al cierre de autónomos y pequeños negocios. LoLocal nace para visibilizar estos comercios de manera sencilla y directa.",
+   prb:"Los comercios locales carecen de herramientas digitales accesibles, y los compradores no saben qué tienen cerca ni cómo contactar con los negocios de su barrio.",
    obj:["Visibilizar comercios locales de forma sencilla","Conectar compradores y vendedores emocionalmente","Facilitar el descubrimiento por geolocalización","Sistema de fidelización para incentivar recurrencia","Diseño accesible para comerciantes poco digitalizados"],
    rol:"UX Research, User Personas, Benchmark, Arquitectura, Wireframing, UI Design, Design System, Branding.",
    prc:["Desk Research + Mind Map","Entrevistas con negocios y consumidores","Encuestas y benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Propuesta de valor y MVP","Arquitectura y navegación","Sesgos cognitivos aplicados","Wireframes baja y media fidelidad","UI Kit + sistema de componentes","Prototipo interactivo en Figma"],
    res:"App diseñada desde cero con navegación dual, UI Kit completo con Work Sans, sitemap y task flows para las 5 tareas principales, y prototipo funcional en Figma.",
    ref:"No es solo un marketplace. Es el barrio digitalizado. Recuperamos el boca a boca y lo metimos en una app.",
-   ext:`<div class="ds"><h2>Propuesta de valor</h2><p>Visibilizar comercios locales conectando negocios con compradores de forma emocional.</p><img src="images/lolocal-conectar.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><p>Carmen Lamadrid (comerciante), Amaïa López (consumidora) y Pedro Muñoz (no consumidor).</p><img src="images/lolocal-personas.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Sesgos cognitivos</h2><p>6 principios: Efecto posición serial, Visión periférica, Gestalt, FOMO, Hick-Hyman y Ley de Fitts.</p><img src="images/lolocal-sesgos.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><p>UI Kit completo: Work Sans, paleta, iconografía por categoría, y componentes de card, botones, filtros, chat y fidelización.</p><img src="images/lolocal-uikit.png" class="simg" onerror="this.style.display='none'" alt=""/></div>`,
+   ext:`<div class="ds"><h2>Propuesta de valor</h2><p>Humanización de la compra, facilidad para comprar local y apoyo al comercio como herramienta de transformación social.</p><img src="images/lolocal-conectar.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><p>Carmen Lamadrid (comerciante), Amaïa López (consumidora), Pedro Muñoz (no consumidor).</p><img src="images/lolocal-personas.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Sesgos cognitivos</h2><p>Efecto posición serial, Visión periférica, Gestalt, FOMO, Hick-Hyman y Ley de Fitts.</p><img src="images/lolocal-sesgos.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><p>Work Sans, paleta (Primary-Green, Accent dorado), iconografía por categoría, componentes de card, botones, filtros, chat y fidelización.</p><img src="images/lolocal-uikit.png" class="si" onerror="this.style.display='none'" alt=""/></div>`,
    nx:1,pv:null},
   {nm:"Remitly",sb:"Rediseño del flujo de confirmación y seguimiento de transferencias",
-   cv:`<div class="dcov" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
-   ctx:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío, especialmente la falta de confirmación clara al finalizar una transferencia.",
-   prb:"La falta de confirmación clara generaba desconfianza y envíos duplicados. Los usuarios no sabían si el dinero había llegado.",
-   obj:["Reducir envíos duplicados","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
+   cv:`<div class="dc" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Remitly es una de las apps más utilizadas para el envío de remesas. Detectamos fricciones en el proceso de envío entre usuarios frecuentes, especialmente la falta de confirmación clara al finalizar una transferencia.",
+   prb:"La falta de confirmación clara al finalizar una transferencia generaba desconfianza y envíos duplicados.",
+   obj:["Reducir envíos duplicados por falta de feedback","Mostrar estado del envío en tiempo real","Mejorar mensajes del sistema (UX Writing)","Organizar historial por estados","Aumentar la confianza en el flujo de confirmación"],
    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototipado, Usability Testing.",
    prc:["Desktop Research y análisis de reseñas","Ley de Pareto aplicada a pain points","User Persona: Martín Benitez","Journey Map del flujo de transferencia","Identificación del punto de intervención","Rediseño del flujo de confirmación","UX Writing en mensajes del sistema","Análisis heurístico y accesibilidad","Pruebas de usabilidad (8 participantes)","Cuestionario NPS post-test"],
    res:"Todos los participantes completaron las tareas. Flujo mejorado que redujo la confusión. NPS de 62.5% en historial.",
    ref:"Pequeños cambios en los mensajes tienen un impacto directo en la confianza. La transparencia es clave en apps fintech.",
-   ext:`<div class="ds"><h2>Research y Ley de Pareto</h2><p>Audiencia: migrantes latinos 25-34 años. El 20% de causas provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="simg" alt=""/></div><div class="ds"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona, envía dinero a Perú sin confirmar llegada.</p><img src="images/remitly-journey.png" class="simg" alt=""/></div><div class="ds"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="simg" alt=""/><p class="scap">Estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="simg" alt=""/><p class="scap">Mensajes más claros y accionables en modales.</p><img src="images/remitly-envios.png" class="simg" alt=""/><p class="scap">Historial con filtros: En progreso, Recibido, Cancelado.</p></div><div class="ds"><h2>Pruebas de usabilidad</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participantes</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Completaron Tarea 1</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS Historial</div></div></div></div><div class="ds"><h2>Insights</h2><div class="ig"><div class="ic"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso</li><li>Unificar textos</li><li>Detalle desde tarjeta</li><li>Mensaje al confirmar</li></ul></div><div class="ic"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" similares</li><li>Historial genera confianza</li><li>Interfaz familiar</li></ul></div><div class="ic"><h3>Conclusión</h3><ul><li>Experiencia más simple</li><li>Flujo comprensible</li><li>Pequeños ajustes mejorarían intuición</li></ul></div></div></div>`,
+   ext:`<div class="ds"><h2>Research y Ley de Pareto</h2><p>Audiencia: migrantes latinos 25-34 años. El 20% de causas provocan el 80% de los problemas.</p><img src="images/remitly-pareto.png" class="si" alt=""/></div><div class="ds"><h2>User Persona y Journey Map</h2><p>Martín Benitez, conductor de Uber de 30 años en Barcelona. Envía dinero a Perú sin confirmación clara.</p><img src="images/remitly-journey.png" class="si" alt=""/></div><div class="ds"><h2>Solución</h2><img src="images/remitly-seguimiento.png" class="si" alt=""/><p class="sca">Estado claro con número de referencia visible.</p><img src="images/remitly-mensajes.png" class="si" alt=""/><p class="sca">Mensajes más claros y accionables.</p><img src="images/remitly-envios.png" class="si" alt=""/><p class="sca">Historial con filtros: En progreso, Recibido, Cancelado.</p></div><div class="ds"><h2>Pruebas de usabilidad</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participantes</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Completaron Tarea 1</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS Historial</div></div></div></div><div class="ds"><h2>Insights</h2><div class="ig"><div class="ica"><h3>Recomendaciones</h3><ul><li>Indicadores de progreso</li><li>Unificar textos</li><li>Detalle desde tarjeta</li><li>Mensaje al confirmar</li></ul></div><div class="ica"><h3>Hallazgos</h3><ul><li>"Recientes" e "Historial" similares</li><li>Historial genera confianza</li><li>Interfaz familiar</li></ul></div><div class="ica"><h3>Conclusión</h3><ul><li>Experiencia más simple</li><li>Flujo comprensible</li><li>Pequeños ajustes mejorarían intuición</li></ul></div></div></div>`,
    nx:2,pv:0},
   {nm:"PedidosYA",sb:"Rediseño conceptual de app de delivery de comida",
-   cv:`<div class="dcove" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+   cv:`<div class="dce" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
    ctx:"Rediseño conceptual para mejorar la experiencia en PedidosYA, con foco en simplificar el flujo de pedido y reducir el abandono.",
    prb:"La navegación entre categorías y la gestión del carrito generaban confusión y abandono del pedido.",
    obj:["Simplificar la navegación por categorías","Mejorar la visibilidad del carrito","Reducir el tiempo hasta el pedido","Mejorar la legibilidad del menú"],
@@ -570,17 +642,17 @@ es:[
    ref:"La jerarquía visual y la reducción de fricciones son fundamentales en apps transaccionales.",
    ext:"",nx:3,pv:1},
   {nm:"Telepianxs",sb:"Plataforma digital para conectar profesores y alumnos de piano online",
-   cv:`<div class="dcove" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
+   cv:`<div class="dce" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
    ctx:"Telepianxs es una plataforma digital diseñada para conectar profesores y alumnos de piano de forma online, facilitando la enseñanza musical a distancia con una experiencia fluida y accesible.",
    prb:"No existía una plataforma específica para la enseñanza de piano online que integrara comunicación, seguimiento del progreso y gestión de clases en un solo lugar.",
    obj:["Conectar profesores y alumnos de piano fácilmente","Gestionar clases y horarios desde la plataforma","Seguimiento del progreso del alumno","Experiencia accesible para usuarios no técnicos","Diseño que transmita confianza y profesionalidad"],
    rol:"UX Research, Product Design, Wireframing, UI Design, Prototipado.",
    prc:["Research del sector educación musical online","Definición de user personas","Mapeo de user journeys","Arquitectura de información","Wireframes de baja y media fidelidad","Diseño visual e identidad de producto","Prototipo interactivo en Figma"],
-   res:"Plataforma con flujos claros para profesores y alumnos, sistema de reserva de clases, seguimiento de progreso y comunicación integrada.",
+   res:"Plataforma con flujos claros para profesores y alumnos, reserva de clases, seguimiento de progreso y comunicación integrada.",
    ref:"Un proyecto que demuestra cómo el diseño puede democratizar el acceso a la educación musical eliminando barreras geográficas.",
    ext:"",nx:4,pv:2},
   {nm:"Estudio Cactus",sb:"Challenge UX/UI — Rediseño de mapa 3D interactivo",
-   cv:`<div class="dcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
+   cv:`<div class="dc" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
    ctx:"Prueba real para un proceso de selección. Había que mejorar la navegación del mapa 3D interactivo de la Terminal AMPT Pier 400 en Long Beach (EE.UU.).",
    prb:"El menú lateral del mapa era poco intuitivo en móvil y ciertas áreas estaban mal numeradas.",
    obj:["Navegación clara en móvil","Menú desplegable más comprensible","Optimizar espacio en pantalla","Mejorar consistencia de numeraciones"],
@@ -592,29 +664,29 @@ es:[
 ],
 en:[
   {nm:"LoLocal",sb:"Marketplace app connecting local shops with neighbourhood buyers",
-   cv:`<div class="dcov" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   cv:`<div class="dc" style="background:linear-gradient(135deg,#f97316,#fb923c)"><img src="images/lolocal-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
    ctx:"Over 40,000 shops closed in Spain between 2019 and 2023. LoLocal brings word-of-mouth back into your pocket.",
    prb:"Local shops lack accessible digital tools, and buyers don't know what's near them.",
    obj:["Make local businesses easily discoverable","Connect buyers and sellers emotionally","Enable discovery by geolocation","Loyalty system to drive repeat visits","Accessible design for low-digital shopkeepers"],
    rol:"UX Research, User Personas, Benchmarking, Architecture, Wireframing, UI Design, Design System, Branding.",
-   prc:["Desk Research + Mind Map","Shop and consumer interviews","Surveys and benchmarking","3 User Personas","Value proposition and MVP","Architecture and navigation","Cognitive biases applied","Low- and mid-fidelity wireframes","UI Kit + component library","Interactive prototype in Figma"],
+   prc:["Desk Research + Mind Map","Shop and consumer interviews","Surveys and benchmarking","3 User Personas (Carmen, Amaïa, Pedro)","Value proposition and MVP","Architecture and navigation","Cognitive biases applied","Low- and mid-fidelity wireframes","UI Kit + component library","Interactive prototype in Figma"],
    res:"App designed from scratch with dual navigation, full UI Kit with Work Sans, sitemap, task flows and functional Figma prototype.",
    ref:"Not just a marketplace — the neighbourhood, digitalised.",
-   ext:`<div class="ds"><h2>Value proposition</h2><img src="images/lolocal-conectar.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><img src="images/lolocal-personas.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Cognitive biases</h2><img src="images/lolocal-sesgos.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="simg" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><img src="images/lolocal-uikit.png" class="simg" onerror="this.style.display='none'" alt=""/></div>`,
+   ext:`<div class="ds"><h2>Value proposition</h2><img src="images/lolocal-conectar.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>User Personas</h2><img src="images/lolocal-personas.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Cognitive biases</h2><img src="images/lolocal-sesgos.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Wireframes</h2><img src="images/lolocal-estilo.png" class="si" onerror="this.style.display='none'" alt=""/></div><div class="ds"><h2>Design System</h2><img src="images/lolocal-uikit.png" class="si" onerror="this.style.display='none'" alt=""/></div>`,
    nx:1,pv:null},
   {nm:"Remitly",sb:"Redesign of transfer confirmation and tracking flow",
-   cv:`<div class="dcov" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
-   ctx:"Remitly is widely used for remittances. Unclear confirmation caused distrust and duplicate sends.",
+   cv:`<div class="dc" style="background:#1d3276"><img src="images/remitly-cover.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" alt=""/></div>`,
+   ctx:"Remitly is widely used for remittances. Unclear confirmation after transfer caused distrust and duplicate sends.",
    prb:"Users didn't know if money had arrived or what state their transaction was in.",
    obj:["Reduce duplicate sends","Show transfer status in real time","Improve system messages","Organise history by status","Increase user confidence"],
    rol:"UX Research, User Persona, Journey Mapping, UX Writing, UI Design, Prototyping, Usability Testing.",
    prc:["Desktop research and review analysis","Pareto analysis","User Persona: Martín Benitez","Journey Map","Intervention point","Confirmation flow redesign","UX Writing","Heuristic audit","Usability tests (8 participants)","Post-test NPS"],
    res:"All participants completed the tasks. Improved flow, reduced confusion. NPS 62.5%.",
    ref:"Small message changes directly impact trust. Transparency is critical in fintech.",
-   ext:`<div class="ds"><h2>Research & Pareto</h2><img src="images/remitly-pareto.png" class="simg" alt=""/></div><div class="ds"><h2>Journey Map</h2><img src="images/remitly-journey.png" class="simg" alt=""/></div><div class="ds"><h2>Solution</h2><img src="images/remitly-seguimiento.png" class="simg" alt=""/><img src="images/remitly-mensajes.png" class="simg" alt=""/><img src="images/remitly-envios.png" class="simg" alt=""/></div><div class="ds"><h2>Usability tests</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participants</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Task 1 complete</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS History</div></div></div></div>`,
+   ext:`<div class="ds"><h2>Research & Pareto</h2><img src="images/remitly-pareto.png" class="si" alt=""/></div><div class="ds"><h2>Journey Map</h2><img src="images/remitly-journey.png" class="si" alt=""/></div><div class="ds"><h2>Solution</h2><img src="images/remitly-seguimiento.png" class="si" alt=""/><img src="images/remitly-mensajes.png" class="si" alt=""/><img src="images/remitly-envios.png" class="si" alt=""/></div><div class="ds"><h2>Usability tests</h2><div class="sr"><div class="sc"><div class="sn">8</div><div class="sl">Participants</div></div><div class="sc"><div class="sn">100%</div><div class="sl">Task 1 complete</div></div><div class="sc"><div class="sn">62.5%</div><div class="sl">NPS History</div></div></div></div>`,
    nx:2,pv:0},
   {nm:"PedidosYA",sb:"Conceptual redesign of a food delivery app",
-   cv:`<div class="dcove" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
+   cv:`<div class="dce" style="background:linear-gradient(135deg,#ff6b35,#f7c59f)">🍔</div>`,
    ctx:"Conceptual redesign to improve PedidosYA's UX, focused on simplifying the order flow.",
    prb:"Category navigation and cart management caused confusion and order abandonment.",
    obj:["Simplify category navigation","Improve cart visibility","Reduce time to order","Improve menu legibility"],
@@ -624,7 +696,7 @@ en:[
    ref:"Visual hierarchy and friction reduction are fundamental in transactional apps.",
    ext:"",nx:3,pv:1},
   {nm:"Telepianxs",sb:"Digital platform connecting piano teachers and students online",
-   cv:`<div class="dcove" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
+   cv:`<div class="dce" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">🎵</div>`,
    ctx:"Telepianxs connects piano teachers and students online, removing geographical barriers from music education.",
    prb:"No dedicated platform existed for online piano teaching integrating communication, progress tracking and class management.",
    obj:["Connect teachers and students simply","Manage classes and schedules","Track student progress","Accessible for non-technical users","Design conveying trust and professionalism"],
@@ -634,7 +706,7 @@ en:[
    ref:"A project showing how design can democratise music education by removing geographical barriers.",
    ext:"",nx:4,pv:2},
   {nm:"Estudio Cactus",sb:"UX/UI Challenge — 3D interactive map redesign",
-   cv:`<div class="dcov" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
+   cv:`<div class="dc" style="background:linear-gradient(135deg,#1e3a5f,#2d6a9f);display:flex;align-items:center;justify-content:center"><img src="images/cactus-logo.png" style="max-width:50%;max-height:60%;object-fit:contain" onerror="this.style.display='none'" alt=""/></div>`,
    ctx:"Real test for a selection process. Improve the navigation of the 3D interactive map of Terminal AMPT Pier 400 in Long Beach, USA.",
    prb:"The map's side menu was unintuitive on mobile and certain areas were incorrectly numbered.",
    obj:["Clear mobile navigation","More comprehensible dropdown menu","Optimise screen space","Improve numbering consistency"],
@@ -645,40 +717,45 @@ en:[
    ext:"",nx:null,pv:3}
 ]};
 
-function go(id){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function togMenu(){document.getElementById('mobnav').classList.toggle('open')}
+let currentDetail = null;
 
-function det(i){
-  const p=P[lang][i],L=T[lang];
-  const obj=p.obj.map(o=>`<li><div class="och">✓</div>${o}</li>`).join('');
-  const prc=p.prc.map((s,j)=>`<div class="pi2"><div class="pnum">${j+1}</div>${s}</div>`).join('');
-  let nav='<div class="dnav">';
+function showD(i){currentDetail=i; buildDetail(i); go('dw');}
+
+function buildDetail(i){
+  const p=P[lang][i], L=T[lang];
+  const obj=p.obj.map(o=>`<li><div class="oc">✓</div>${o}</li>`).join('');
+  const prc=p.prc.map((s,j)=>`<div class="pit"><div class="pnu">${j+1}</div>${s}</div>`).join('');
+  let nav='<div class="dna">';
   if(p.pv!==null){
-    nav+=`<button class="dnbtn prev" onclick="det(${p.pv})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><div class="nt"><span class="nlb">${L.dprev}</span><span class="npn">${P[lang][p.pv].nm}</span></div></button>`;
+    nav+=`<button class="dnb prev" onclick="showD(${p.pv})">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      <div class="nt"><span class="nlb">${L.dpv}</span><span class="npn">${P[lang][p.pv].nm}</span></div>
+    </button>`;
   } else nav+='<div></div>';
   nav+='<div style="flex:1"></div>';
   if(p.nx!==null){
-    nav+=`<button class="dnbtn next" onclick="det(${p.nx})"><div class="nt"><span class="nlb">${L.dnxt}</span><span class="npn">${P[lang][p.nx].nm}</span></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>`;
+    nav+=`<button class="dnb next" onclick="showD(${p.nx})">
+      <div class="nt"><span class="nlb">${L.dnxt}</span><span class="npn">${P[lang][p.nx].nm}</span></div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </button>`;
   }
   nav+='</div>';
-  document.getElementById('dc').innerHTML=`
-    <h1 class="dtitle">${p.nm}</h1><p class="dsub">${p.sb}</p>
+  document.getElementById('dc2').innerHTML=`
+    <h1 class="dt">${p.nm}</h1><p class="ds2">${p.sb}</p>
     ${p.cv}
     <div class="ds"><h2>${L.dc}</h2><p>${p.ctx}</p></div>
     <div class="ds"><h2>${L.dpb}</h2><p>${p.prb}</p></div>
     <div class="ds"><h2>${L.do}</h2><ul class="ol">${obj}</ul></div>
     <div class="ds"><h2>${L.dr}</h2><p>${p.rol}</p></div>
-    <div class="ds"><h2>${L.dpr}</h2><div class="pgrid">${prc}</div></div>
+    <div class="ds"><h2>${L.dpr}</h2><div class="pgr">${prc}</div></div>
     ${p.ext}
-    <div class="rcrd"><h2>${L.dres}</h2><p>${p.res}</p></div>
-    <button class="pbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>${L.dpro}</button>
-    <div class="ds"><h2>${L.dref}</h2><p class="rft">"${p.ref}"</p></div>
+    <div class="rca"><h2>${L.dres}</h2><p>${p.res}</p></div>
+    <a class="pbt" href="${PROTO[i]}" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      ${L.dpro}
+    </a>
+    <div class="ds"><h2>${L.dref}</h2><p class="rf">"${p.ref}"</p></div>
     ${nav}`;
-  go('dw');
 }
 
 function sendF(){
@@ -693,15 +770,8 @@ function sendF(){
   ['fn','fe','fm'].forEach(id=>document.getElementById(id).value='');
 }
 
-// Hide cactus emoji if logo loads
-window.addEventListener('load',()=>{
-  const img=document.querySelector('#cfe')?.previousElementSibling;
-  if(img&&img.tagName==='IMG'){
-    if(img.complete&&img.naturalWidth>0){document.getElementById('cfe').style.display='none';}
-    else img.addEventListener('load',()=>{document.getElementById('cfe').style.display='none';});
-    img.addEventListener('error',()=>{img.style.display='none';document.getElementById('cfe').style.display='flex';});
-  }
-});
+// Init
+applyLang();
 </script>
 </body>
 </html>
