@@ -768,4 +768,16 @@ function sendF(){
   const n=document.getElementById('fn').value.trim();
   const e=document.getElementById('fe').value.trim();
   const m=document.getElementById('fm').value.trim();
-  if(!n||!e||!m){alert(lang==='es'?'Por favor rellena todos los campos.':'Please fill 
+  if(!n||!e||!m){alert(lang==='es'?'Por favor rellena todos los campos.':'Please fill in all fields.');return;}
+  const sub=encodeURIComponent(`[Portfolio] Mensaje de ${n}`);
+  const bod=encodeURIComponent(`Nombre: ${n}\nEmail: ${e}\n\nMensaje:\n${m}`);
+  window.location.href=`mailto:luisarnau9@gmail.com?subject=${sub}&body=${bod}`;
+  document.getElementById('fok').classList.add('show');
+  ['fn','fe','fm'].forEach(id=>document.getElementById(id).value='');
+}
+
+// Init
+applyLang();
+</script>
+</body>
+</html>
